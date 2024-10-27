@@ -30,6 +30,7 @@ export const projects = [
     longDescription: "Pioneered the team's first custom hardware solution, implementing a finite state machine architecture that integrates spectrometer readings, relay control, and LED feedback for real-time reaction monitoring.",
     tags: ["C++", "Embedded Systems", "Hardware Design"],
     link: "https://github.com/soconnor0919/national_fa24",
+    image: "/car.png",
     featured: true
   },
 ];
