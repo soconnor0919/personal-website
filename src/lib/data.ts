@@ -20,7 +20,7 @@ export const projects = [
     title: "Race Statistics Platform",
     description: "High-performance race statistics platform serving real-time data to 1500+ concurrent users.",
     longDescription: "Developed and deployed a complete race management system that handles registration, live timing, and results distribution. The platform replaced manual processes with digital solutions, significantly improving efficiency and user experience.",
-    tags: ["Next.js", "PostgreSQL", "WebSockets", "Docker"],
+    tags: ["PHP", "MariaDB", "WebSockets", "Docker"],
     link: "https://riverheadraceway.com",
     featured: true
   },
