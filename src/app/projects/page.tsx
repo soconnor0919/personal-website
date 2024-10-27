@@ -19,9 +19,9 @@ export default function ProjectsPage() {
       <div className="space-y-6">
         {projects.map((project, index) => (
           <Card key={index}>
-            <div className="flex flex-col lg:flex-row lg:items-center">
+            <div className="flex flex-col lg:flex-row">
               <div className="flex-1">
-                <CardHeader>
+                <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
                     <CardTitle>{project.title}</CardTitle>
                     {project.link && (
@@ -37,11 +37,11 @@ export default function ProjectsPage() {
                   </div>
                   <CardDescription className="text-base">{project.description}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="pt-0">
                   <p className="text-sm text-muted-foreground">
                     {project.longDescription}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mt-4">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="secondary">
                         {tag}
@@ -52,8 +52,8 @@ export default function ProjectsPage() {
               </div>
               
               {project.image && (
-                <div className="px-6 pb-6 lg:py-6 lg:w-1/3">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+                <div className="px-6 pb-6 lg:py-6 lg:w-1/3 md:px-24 lg:px-6">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
