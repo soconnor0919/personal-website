@@ -19,7 +19,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
         <div className="flex-1">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row lg:gap-12">
-              <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)]">
+              <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] overflow-y-auto">
                 <Sidebar />
               </aside>
               <main className="flex-1 overflow-y-auto py-8">
