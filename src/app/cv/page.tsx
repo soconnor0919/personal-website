@@ -6,7 +6,7 @@ export default function CVPage() {
       <object
         data="/cv.pdf"
         type="application/pdf"
-        className="w-full h-[calc(100vh-8rem)]"
+        className="w-full h-[calc(100vh-11rem)]"
       >
         <div className="flex flex-col items-center justify-center p-8">
           <p className="text-lg text-muted-foreground">
@@ -15,7 +15,7 @@ export default function CVPage() {
           <a 
             href="/cv.pdf" 
             download
-            className="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            className="mt-4 inline-flex items-center justify-center px-4 pt-2 pb-0 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
           >
             Download PDF
           </a>

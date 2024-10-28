@@ -2,6 +2,8 @@ import { inter } from "~/lib/fonts"
 import "~/styles/globals.css"
 import { Navigation } from "~/components/Navigation"
 import { Sidebar } from "~/components/Sidebar"
+import { ThemeProvider } from 'next-themes'
+import { Footer } from "~/components/Footer"
 
 export const metadata = {
   title: "Sean O'Connor",
@@ -12,16 +14,21 @@ export const metadata = {
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="font-sans bg-background text-foreground min-h-screen">
+      <body className="font-sans bg-background text-foreground min-h-screen flex flex-col">
         <Navigation />
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:gap-12 py-8">
-            <Sidebar />
-            <main className="flex-1">
-              {children}
-            </main>
+        <div className="flex-1">
+          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row lg:gap-12">
+              <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)]">
+                <Sidebar />
+              </aside>
+              <main className="flex-1 overflow-y-auto py-8">
+                {children}
+              </main>
+            </div>
           </div>
         </div>
+        <Footer />
       </body>
     </html>
   )
