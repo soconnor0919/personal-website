@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
-import { Home, FolderGit2, FileText, Menu, X } from 'lucide-react';
+import { Home, FolderGit2, FileText, BookOpenText, Menu, X } from 'lucide-react';
 
 // Define the nav items without icons
 const navItems = [
   { href: '/', label: 'About', icon: Home },
   { href: '/projects', label: 'Projects', icon: FolderGit2 },
+  { href: '/publications', label: 'Publications', icon: BookOpenText },
   { href: '/cv', label: 'CV', icon: FileText },
 ];
 

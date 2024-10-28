@@ -57,8 +57,10 @@ export default function ProjectsPage() {
                     <Image
                       src={project.image}
                       alt={project.title}
-                      fill
-                      className="object-contain"
+                      width={400}
+                      height={300}
+                      className="object-contain w-full h-full"
+                      priority={index === 0}
                     />
                   </div>
                 </div>

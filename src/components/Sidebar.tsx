@@ -65,8 +65,9 @@ export function Sidebar() {
               <Image
                 src="/headshot.png"
                 alt="Sean O'Connor"
-                fill
-                className="object-cover"
+                width={240}
+                height={240}
+                className="object-cover rounded-xl"
                 priority
               />
             </div>
@@ -119,9 +120,12 @@ export function Sidebar() {
               <Image
                 src="/headshot.png"
                 alt="Sean O'Connor"
-                fill
-                className="object-cover"
+                width={240}
+                height={240}
+                className="object-cover rounded-xl"
                 priority
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j..."
               />
             </div>
           </div>

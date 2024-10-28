@@ -10,9 +10,9 @@ export default function HomePage() {
       {/* About Section */}
       <section className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">About Me</h1>
+          <h1 className="text-2xl font-bold">Hi! I'm Sean.</h1>
           <p className="text-lg text-muted-foreground mt-2">
-            I'm a Computer Science and Engineering student at Bucknell University, passionate about robotics, 
+            I am a Computer Science and Engineering student at Bucknell University, passionate about robotics, 
             software development, and human-computer interaction. With a strong foundation in both academic 
             research and practical development, I bridge the gap between theoretical concepts and real-world applications.
           </p>
