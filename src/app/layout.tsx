@@ -4,6 +4,7 @@ import { Navigation } from "~/components/Navigation"
 import { Sidebar } from "~/components/Sidebar"
 import { ThemeProvider } from 'next-themes'
 import { Footer } from "~/components/Footer"
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Sean O'Connor",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" className={inter.className}>
       <body className="font-sans bg-background text-foreground min-h-screen flex flex-col">
+        <Analytics />
         <Navigation />
         <div className="flex-1">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
