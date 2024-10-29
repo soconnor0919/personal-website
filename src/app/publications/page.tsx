@@ -49,7 +49,7 @@ export default function PublicationsPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `refs.bib`;
+    a.download = `${citationKey}.bib`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
