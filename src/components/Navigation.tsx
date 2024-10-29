@@ -33,8 +33,8 @@ export function Navigation() {
     <>
       {/* Backdrop overlay - faster fade */}
       <div
-        className={`fixed inset-0 bg-background/80 backdrop-blur-sm transition-opacity duration-200 ${
-          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 bg-background/80 backdrop-blur-sm lg:hidden transition-opacity duration-200 ${
+          isOpen ? 'opacity-100 z-50' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
