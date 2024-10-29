@@ -14,7 +14,7 @@ export default function CVPage() {
     <div className="space-y-6">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
         <h1 className="text-2xl font-bold">Curriculum Vitae 📄</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-muted-foreground mt-2">
           My academic and professional experience in computer science, robotics, and engineering.
         </p>
       </section>
@@ -30,7 +30,7 @@ export default function CVPage() {
             <object
               data="/cv.pdf"
               type="application/pdf"
-              className="w-full h-[calc(100vh-20.5rem)] lg:h-[calc(100vh-18rem)]"
+              className="w-full h-[calc(100vh-21rem)] lg:h-[calc(100vh-18rem)]"
             >
               <Card>
                 <CardHeader className="pb-2">
@@ -65,7 +65,7 @@ export default function CVPage() {
             <object
               data="/resume.pdf"
               type="application/pdf"
-              className="w-full h-[calc(100vh-20.5rem)] lg:h-[calc(100vh-18rem)]"
+              className="w-full h-[calc(100vh-21rem)] lg:h-[calc(100vh-18rem)]"
             >
 
               <Card>

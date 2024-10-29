@@ -20,7 +20,7 @@ export default function ProjectsPage() {
     <div className="space-y-6">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
         <h1 className="text-2xl font-bold">Featured Projects 🌟</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-muted-foreground mt-2">
           A selection of my academic and professional projects, focusing on robotics, 
           web development, and embedded systems.
         </p>
