@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpenText, FileText, FolderGit2, Home, Menu, Moon, Newspaper, Sun, SunMoon, X } from 'lucide-react';
+import { BookOpenText, FileText, FolderGit2, Home, Menu, Moon, Newspaper, Plane, Sun, SunMoon, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,6 +12,7 @@ const navItems = [
   { href: '/articles', label: 'Articles', icon: Newspaper },
   { href: '/projects', label: 'Projects', icon: FolderGit2 },
   { href: '/publications', label: 'Publications', icon: BookOpenText },
+  { href: '/travel', label: 'Travel', icon: Plane },
   { href: '/cv', label: 'CV', icon: FileText },
 ];
 
@@ -25,6 +26,12 @@ export function Navigation() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Update the document title based on the current pathname
+  useEffect(() => {
+    const currentItem = navItems.find(item => item.href === pathname);
+    document.title = currentItem ? `${currentItem.label} - Sean O'Connor` : 'Sean O\'Connor'; // Default title
+  }, [pathname]);
 
   // Determine the icon to show based on the theme
   const themeIcon = theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />;

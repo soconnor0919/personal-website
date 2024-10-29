@@ -46,7 +46,7 @@ export default function ArticlesPage() {
         <div className="space-y-12">
             <section className="space-y-6">
                 <div>
-                    <h1 className="text-2xl font-bold">In the Media 🗞️</h1>
+                    <h1 className="text-2xl font-bold">In the Media 📰</h1>
                     <p className="text-lg text-muted-foreground mt-2">
                         I have been lucky enough to have a few wonderful articles written about me and my work. Go check them out!
                     </p>
