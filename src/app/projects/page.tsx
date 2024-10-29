@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
         <h1 className="text-2xl font-bold">Featured Projects 🌟</h1>
         <p className="text-lg text-muted-foreground">
