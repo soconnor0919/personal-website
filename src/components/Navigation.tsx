@@ -81,6 +81,7 @@ export function Navigation() {
           z-40
           bg-background
           border-b
+          border-border
           shadow-sm
           lg:hidden 
           overflow-hidden
