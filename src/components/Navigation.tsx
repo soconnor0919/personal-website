@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
-import { Home, FolderGit2, FileText, BookOpenText, Menu, X, Sun, Moon } from 'lucide-react';
+import { Home, FolderGit2, FileText, BookOpenText, Menu, X, Sun, Moon, SunMoon } from 'lucide-react';
 
 // Define the nav items without icons
 const navItems = [
@@ -25,6 +25,10 @@ export function Navigation() {
     setMounted(true);
   }, []);
 
+  // Determine the icon to show based on the theme
+  const themeIcon = theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />;
+  const defaultThemeIcon =  <SunMoon size={20} />; // Default icon for server-side rendering
+
   return (
     <>
       {/* Backdrop overlay - faster fade */}
@@ -44,15 +48,14 @@ export function Navigation() {
               <span className="text-lg font-bold">Sean O'Connor</span>
             </Link>
             <div className="flex items-center space-x-4">
-              {mounted && (
-                <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary flex items-center lg:hidden"
-                  aria-label="Toggle theme"
-                >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-              )}
+              {/* Render the theme icon as a placeholder */}
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="text-sm font-medium text-muted-foreground hover:text-primary flex items-center lg:hidden"
+                aria-label="Toggle theme"
+              >
+                {mounted ? themeIcon : defaultThemeIcon} {/* Use the default icon for server-side rendering */}
+              </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-gray-500 hover:text-primary focus:outline-none relative h-6 w-6 lg:hidden"
@@ -80,15 +83,13 @@ export function Navigation() {
                   </Link>
                 );
               })}
-              {mounted && (
-                <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="ml-4 text-sm font-medium text-muted-foreground hover:text-primary flex items-center"
-                  aria-label="Toggle theme"
-                >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-              )}
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="ml-4 text-sm font-medium text-muted-foreground hover:text-primary flex items-center"
+                aria-label="Toggle theme"
+              >
+                {mounted ? themeIcon : defaultThemeIcon} {/* Use the default icon for server-side rendering */}
+              </button>
             </div>
           </div>
         </div>

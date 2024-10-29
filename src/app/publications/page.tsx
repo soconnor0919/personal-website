@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Skeleton } from "~/components/ui/skeleton";
+import { CardSkeleton } from "~/components/ui/skeletons";
 import type { Publication } from "~/lib/bibtex";
 import { parseBibtex } from "~/lib/bibtex";
 
@@ -67,15 +68,11 @@ export default function PublicationsPage() {
 
       <div className="space-y-6">
         {loading ? (
-          <Card>
-            <CardHeader className="pb-2">
-              <Skeleton className="h-6 w-1/2" />
-            </CardHeader>
-            <CardContent>
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full mt-2" />
-            </CardContent>
-          </Card>
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
         ) : (
           publications.map((pub, index) => (
             <Card key={index}>
