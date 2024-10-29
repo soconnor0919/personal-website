@@ -1,7 +1,6 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "~/components/ui/card";
-import { Badge } from "~/components/ui/badge";
-import Link from "next/link";
 import { ArrowUpRight, Code, FlaskConical, Users } from 'lucide-react';
+import Link from "next/link";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { projects } from "~/lib/data";
 
 export default function HomePage() {
@@ -12,8 +11,8 @@ export default function HomePage() {
         <div>
           <h1 className="text-2xl font-bold">Hi! I'm Sean. 👋</h1>
           <p className="text-lg text-muted-foreground mt-2">
-            I am a Computer Science and Engineering student at Bucknell University, passionate about robotics, 
-            software development, and human-computer interaction. With a strong foundation in both academic 
+            I am a Computer Science and Engineering student at Bucknell University, passionate about robotics,
+            software development, and human-computer interaction. With a strong foundation in both academic
             research and practical development, I bridge the gap between theoretical concepts and real-world applications.
           </p>
         </div>
@@ -75,8 +74,8 @@ export default function HomePage() {
       <section className="space-y-6">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Featured Projects 🌟</h2>
-          <Link 
-            href="/projects" 
+          <Link
+            href="/projects"
             className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1"
           >
             View all projects
@@ -93,7 +92,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-between">
                     <CardTitle>{project.title}</CardTitle>
                     {project.link && (
-                      <Link 
+                      <Link
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"

@@ -1,14 +1,15 @@
 'use client';
 
+import { BookOpenText, FileText, FolderGit2, Home, Menu, Moon, Newspaper, Sun, SunMoon, X } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
-import { Home, FolderGit2, FileText, BookOpenText, Menu, X, Sun, Moon, SunMoon } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 // Define the nav items without icons
 const navItems = [
   { href: '/', label: 'About', icon: Home },
+  { href: '/articles', label: 'Articles', icon: Newspaper },
   { href: '/projects', label: 'Projects', icon: FolderGit2 },
   { href: '/publications', label: 'Publications', icon: BookOpenText },
   { href: '/cv', label: 'CV', icon: FileText },
