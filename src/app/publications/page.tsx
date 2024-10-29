@@ -1,17 +1,18 @@
 'use client';
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "~/components/ui/card";
-import { Badge } from "~/components/ui/badge";
-import { ArrowUpRight, FileText, Presentation } from "lucide-react";
+import { ArrowUpRight, BookOpenText, FileText, Presentation } from "lucide-react";
 import Link from "next/link";
-import { parseBibtex } from "~/lib/bibtex";
 import { useEffect, useState } from "react";
-import type { Publication } from "~/lib/bibtex";
+import { Badge } from "~/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { Skeleton } from "~/components/ui/skeleton";
+import type { Publication } from "~/lib/bibtex";
+import { parseBibtex } from "~/lib/bibtex";
 
 export default function PublicationsPage() {
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
+  const tagsToStrip = ['paperUrl', 'posterUrl'];
 
   useEffect(() => {
     fetch('/publications.bib')
@@ -22,6 +23,38 @@ export default function PublicationsPage() {
         setLoading(false);
       });
   }, []);
+
+  const downloadBibtex = (pub: Publication) => {
+    const { title, authors, venue, year, doi, abstract, type, citationType, citationKey } = pub;
+    let bibtexEntry = `@${citationType}{${citationKey},\n`;
+    bibtexEntry += `  title = {${title}},\n`;
+    bibtexEntry += `  author = {${authors.join(' and ')}},\n`;
+    bibtexEntry += `  year = {${year}},\n`;
+    if (type === 'conference' || type === 'workshop') {
+      bibtexEntry += `  organization = {${venue}},\n`;
+    } else if (type === 'journal') {
+      bibtexEntry += `  journal = {${venue}},\n`;
+    } else if (type === 'thesis') {
+      bibtexEntry += `  school = {${venue}},\n`;
+    }
+    if (doi) {
+      bibtexEntry += `  doi = {${doi}},\n`;
+    }
+    if (abstract) {
+      bibtexEntry += `  abstract = {${abstract}},\n`;
+    }
+    bibtexEntry += `}\n`;
+
+    const blob = new Blob([bibtexEntry], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `refs.bib`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="space-y-8">
@@ -49,9 +82,9 @@ export default function PublicationsPage() {
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
                   <CardTitle>{pub.title}</CardTitle>
-                  {pub.url && (
+                  {pub.paperUrl && (
                     <Link 
-                      href={pub.url}
+                      href={pub.paperUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary"
@@ -113,6 +146,14 @@ export default function PublicationsPage() {
                       </Badge>
                     </Link>
                   )}
+                  <Badge 
+                    onClick={() => downloadBibtex(pub)} 
+                    className="cursor-pointer capitalize"
+                    variant="outline"
+                  >
+                    <BookOpenText className="h-4 w-4" />
+                    BibTeX
+                  </Badge>
                 </div>
               </CardContent>
             </Card>

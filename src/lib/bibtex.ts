@@ -8,12 +8,15 @@ export type Publication = {
   paperUrl?: string;
   posterUrl?: string;
   abstract?: string;
+  citationType?: string;
+  citationKey?: string;
   type: 'conference' | 'journal' | 'workshop' | 'thesis';
 };
 
 type BibTeXEntry = {
   type: string;
   fields: Record<string, string>;
+  citationKey: string;
 };
 
 function parseAuthors(authorString: string): string[] {
@@ -31,10 +34,11 @@ function parseAuthors(authorString: string): string[] {
 
 function parseBibTeXEntry(entry: string): BibTeXEntry | null {
   // Match the entry type and content
-  const typeMatch = entry.match(/^(\w+)\s*{\s*[\w\d-_]+\s*,/);
+  const typeMatch = entry.match(/^(\w+)\s*{\s*([\w\d-_]+)\s*,/);
   if (!typeMatch) return null;
 
   const type = typeMatch[1]!.toLowerCase();
+  const citationKey = typeMatch[2];
   const content = entry.slice(typeMatch[0].length);
 
   const fields: Record<string, string> = {};
@@ -68,7 +72,7 @@ function parseBibTeXEntry(entry: string): BibTeXEntry | null {
     fields[currentField] = buffer.trim();
   }
 
-  return { type, fields };
+  return { type, fields, citationKey: citationKey! };
 }
 
 export function parseBibtex(bibtex: string): Publication[] {
@@ -79,10 +83,21 @@ export function parseBibtex(bibtex: string): Publication[] {
     .filter((entry): entry is BibTeXEntry => entry !== null);
 
   return entries.map(entry => {
-    const publicationType = 
-      entry.type === 'inproceedings' ? 'conference' :
-      entry.type === 'article' ? 'journal' :
-      entry.type === 'mastersthesis' ? 'thesis' : 'workshop';
+    const publicationType = (() => {
+      switch (entry.type) {
+        case 'inproceedings':
+        case 'conference':
+          return 'conference';
+        case 'article':
+          return 'journal';
+        case 'mastersthesis':
+          return 'thesis';
+        case 'workshop':
+          return 'workshop';
+        default:
+          return 'journal';
+      }
+    })();
 
     return {
       title: entry.fields.title?.replace(/[{}]/g, '') || '',
@@ -94,6 +109,8 @@ export function parseBibtex(bibtex: string): Publication[] {
       paperUrl: entry.fields.paperurl,
       posterUrl: entry.fields.posterurl,
       abstract: entry.fields.abstract,
+      citationType: entry.type,
+      citationKey: entry.citationKey,
       type: publicationType
     };
   });
