@@ -26,7 +26,7 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 space-y-2">
+            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
               <li>Full-stack development with modern frameworks (React, Next.js, Node.js)</li>
               <li>Robotics development using ROS2 and C++</li>
               <li>Systems programming and architecture design</li>
@@ -44,7 +44,7 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 space-y-2">
+            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
               <li>Human-Robot Interaction studies and experimental design</li>
               <li>Published researcher at IEEE RO-MAN 2024</li>
               <li>Development of experimental platforms for HRI research</li>
@@ -61,7 +61,7 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 space-y-2">
+            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
               <li>President of AIChE Chem-E-Car Competition Team</li>
               <li>Treasurer of Bucknell Coffee Society</li>
               <li>Teaching Assistant for Computer Science courses</li>

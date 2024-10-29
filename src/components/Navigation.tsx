@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
-import { Home, FolderGit2, FileText, BookOpenText, Menu, X } from 'lucide-react';
+import { Home, FolderGit2, FileText, BookOpenText, Menu, X, Sun, Moon } from 'lucide-react';
 
 // Define the nav items without icons
 const navItems = [
@@ -17,20 +17,26 @@ const navItems = [
 export function Navigation() {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false); // State to manage the navbar toggle
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-background border-b shadow-sm">
-      {/* Static top bar */}
+    <nav className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
       <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/">
             <span className="text-lg font-bold">Sean O'Connor</span>
           </Link>
-          <div className="flex items-center lg:hidden">
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="text-sm font-medium text-muted-foreground hover:text-primary flex items-center lg:hidden"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-500 hover:text-primary focus:outline-none relative h-6 w-6"
+              className="text-gray-500 hover:text-primary focus:outline-none relative h-6 w-6 lg:hidden"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
               <span className={`absolute inset-0 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}>
@@ -41,10 +47,9 @@ export function Navigation() {
               </span>
             </button>
           </div>
-          {/* Navigation items for large screens */}
-          <div className="hidden lg:flex lg:space-x-4">
+          <div className="hidden lg:flex lg:space-x-4 lg:justify-end">
             {navItems.map((item) => {
-              const isActive = pathname === item.href; // Determine if the item is active
+              const isActive = pathname === item.href;
               return (
                 <Link
                   key={item.href}
@@ -56,11 +61,17 @@ export function Navigation() {
                 </Link>
               );
             })}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="ml-4 text-sm font-medium text-muted-foreground hover:text-primary flex items-center"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Animated mobile menu */}
       <div 
         className={`
           absolute

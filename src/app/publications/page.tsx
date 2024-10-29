@@ -116,7 +116,7 @@ export default function PublicationsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Badge variant="outline" className="capitalize">
+                      <Badge variant="secondary" className="capitalize">
                         <ArrowUpRight className="h-4 w-4" />
                         DOI
                       </Badge>
@@ -128,7 +128,7 @@ export default function PublicationsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Badge variant="outline" className="capitalize">
+                      <Badge variant="secondary" className="capitalize">
                         <FileText className="h-4 w-4" />
                         Paper
                       </Badge>
@@ -140,16 +140,16 @@ export default function PublicationsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Badge variant="outline" className="capitalize">
+                      <Badge variant="secondary" className="capitalize">
                         <Presentation className="h-4 w-4" />
                         Poster
                       </Badge>
                     </Link>
                   )}
-                  <Badge 
+                  <Badge
                     onClick={() => downloadBibtex(pub)} 
                     className="cursor-pointer capitalize"
-                    variant="outline"
+                    variant="secondary"
                   >
                     <BookOpenText className="h-4 w-4" />
                     BibTeX
