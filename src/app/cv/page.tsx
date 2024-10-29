@@ -4,7 +4,7 @@ export default function CVPage() {
   return (
     <div className="space-y-8">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="text-2xl font-bold">Curriculum Vitae</h1>
+        <h1 className="text-2xl font-bold">Curriculum Vitae 📄</h1>
         <p className="text-lg text-muted-foreground">
           My academic and professional experience in computer science, robotics, and engineering.
         </p>

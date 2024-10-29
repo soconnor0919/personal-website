@@ -10,7 +10,7 @@ export default function HomePage() {
       {/* About Section */}
       <section className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">Hi! I'm Sean.</h1>
+          <h1 className="text-2xl font-bold">Hi! I'm Sean. 👋</h1>
           <p className="text-lg text-muted-foreground mt-2">
             I am a Computer Science and Engineering student at Bucknell University, passionate about robotics, 
             software development, and human-computer interaction. With a strong foundation in both academic 
@@ -74,7 +74,7 @@ export default function HomePage() {
       {/* Featured Projects Section */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Featured Projects</h2>
+          <h2 className="text-2xl font-bold">Featured Projects 🌟</h2>
           <Link 
             href="/projects" 
             className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1"

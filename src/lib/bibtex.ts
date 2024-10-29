@@ -102,7 +102,7 @@ export function parseBibtex(bibtex: string): Publication[] {
     return {
       title: entry.fields.title?.replace(/[{}]/g, '') || '',
       authors: parseAuthors(entry.fields.author || ''),
-      venue: entry.fields.booktitle || entry.fields.journal || '',
+      venue: entry.fields.booktitle || entry.fields.journal || entry.fields.organization || entry.fields.school || '',
       year: parseInt(entry.fields.year || '0', 10),
       doi: entry.fields.doi,
       url: entry.fields.url,

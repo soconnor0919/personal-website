@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { projects } from "~/lib/data";
 import Image from "next/image";
 
@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   return (
     <div className="space-y-8">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="text-2xl font-bold">Featured Projects</h1>
+        <h1 className="text-2xl font-bold">Featured Projects 🌟</h1>
         <p className="text-lg text-muted-foreground">
           A selection of my academic and professional projects, focusing on robotics, 
           web development, and embedded systems.

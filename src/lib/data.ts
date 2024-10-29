@@ -26,7 +26,7 @@ export const projects = [
   },
   {
     title: "Chem-E-Car Control System",
-    description: "Custom microcontroller-based control system for hydrogen fuel cell regulation.",
+    description: "Custom microcontroller-based control system for hydrogen fuel cell regulation and reaction monitoring.",
     longDescription: "Pioneered the team's first custom hardware solution, implementing a finite state machine architecture that integrates spectrometer readings, relay control, and LED feedback for real-time reaction monitoring.",
     tags: ["C++", "Embedded Systems", "Hardware Design"],
     link: "https://github.com/soconnor0919/national_fa24",

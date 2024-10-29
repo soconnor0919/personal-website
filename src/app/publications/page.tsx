@@ -59,7 +59,7 @@ export default function PublicationsPage() {
   return (
     <div className="space-y-8">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="text-2xl font-bold">Publications</h1>
+        <h1 className="text-2xl font-bold">Publications 📚</h1>
         <p className="text-lg text-muted-foreground">
           My research publications in human-robot interaction and robotics.
         </p>
