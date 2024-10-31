@@ -1,55 +1,8 @@
 'use client';
 
-import { Github, Globe, GraduationCap, Linkedin, Mail, Phone, School } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-
-const schoolInfo = [
-  {
-    icon: School,
-    label: 'Bucknell University',
-    href: 'https://bucknell.edu'
-  },
-  {
-    label: 'Computer Science and Engineering',
-  }
-]
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: 'Personal Email',
-    href: 'mailto:sean@soconnor.dev'
-  },
-  {
-    icon: Mail,
-    label: 'University Email',
-    href: 'mailto:sso005@bucknell.edu'
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    href: 'tel:+16316016555'
-  },
-  {
-    icon: Globe,
-    label: 'Website',
-    href: 'https://soconnor.dev',
-    external: true
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/bu-soconnor',
-    external: true
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/soconnor0919',
-    external: true
-  }
-];
+import { name, contact, location } from '~/lib/data';
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -64,7 +17,7 @@ export function Sidebar() {
             <div className="w-24 h-24 relative overflow-hidden rounded-lg">
               <Image
                 src="/headshot.png"
-                alt="Sean O'Connor"
+                alt={`${name[0]?.first}&nbsp;${name[0]?.last}`}
                 width={240}
                 height={240}
                 className="object-cover rounded-xl"
@@ -72,8 +25,8 @@ export function Sidebar() {
               />
             </div>
             <div className="flex flex-col space-y-1">
-              <h2 className="font-bold text-xl hover:text-primary transition-colors">Sean O'Connor</h2>
-              {schoolInfo.map((item) => (
+              <h2 className="font-bold text-xl hover:text-primary transition-colors">{name[0]?.first}&nbsp;{name[0]?.last}</h2>
+              {location.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
@@ -89,11 +42,11 @@ export function Sidebar() {
               ))}
             </div>
           </div>
-          
+
           <div className="space-y-3">
             <h3 className="text-xs uppercase text-muted-foreground font-medium">Contact</h3>
             <div className="grid grid-cols-2 gap-2">
-              {contactInfo.map((item) => (
+              {contact.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
@@ -119,7 +72,7 @@ export function Sidebar() {
             <div className="aspect-square relative overflow-hidden rounded-xl w-full">
               <Image
                 src="/headshot.png"
-                alt="Sean O'Connor"
+                alt={`${name[0]?.first}&nbsp;${name[0]?.last}`}
                 width={240}
                 height={240}
                 className="object-cover rounded-xl"
@@ -129,10 +82,10 @@ export function Sidebar() {
               />
             </div>
           </div>
-          
+
           <div className="text-center lg:text-left space-y-2">
-            <h2 className="font-bold text-xl hover:text-primary transition-colors">Sean O'Connor</h2>
-            {schoolInfo.map((item) => (
+            <h2 className="font-bold text-xl hover:text-primary transition-colors">{name[0]?.first}&nbsp;{name[0]?.last}</h2>
+            {location.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -152,7 +105,7 @@ export function Sidebar() {
             <div>
               <h3 className="text-xs uppercase text-muted-foreground font-medium mb-2 text-center lg:text-left">Contact</h3>
               <div className="space-y-2">
-                {contactInfo.map((item) => (
+                {contact.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
@@ -173,7 +126,7 @@ export function Sidebar() {
 
         <div className="mt-6">
           <p className="text-sm text-muted-foreground text-center lg:text-left">
-            &copy; 2024&nbsp;Sean&nbsp;O'Connor. All&nbsp;rights&nbsp;reserved.
+            &copy;&nbsp;{new Date().getFullYear()}&nbsp;{name[0]?.first}&nbsp;{name[0]?.last}. All&nbsp;rights&nbsp;reserved.
           </p>
         </div>
       </div>

@@ -5,31 +5,7 @@ import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 import { CardSkeleton } from "~/components/ui/skeletons";
 import { useState, useEffect } from 'react';
-
-const articles = [
-    {
-        title: "Positively Innovative: Robotics for Good",
-        link: "https://magazine.bucknell.edu/issue/fall-2024/robotics-for-good/",
-        author: "Kate Willard",
-        description: "Sean O’Connor ’26 is using his interest in robotics to fuel forward-thinking research and lead important conversations about the impact robots can have on society.",
-        source: "Bucknell Magazine (Fall 2024)"
-    },
-    {
-        title: "Student Story: Sean O'Connor '26, Computer Science and Engineering",
-        link: "https://www.bucknell.edu/meet-bucknell/bucknell-stories/student-stories/sean-oconnor-26-computer-science-engineering",
-        author: "Sarah Downey",
-        description: "At Bucknell, Sean O'Connor '26 is conducting research to improve the ways robots assist, collaborate and coexist with humans.",
-        source: "Bucknell Student Stories"
-    },
-    {
-        title: "Shaping the Future: Exploring the Social Impact of Robots",
-        link: "https://magazine.bucknell.edu/college-of-engineering/2024-college-report/",
-        author: "Bucknell Publications",
-        description: "RoboLab provides an environment for scholarly and creative conversations.",
-        source: "the Bucknell College of Engineering Report 2024"
-    }
-    // Add more articles as needed
-];
+import { articles } from '~/lib/data';
 
 export default function ArticlesPage() {
     const [loading, setLoading] = useState(true);

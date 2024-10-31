@@ -5,22 +5,24 @@ import { Footer } from "~/components/Footer"
 import { Navigation } from "~/components/Navigation"
 import { Sidebar } from "~/components/Sidebar"
 import { inter } from "~/lib/fonts"
+import { description, name } from "~/lib/data";
 import "~/styles/globals.css"
 
 export const metadata = {
-  title: "Sean O'Connor",
-  description: "Personal website and portfolio",
+  title: `${name[0]?.first} ${name[0]?.last}`,
+  description: description,
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="font-sans bg-background text-foreground min-h-screen flex flex-col">
+    <html lang="en" suppressHydrationWarning className={inter.className}>
+      <body className="font-sans bg-background text-foreground min-h-screen flex flex-col" suppressHydrationWarning>
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="system"
           enableSystem
+          disableTransitionOnChange
         >
           <Analytics />
           <SpeedInsights />

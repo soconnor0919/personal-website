@@ -5,46 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "~/com
 import { CardSkeleton } from "~/components/ui/skeletons";
 import Image from "next/image";
 import { Badge } from "~/components/ui/badge";
-
-const tripsData = [
-    {
-        title: "AIChE Annual Student Conference 2024",
-        description: "With the funding of Bucknell's chemical engineering department, and an amazing team, I was able to attend the 2024 AIChE Annual Student Conference and compete in the national Chem-E-Car competition.",
-        images: ["/trips/asc2024/IMG_2641.png", "/trips/asc2024/IMG_2631.png", "/trips/asc2024/IMG_7987.png"],
-        tags: ["Chem-E-Car", "AIChE", "Conference", "Competition"]
-    },
-    {
-        title: "IEEE RO-MAN 2024",
-        description: "I got to attend the IEEE RO-MAN 2024 conference in Pasadena, California. It was a great opportunity to present my work on my project HRIStudio, and to network with other researchers and industry professionals.",
-        images: ["/trips/roman2024/IMG_3951.png", "/trips/roman2024/IMG_3978.png", "/trips/roman2024/IMG_3946.png"],
-        tags: ["RO-MAN", "IEEE", "Conference", "Presentation"]
-    },
-    {
-        title: "ENGR 290: Following da Vinci's Footsteps",
-        description: "During the summer of 2024, I went on a study abroad program with about thirty of my peers. We explored Italy and France, following the footsteps of Leonardo da Vinci- evaluating the world through his lenses.",
-        images: ["/trips/engr290/insta290.jpg", "/trips/engr290/P1013747.png"],
-        tags: ["Italy", "France", "Study Abroad", "Engineering"]
-    },
-    {
-        title: "SCA Specialty Coffee Expo 2024",
-        description: "As a member of the executive board of the Bucknell Coffee Society, I was able to attend the Specialty Coffee Association's Specialty Coffee Expo in early 2024, traveling to Chicago, IL.",
-        images: ["/trips/sca2024/group.jpeg", "/trips/sca2024/bean.png", "/trips/sca2024/plane.png"],
-        tags: ["Coffee Society", "Chicago", "SCA", "Coffee"]
-    },
-    {
-        title: "Formula 1 Gran Premio dell'Emilia Romagna 2024",
-        description: "While studying abroad with Bucknell Engineering, we were lucky enough to be within a few hours of the Imola Grand Prix! A group of students went to see the race, and it was an amazing experience.",
-        images: ["/trips/imola2024/IMG_2093.png", "/trips/imola2024/IMG_2050.png", "/trips/imola2024/IMG_2066.png"],
-        tags: ["Racing", "Formula One", "Italy"]
-    },
-    {
-        title: "Formula 1 British Grand Prix 2024",
-        description: "As a semi-recent Formula One fan, I was very excited to have the opportunity to attend the British Grand Prix weekend in 2024. I was able to see every event- marking one of my favorite weekends, probably ever.",
-        images: ["/trips/silverstone/_1035852.png", "/trips/silverstone/P1025274.png", "/trips/silverstone/_1035764.png"],
-        tags: ["Racing", "Formula One", "Great Britain", "Silverstone"]
-    }
-];
-
+import { travel } from "~/lib/data";
 export default function TripsPage() {
     const [loading, setLoading] = useState(true);
 
@@ -75,7 +36,7 @@ export default function TripsPage() {
                         <CardSkeleton />
                     </>
                 ) : (
-                    tripsData.map((trip, index) => (
+                    travel.map((trip, index) => (
                         <Card key={index} className="rounded-lg overflow-hidden">
                             <CardHeader className="p-0">
                                 <div className="flex flex-col">

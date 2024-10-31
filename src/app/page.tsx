@@ -1,7 +1,7 @@
 import { ArrowUpRight, Code, FlaskConical, Users } from 'lucide-react';
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
-import { projects } from "~/lib/data";
+import { projects, name } from "~/lib/data";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       {/* About Section */}
       <section className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">Hi! I'm Sean. 👋</h1>
+          <h1 className="text-2xl font-bold">Hi! I'm {name[0]?.first}. 👋</h1>
           <p className="text-lg text-muted-foreground mt-2">
             I am a Computer Science and Engineering student at Bucknell University, passionate about robotics,
             software development, and human-computer interaction. With a strong foundation in both academic
