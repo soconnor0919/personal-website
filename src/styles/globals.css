@@ -6,7 +6,7 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 10%;
-    --card: 0 0% 98%;
+    --card: 0 0% 99%;
     --card-foreground: 0 0% 10%;
     --badge: 0 100%, 50%;
     --popover: 0 0% 100%;
@@ -31,7 +31,7 @@
   [data-theme='dark'] {
     --background: 0 0% 10%;
     --foreground: 0 0% 90%;
-    --card: 0 0% 15%;
+    --card: 0 0% 12%;
     --card-foreground: 0 0% 90%;
     --popover: 0 0% 20%;
     --popover-foreground: 0 0% 90%;

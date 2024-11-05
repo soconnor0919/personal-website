@@ -1,4 +1,4 @@
-import { Globe, Mail, Phone, Linkedin, Github, School } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, School, GraduationCap } from "lucide-react";
 
 export const name = [
   {
@@ -37,9 +37,9 @@ export const contact = [
     href: 'tel:+16316016555'
   },
   {
-    icon: Globe,
-    label: 'Website',
-    href: 'https://soconnor.dev',
+    icon: GraduationCap,
+    label: 'Google Scholar',
+    href: 'https://scholar.google.com/citations?hl=en&user=OCgINDcAAAAJ',
     external: true
   },
   {

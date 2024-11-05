@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.className}>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="font-sans bg-background text-foreground min-h-screen flex flex-col" suppressHydrationWarning>
         <ThemeProvider
           attribute="data-theme"
