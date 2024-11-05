@@ -21,7 +21,9 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="sticky top-0 z-[51] bg-background border-b border-border shadow-sm">
+      <nav className={`sticky top-0 z-[51] bg-background shadow-sm border-b ${
+        isOpen ? 'border-transparent' : 'border-border'
+      }`}>
         <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/">
