@@ -37,6 +37,8 @@ A modern, responsive personal website built with Next.js, TypeScript, and Tailwi
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+5. Customize the data in `src/lib/data.ts` to represent you!
+
 ## Project Structure
 
 ```
