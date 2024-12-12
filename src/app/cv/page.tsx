@@ -7,6 +7,10 @@ import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '~/com
 import { Download } from 'lucide-react';
 import Link from 'next/link';
 
+// GitHub release URLs for PDFs
+const CV_URL = "https://github.com/soconnor0919/resume-cv/releases/download/latest/cv.pdf";
+const RESUME_URL = "https://github.com/soconnor0919/resume-cv/releases/download/latest/resume.pdf";
+
 export default function CVPage() {
   const [activeTab, setActiveTab] = useState('cv');
 
@@ -27,9 +31,11 @@ export default function CVPage() {
 
         <TabsContent value="cv">
           <div className="bg-background shadow-sm rounded-lg overflow-hidden">
-            <object
-              data="/cv.pdf"
-              type="application/pdf"
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(CV_URL)}&embedded=true`}
+              width="100%"
+              height="600"
+              style={{ border: 'none' }}
               className="w-full h-[calc(100vh-21rem)] lg:h-[calc(100vh-18rem)]"
             >
               <Card>
@@ -44,7 +50,7 @@ export default function CVPage() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <Link
-                      href="/cv.pdf"
+                      href={CV_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -56,18 +62,19 @@ export default function CVPage() {
                   </div>
                 </CardContent>
               </Card>
-            </object>
+            </iframe>
           </div>
         </TabsContent>
 
         <TabsContent value="resume">
           <div className="bg-background shadow-sm rounded-lg overflow-hidden">
-            <object
-              data="/resume.pdf"
-              type="application/pdf"
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(RESUME_URL)}&embedded=true`}
+              width="100%"
+              height="600"
+              style={{ border: 'none' }}
               className="w-full h-[calc(100vh-21rem)] lg:h-[calc(100vh-18rem)]"
             >
-
               <Card>
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
@@ -80,7 +87,7 @@ export default function CVPage() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <Link
-                      href="/resume.pdf"
+                      href={RESUME_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -92,7 +99,7 @@ export default function CVPage() {
                   </div>
                 </CardContent>
               </Card>
-            </object>
+            </iframe>
           </div>
         </TabsContent>
       </Tabs>

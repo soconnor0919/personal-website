@@ -13,10 +13,8 @@ const nextConfig = {
     },
   },
   webpack: (config) => {
-    config.externals.push({
-      "utf-8-validate": "commonjs utf-8-validate",
-      bufferutil: "commonjs bufferutil",
-    });
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
     return config;
   },
   // Add this section to disable linting during build
