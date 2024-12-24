@@ -4,7 +4,6 @@ import { BookOpenText, FileText, FolderGit2, Home, Menu, Newspaper, Plane, X } f
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ThemeToggler } from '~/components/ThemeToggler';
 
 const navItems = [
   { href: '/', label: 'About', icon: Home },
@@ -45,7 +44,6 @@ export function Navigation() {
                   );
                 })}
               </div>
-              <ThemeToggler />
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-gray-500 hover:text-primary focus:outline-none relative h-6 w-6 lg:hidden"
