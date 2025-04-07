@@ -61,7 +61,7 @@ export const articles = [
       title: "Positively Innovative: Robotics for Good",
       link: "https://magazine.bucknell.edu/issue/fall-2024/robotics-for-good/",
       author: "Kate Willard",
-      description: "Sean O’Connor ’26 is using his interest in robotics to fuel forward-thinking research and lead important conversations about the impact robots can have on society.",
+      description: "Sean O'Connor '26 is using his interest in robotics to fuel forward-thinking research and lead important conversations about the impact robots can have on society.",
       source: "Bucknell Magazine (Fall 2024)"
   },
   {
@@ -89,6 +89,7 @@ export const projects = [
     tags: ["ROS2", "React", "TypeScript", "C++", "Python"],
     link: "https://github.com/soconnor0919/hristudio",
     image: "/hristudio_laptop.png",
+    imageAlt: "Screenshot of HRIStudio application showing the robot control dashboard on a laptop",
     featured: true
   },
   {
@@ -97,6 +98,17 @@ export const projects = [
     longDescription: "Designed and developed a personal portfolio website using modern web technologies. Features include responsive design, dark mode support, PDF rendering for CV display, and a clean, professional interface for showcasing projects and experience.",
     tags: ["Next.js", "TypeScript", "TailwindCSS", "React"],
     link: "https://github.com/soconnor0919/personal-website",
+    imageAlt: "Screenshot of the personal website showing the homepage with project showcases",
+    featured: true
+  },
+  {
+    title: "LaTeX Introduction Tutorial",
+    description: "A 5-minute introduction to LaTeX document preparation system for academic and technical writing.",
+    longDescription: "Created an accessible tutorial video explaining LaTeX, a typesetting system commonly used for technical and scientific documents in academia. The video covers how to set up Overleaf as an editor, explains key LaTeX tags and formatting, demonstrates both inline and display math equations, and provides a complete walkthrough of creating your first document with proper formatting.",
+    tags: ["LaTeX", "Tutorial", "Accessibility", "Education", "Overleaf"],
+    link: "/projects/latex-intro",
+    image: "/latex-thumbnail.jpg",
+    imageAlt: "Decorative thumbnail showing the project title 'Getting Started with LaTeX'",
     featured: true
   },
   {
@@ -114,6 +126,7 @@ export const projects = [
     tags: ["C++", "Embedded Systems", "Hardware Design"],
     link: "https://github.com/soconnor0919/national_fa24",
     image: "/car.png",
+    imageAlt: "Photo of the Chem-E-Car with custom control system hardware visible, showing the microcontroller and sensor connections",
     featured: true
   },
 ];
@@ -123,36 +136,42 @@ export const travel = [
       title: "AIChE Annual Student Conference 2024",
       description: "With the funding of Bucknell's chemical engineering department, and an amazing team, I was able to attend the 2024 AIChE Annual Student Conference and compete in the national Chem-E-Car competition.",
       images: ["/trips/asc2024/IMG_2641.png", "/trips/asc2024/IMG_2631.png", "/trips/asc2024/IMG_7987.png"],
+      alts: ["A photo of the Chem-E-Car team holding their trophies, dressed in their lab coats.", "A selfie of the Chem-E-Car team at their workstation.", "Sean discussing the components of the Chem-E-Car with a judge."],
       tags: ["Chem-E-Car", "AIChE", "Conference", "Competition"]
   },
   {
       title: "IEEE RO-MAN 2024",
       description: "I got to attend the IEEE RO-MAN 2024 conference in Pasadena, California. It was a great opportunity to present my work on my project HRIStudio, and to network with other researchers and industry professionals.",
       images: ["/trips/roman2024/IMG_3951.png", "/trips/roman2024/IMG_3978.png", "/trips/roman2024/IMG_3946.png"],
+      alts: ["A photo of Sean presenting his poster at RO-MAN 2024.", "A photo Felipe and Sean at dinner.", "A photo of Sean discussing his poster with a group of attendees."],
       tags: ["RO-MAN", "IEEE", "Conference", "Presentation"]
   },
   {
       title: "ENGR 290: Following da Vinci's Footsteps",
       description: "During the summer of 2024, I went on a study abroad program with about thirty of my peers. We explored Italy and France, following the footsteps of Leonardo da Vinci- evaluating the world through his lenses.",
       images: ["/trips/engr290/insta290.jpg", "/trips/engr290/P1013747.png", "/trips/engr290/_1024461.png"],
-      tags: ["Italy", "France", "Study Abroad", "Engineering"]
+      alts: ["A photo of the group taken during the final dinner of the trip.", "A photo of Florence, taken from the top of a distant hill.", "A photo of the River Seine in Paris, taken from the top of the Eiffel Tower."],
+      tags: ["Study Abroad", "Italy", "France", "da Vinci"]
   },
   {
       title: "SCA Specialty Coffee Expo 2024",
       description: "As a member of the executive board of the Bucknell Coffee Society, I was able to attend the Specialty Coffee Association's Specialty Coffee Expo in early 2024, traveling to Chicago, IL.",
       images: ["/trips/sca2024/group.jpeg", "/trips/sca2024/bean.png", "/trips/sca2024/plane.png"],
+      alts: ["A photo of the group at the SCA Specialty Coffee Expo in Chicago.", "A photo of the Chicago Bean.", "A photo of Chicago's coastline, taken through the window of the plane."],
       tags: ["Coffee Society", "Chicago", "SCA", "Coffee"]
   },
   {
       title: "Formula 1 Gran Premio dell'Emilia Romagna 2024",
       description: "While studying abroad with Bucknell Engineering, we were lucky enough to be within a few hours of the Imola Grand Prix! A group of students went to see the race, and it was an amazing experience.",
       images: ["/trips/imola2024/IMG_2093.png", "/trips/imola2024/IMG_2050.png", "/trips/imola2024/IMG_2066.png"],
+      alts: ["A photo of the group at the Imola Circuit.", "A photo of flags on a fence, in honor of the late Ayrton Senna.", "A photo Lando Norris driving through the Imola Circuit, taken through a fence."],
       tags: ["Racing", "Formula One", "Italy"]
   },
   {
       title: "Formula 1 British Grand Prix 2024",
       description: "As a semi-recent Formula One fan, I was very excited to have the opportunity to attend the British Grand Prix weekend in 2024. I was able to see every event- marking one of my favorite weekends, probably ever.",
       images: ["/trips/silverstone/_1035852.png", "/trips/silverstone/P1025274.png", "/trips/silverstone/_1035764.png"],
+      alts: ["Sean and his professor sitting on a sign with the text #BritishGP.", "A close-up photo of the rear of the McLaren MCL38.", "A photo of Oscar Piastri taking a turn at Silverstone Circuit."],
       tags: ["Racing", "Formula One", "Great Britain", "Silverstone"]
   }
 ];

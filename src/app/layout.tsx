@@ -3,6 +3,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Footer } from "~/components/Footer"
 import { Navigation } from "~/components/Navigation"
 import { Sidebar } from "~/components/Sidebar"
+import { BreadcrumbWrapper } from "~/components/BreadcrumbWrapper"
+
 import { inter } from "~/lib/fonts"
 import { description, name } from "~/lib/data";
 import "~/styles/globals.css"
@@ -27,13 +29,14 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
                 <Sidebar />
               </aside>
               <main className="flex-1 overflow-y-auto py-8">
+                <BreadcrumbWrapper />
                 {children}
               </main>
             </div>
           </div>
         </div>
         <Footer />
-    </body>
-    </html >
+      </body>
+    </html>
   )
 }

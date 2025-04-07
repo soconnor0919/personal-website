@@ -45,7 +45,7 @@ export default function TripsPage() {
                                             <div key={imgIndex} className="flex-shrink-0">
                                                 <Image
                                                     src={image}
-                                                    alt={trip.title}
+                                                    alt={trip.alts && trip.alts[imgIndex] ? trip.alts[imgIndex] : `${trip.title} - image ${imgIndex + 1}`}
                                                     width={250}
                                                     height={200}
                                                     className="object-cover min-h-[200px] max-h-[200px]"
