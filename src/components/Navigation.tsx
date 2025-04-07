@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpenText, FileText, FolderGit2, Home, Menu, Newspaper, Plane, X } from 'lucide-react';
+import { BookOpenText, FileText, FolderGit2, Home, Menu, Newspaper, Plane, X, Accessibility } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ const navItems = [
   { href: '/', label: 'About', icon: Home },
   { href: '/articles', label: 'Articles', icon: Newspaper },
   { href: '/projects', label: 'Projects', icon: FolderGit2 },
+  { href: '/projects/accessibility', label: 'Accessibility', icon: Accessibility },
   { href: '/publications', label: 'Publications', icon: BookOpenText },
   { href: '/travel', label: 'Travel', icon: Plane },
   { href: '/cv', label: 'CV', icon: FileText },

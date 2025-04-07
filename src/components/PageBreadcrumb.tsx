@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { usePathname } from "next/navigation";
-import { Home, ChevronRight, Folder, BookOpen, Newspaper, Plane, FileText } from "lucide-react";
+import { Home, ChevronRight, Folder, BookOpen, Newspaper, Plane, FileText, Accessibility } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -66,6 +66,10 @@ export function PageBreadcrumb() {
         case 'latex-intro':
           icon = <BookOpen className="h-3.5 w-3.5 mr-1" />;
           label = "LaTeX Tutorial";
+          break;
+        case 'accessibility':
+          icon = <Accessibility className="h-3.5 w-3.5 mr-1" />;
+          label = "Accessibility";
           break;
         default:
           icon = <ChevronRight className="h-3.5 w-3.5 mr-1" />;

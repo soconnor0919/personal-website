@@ -98,7 +98,14 @@ export const projects = [
     longDescription: "Designed and developed a personal portfolio website using modern web technologies. Features include responsive design, dark mode support, PDF rendering for CV display, and a clean, professional interface for showcasing projects and experience.",
     tags: ["Next.js", "TypeScript", "TailwindCSS", "React"],
     link: "https://github.com/soconnor0919/personal-website",
-    imageAlt: "Screenshot of the personal website showing the homepage with project showcases",
+    featured: true
+  },
+  {
+    title: "Accessibility Features",
+    description: "An overview of the accessibility features implemented on this website to ensure inclusive user experience.",
+    longDescription: "This page details the importance of web accessibility and the specific features implemented on this website to ensure an inclusive experience for all users, including those with disabilities. It documents the accessibility practices, standards compliance, and testing methodologies used.",
+    tags: ["Accessibility", "WCAG", "Inclusive Design", "Web Standards"],
+    link: "/projects/accessibility",
     featured: true
   },
   {
