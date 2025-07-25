@@ -31,6 +31,11 @@ interface BreadcrumbItem {
 export function PageBreadcrumb() {
   const pathname = usePathname();
 
+  // Hide breadcrumbs on homepage
+  if (pathname === "/") {
+    return null;
+  }
+
   // Generate breadcrumb items based on current path
   const breadcrumbItems: BreadcrumbItem[] = [
     {

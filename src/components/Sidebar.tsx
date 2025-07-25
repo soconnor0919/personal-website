@@ -83,24 +83,30 @@ export function Sidebar() {
               </div>
             </div>
 
-            <div className="space-y-2 text-center">
-              <h2 className="text-xl font-bold transition-colors hover:text-primary">
+            <div className="space-y-2">
+              <h2 className="text-center text-xl font-bold transition-colors hover:text-primary">
                 {name[0]?.first}&nbsp;{name[0]?.last}
               </h2>
-              {location.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center justify-center gap-2 text-sm text-muted-foreground"
-                  {...(item.href && {
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  })}
-                >
-                  {item.icon && <item.icon className="h-4 w-4" />}
-                  {item.label}
-                </a>
-              ))}
+              <div className="space-y-1">
+                {location.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="flex items-center gap-1.5 text-sm text-muted-foreground"
+                    {...(item.href && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
+                  >
+                    {item.icon && (
+                      <item.icon className="h-4 w-4 flex-shrink-0" />
+                    )}
+                    <span className="text-center leading-tight">
+                      {item.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
 
             <div className="space-y-3 text-sm">

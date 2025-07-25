@@ -25,7 +25,7 @@ export default function NotFound() {
         </CardHeader>
         <CardContent>
           <CardDescription>
-            Sorry, we couldn't find the page you were looking for.
+            Sorry, we couldn&apos;t find the page you were looking for.
           </CardDescription>
           <Button asChild variant="default" size="sm" className="mt-6">
             <Link href="/">Return Home</Link>

@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
-import { travel } from "~/lib/data";
-import { PageLayout } from "~/components/layout/PageLayout";
-import { Button } from "~/components/ui/button";
 import { Plane } from "lucide-react";
-import { PageContentSkeleton } from "~/components/layout/PageLayoutSkeleton";
-import { CardSkeleton } from "~/components/ui/skeletons";
+import { Suspense, useEffect, useState } from "react";
+import { PageLayout } from "~/components/layout/PageLayout";
 import { TravelList } from "~/components/TravelList";
+import { Button } from "~/components/ui/button";
+import { CardSkeleton } from "~/components/ui/skeletons";
+import { travel } from "~/lib/data";
 
 export default function TripsPage() {
   const [loading, setLoading] = useState(true);

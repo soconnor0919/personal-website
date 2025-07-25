@@ -6,7 +6,7 @@ import { useState, useEffect, Suspense } from "react";
 import { articles } from "~/lib/data";
 import { Button } from "~/components/ui/button";
 import { PageLayout } from "~/components/layout/PageLayout";
-import { PageContentSkeleton } from "~/components/layout/PageLayoutSkeleton";
+
 import { CardSkeleton } from "~/components/ui/skeletons";
 import { ArticleList } from "~/components/ArticleList";
 

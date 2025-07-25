@@ -22,7 +22,7 @@ export interface Publication {
   year: string | number;
   doi?: string;
   abstract?: string;
-  type: string;
+  type: "conference" | "journal" | "workshop" | "thesis";
   paperUrl?: string;
   posterUrl?: string;
   citationType?: string;

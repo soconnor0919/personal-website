@@ -1,22 +1,14 @@
 "use client";
 
-import {
-  ArrowUpRight,
-  BookOpenText,
-  FileText,
-  Presentation,
-  BookOpen,
-} from "lucide-react";
+import { BookOpen, BookOpenText } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, Suspense } from "react";
-import { Badge } from "~/components/ui/badge";
-import { CardSkeleton } from "~/components/ui/skeletons";
-import { Button } from "~/components/ui/button";
+import { Suspense, useEffect, useState } from "react";
 import { PageLayout } from "~/components/layout/PageLayout";
-import { PageContentSkeleton } from "~/components/layout/PageLayoutSkeleton";
+import { PublicationList } from "~/components/PublicationList";
+import { Button } from "~/components/ui/button";
+import { CardSkeleton } from "~/components/ui/skeletons";
 import type { Publication } from "~/lib/bibtex";
 import { parseBibtex } from "~/lib/bibtex";
-import { PublicationList } from "~/components/PublicationList";
 
 export default function PublicationsPage() {
   const [publications, setPublications] = useState<Publication[]>([]);
@@ -27,13 +19,7 @@ export default function PublicationsPage() {
       .then((res) => res.text())
       .then((text) => {
         const pubs = parseBibtex(text);
-        // Patch year to string | number for PublicationList compatibility
-        setPublications(
-          pubs.map((pub) => ({
-            ...pub,
-            year: typeof pub.year === "number" ? pub.year : String(pub.year),
-          })),
-        );
+        setPublications(pubs);
         setLoading(false);
       });
   }, []);

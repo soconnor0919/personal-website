@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { projects } from "~/lib/data";
 import { Badge } from "~/components/ui/badge";
 import { Suspense } from "react";
-import { PageContentSkeleton } from "~/components/layout/PageLayoutSkeleton";
+
 import { PageLayout } from "~/components/layout/PageLayout";
 import {
   Card,
@@ -11,235 +11,347 @@ import {
   CardContent,
   CardDescription,
 } from "~/components/ui/card";
-import { Accessibility } from "lucide-react";
+import {
+  Accessibility,
+  Eye,
+  Users,
+  Code,
+  Video,
+  Palette,
+  CheckCircle,
+  AlertTriangle,
+  Globe,
+} from "lucide-react";
 
 export default function AccessibilityPage() {
   // Find the Accessibility project data
-  const project = projects.find((p) => p.title === "Accessibility Features");
+  const project = projects.find(
+    (p) => p.title === "Web Accessibility Implementation",
+  );
 
   return (
     <PageLayout
       headerProps={{
-        title: project?.title,
-        description: project?.longDescription,
+        title: "Building an Inclusive Web Experience",
+        description:
+          "A comprehensive look at the accessibility features implemented across this website to ensure everyone can access and enjoy the content.",
         icon: <Accessibility className="h-5 w-5" />,
       }}
     >
-      <Suspense fallback={<PageContentSkeleton />}>
+      <Suspense>
+        {/* Overview Cards */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <Card className="blue-card border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
+                <Globe className="h-5 w-5" />
+                <span className="font-semibold">WCAG 2.1 AA</span>
+              </div>
+              <p className="mt-1 text-sm text-blue-600 dark:text-blue-400">
+                Standards Compliant
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="green-card border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/20">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                <Users className="h-5 w-5" />
+                <span className="font-semibold">Universal Design</span>
+              </div>
+              <p className="mt-1 text-sm text-green-600 dark:text-green-400">
+                Inclusive for Everyone
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="purple-card border-purple-200 bg-purple-50 dark:border-purple-800 dark:bg-purple-950/20">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-2 text-purple-700 dark:text-purple-300">
+                <Code className="h-5 w-5" />
+                <span className="font-semibold">Semantic HTML</span>
+              </div>
+              <p className="mt-1 text-sm text-purple-600 dark:text-purple-400">
+                Screen Reader Friendly
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
         <Card>
           <CardHeader>
-            <div className="flex flex-wrap gap-2">
-              {project?.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
+            <div className="flex items-center gap-2">
+              <Eye className="h-5 w-5 text-primary" />
+              <CardTitle>Why Accessibility Matters</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Why Accessibility Matters</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  As a portfolio website aimed at showcasing my technical skills
-                  and projects to potential employers and collaborators,
-                  ensuring accessibility is not just a legal or ethical
-                  requirement&mdash;it&apos;s a demonstration of my professional
-                  competence and inclusive design thinking. Here&apos;s why
-                  accessibility is particularly important for my website:
-                </p>
-                <ul className="mt-4 list-disc space-y-2 pl-6">
-                  <li>
-                    <strong>Universal Access:</strong> A portfolio should be
-                    accessible to all potential viewers, including hiring
-                    managers, colleagues, and collaborators who may have
-                    disabilities or situational limitations.
-                  </li>
-                  <li>
-                    <strong>Professional Credibility:</strong> As a computer
-                    science and engineering student, demonstrating knowledge of
-                    accessibility standards reflects technical competence and
-                    attention to detail that employers value.
-                  </li>
-                  <li>
-                    <strong>Technical Showcase:</strong> Implementing
-                    accessibility features serves as a practical example of the
-                    technical skills being presented.
-                  </li>
-                  <li>
-                    <strong>Academic Integrity:</strong> In an academic context,
-                    ensuring that educational resources (like the LaTeX
-                    tutorial) are accessible to all students reflects a
-                    commitment to educational equity.
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Accessibility Features Implemented</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="mt-4 space-y-6">
+          <CardContent>
+            <p className="mb-4 text-lg">
+              As a developer, implementing accessibility isn&apos;t just about
+              compliance—it&apos;s about creating technology that truly serves
+              everyone. Here&apos;s why I prioritize accessible design:
+            </p>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 h-4 w-4 text-green-500" />
                   <div>
-                    <h3 className="text-xl font-semibold">
-                      1. Comprehensive Image Alt Text
-                    </h3>
-                    <p className="mt-2">
-                      Every image on my website has been carefully evaluated and
-                      provided with appropriate alt text. I distinguish between:
+                    <h4 className="font-semibold">Universal Access</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Ensuring my work reaches everyone, including the 15% of
+                      the global population with disabilities.
                     </p>
-                    <ul className="my-2 list-disc pl-6">
-                      <li>
-                        <strong>Decorative images:</strong> Images that are
-                        purely decorative, such as the LaTeX tutorial thumbnail,
-                        have alt text that indicates their decorative nature
-                        (e.g., &quot;Decorative thumbnail showing LaTeX code and
-                        formatting example&quot;).
-                      </li>
-                      <li>
-                        <strong>Informative images:</strong> Images that convey
-                        information, such as project screenshots, have detailed
-                        alt text describing their content (e.g.,
-                        &quot;Screenshot of HRIStudio application showing the
-                        robot control dashboard on a laptop&quot;).
-                      </li>
-                    </ul>
-                    <strong>Implementation details:</strong> I implemented this
-                    by adding custom &quot;imageAlt&quot; properties to all
-                    projects and &quot;alts&quot; arrays for travel items in my
-                    data structure, ensuring consistent image descriptions
-                    throughout the site.
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-semibold">
-                      2. Accessible Video Player
-                    </h3>
-                    <p className="mt-2">
-                      I developed a custom video player for the LaTeX tutorial
-                      with several accessibility features:
-                    </p>
-                    <ul className="my-2 list-disc pl-6">
-                      <li>Closed captions that can be toggled on/off</li>
-                      <li>
-                        Full transcript available with expandable details
-                        element
-                      </li>
-                      <li>
-                        Keyboard-accessible controls for play/pause, volume, and
-                        caption toggling
-                      </li>
-                      <li>
-                        ARIA labels for all controls to improve screen reader
-                        compatibility
-                      </li>
-                      <li>Video poster image with appropriate alt text</li>
-                    </ul>
-                    <strong>Implementation details:</strong> I created a custom
-                    AccessibleVideo component that wraps the HTML5 video element
-                    with additional accessibility features, including captions
-                    integration, keyboard navigation, and proper ARIA
-                    attributes.
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-semibold">
-                      3. Semantic HTML and ARIA
-                    </h3>
-                    <p className="mt-2">
-                      My website uses semantic HTML throughout to ensure proper
-                      structure and meaning:
-                    </p>
-                    <ul className="my-2 list-disc pl-6">
-                      <li>
-                        Proper heading hierarchy (h1, h2, h3) for logical
-                        document structure
-                      </li>
-                      <li>
-                        Semantic elements like &lt;nav&gt;, &lt;main&gt;,
-                        &lt;section&gt;, and &lt;article&gt;
-                      </li>
-                      <li>
-                        ARIA attributes for components without native semantics
-                      </li>
-                      <li>Skip-to-content links for keyboard users</li>
-                    </ul>
-                    <strong>Implementation details:</strong> I audited all pages
-                    for proper heading structure and added semantic HTML
-                    elements. For custom components like cards and badges, I
-                    ensured proper ARIA attributes were used to convey their
-                    purpose and state.
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-semibold">
-                      4. Color Contrast and Dark Mode
-                    </h3>
-                    <p className="mt-2">
-                      I carefully selected color choices on my website to ensure
-                      readability:
-                    </p>
-                    <ul className="my-2 list-disc pl-6">
-                      <li>
-                        All text meets WCAG AA contrast requirements (4.5:1 for
-                        normal text, 3:1 for large text)
-                      </li>
-                      <li>
-                        Dark mode support for users who prefer or require
-                        reduced brightness
-                      </li>
-                      <li>
-                        Color is never used as the sole means of conveying
-                        information
-                      </li>
-                      <li>
-                        Interactive elements have visual focus indicators that
-                        don&apos;t rely solely on color
-                      </li>
-                    </ul>
-                    <strong>Implementation details:</strong> I used the
-                    TailwindCSS color palette with careful consideration of
-                    contrast ratios. The dark mode implementation respects user
-                    system preferences and provides consistent contrast ratios
-                    in both modes.
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 h-4 w-4 text-green-500" />
+                  <div>
+                    <h4 className="font-semibold">Better UX for All</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Accessible design often improves usability for everyone,
+                      not just those with disabilities.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 h-4 w-4 text-green-500" />
+                  <div>
+                    <h4 className="font-semibold">Technical Excellence</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Demonstrates attention to detail and comprehensive
+                      understanding of web standards.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 h-4 w-4 text-green-500" />
+                  <div>
+                    <h4 className="font-semibold">Future-Proof Code</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Semantic, well-structured code that works across devices
+                      and assistive technologies.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Platform Limitations and Workarounds</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  While building this website, I encountered some limitations in
-                  the Next.js framework and implemented workarounds:
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Eye className="h-5 w-5 text-blue-500" />
+                <CardTitle>Image Accessibility</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p>
+                Every image tells a story—here&apos;s how I make sure everyone
+                can hear it:
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Descriptive Alt Text:</strong> Project screenshots
+                    include detailed descriptions of UI elements and
+                    functionality
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Decorative Images:</strong> Properly marked
+                    thumbnails that don&apos;t clutter screen reader navigation
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Consistent Approach:</strong> Custom data structure
+                    ensures no image is left without proper description
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Video className="h-5 w-5 text-purple-500" />
+                <CardTitle>Video Accessibility</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p>My LaTeX tutorial video goes beyond basic accessibility:</p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Closed Captions:</strong> Toggle-able captions for
+                    deaf and hard-of-hearing users
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Full Transcript:</strong> Complete text version for
+                    alternative consumption
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Keyboard Controls:</strong> Full functionality
+                    without requiring a mouse
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Code className="h-5 w-5 text-green-500" />
+                <CardTitle>Semantic Structure</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p>Clean, meaningful HTML that assistive technologies love:</p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Logical Heading Hierarchy:</strong> Proper h1-h6
+                    structure for easy navigation
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Semantic Elements:</strong> nav, main, section,
+                    article elements provide context
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>ARIA Attributes:</strong> Enhanced semantics for
+                    complex UI components
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Palette className="h-5 w-5 text-orange-500" />
+                <CardTitle>Visual Design</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p>
+                Beautiful design that doesn&apos;t compromise on accessibility:
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>WCAG AA Contrast:</strong> 4.5:1 ratio for normal
+                    text, 3:1 for large text
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Dark Mode Support:</strong> Respects user
+                    preferences and reduces eye strain
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="mt-0.5 h-4 w-4 text-green-500" />
+                  <div>
+                    <strong>Focus Indicators:</strong> Clear visual feedback for
+                    keyboard navigation
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-yellow-500" />
+              <CardTitle>Challenges & Solutions</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="mb-4">
+              Building accessible features in modern frameworks comes with
+              unique challenges. Here&apos;s how I&apos;ve addressed them:
+            </p>
+            <div className="space-y-4">
+              <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
+                <h4 className="font-semibold text-yellow-800 dark:text-yellow-200">
+                  Next.js Hydration Issues
+                </h4>
+                <p className="mt-2 text-sm text-yellow-700 dark:text-yellow-300">
+                  <strong>Challenge:</strong> Server/client component boundaries
+                  can break interactive accessibility features.
                 </p>
-                <ul className="mt-4 list-disc space-y-2 pl-6">
-                  <li>
-                    <strong>Next.js Client/Server Components:</strong> Next.js
-                    divides components into client and server components, which
-                    can create hydration issues when implementing certain
-                    interactive accessibility features. I addressed this by
-                    creating client-side wrapper components for features
-                    requiring interactivity, such as the video player and
-                    navigation menu.
-                  </li>
-                  <li>
-                    <strong>PDF Accessibility:</strong> The CV section uses PDF
-                    rendering which has inherent accessibility limitations. As a
-                    workaround, I provide the same information in HTML format
-                    elsewhere on the site, ensuring that users who cannot access
-                    the PDF can still view the content.
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+                <p className="mt-1 text-sm text-yellow-700 dark:text-yellow-300">
+                  <strong>Solution:</strong> Created dedicated client-side
+                  wrapper components for interactive elements while maintaining
+                  server-side rendering for content.
+                </p>
+              </div>
+              <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-950/20">
+                <h4 className="font-semibold text-blue-800 dark:text-blue-200">
+                  PDF Accessibility Limitations
+                </h4>
+                <p className="mt-2 text-sm text-blue-700 dark:text-blue-300">
+                  <strong>Challenge:</strong> PDF viewers have inconsistent
+                  accessibility support across devices.
+                </p>
+                <p className="mt-1 text-sm text-blue-700 dark:text-blue-300">
+                  <strong>Solution:</strong> Provide equivalent HTML content
+                  alongside PDFs, ensuring no information is PDF-only.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Call to Action */}
+        <Card className="bg-gradient-to-br from-primary/5 to-primary/10">
+          <CardContent className="p-6">
+            <div className="text-center">
+              <h3 className="mb-2 text-xl font-bold">
+                Accessibility is an Ongoing Journey
+              </h3>
+              <p className="mb-4 text-muted-foreground">
+                I&apos;m committed to continuously improving the accessibility
+                of my work. Have suggestions or notice something I could
+                improve?
+              </p>
+              <div className="flex flex-wrap justify-center gap-2">
+                <Badge variant="outline">WCAG 2.1 AA</Badge>
+                <Badge variant="outline">Semantic HTML</Badge>
+                <Badge variant="outline">Keyboard Navigation</Badge>
+                <Badge variant="outline">Screen Reader Tested</Badge>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </Suspense>

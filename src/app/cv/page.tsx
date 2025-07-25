@@ -10,11 +10,17 @@ import {
   CardTitle,
   CardDescription,
 } from "~/components/ui/card";
-import { Download, FileText } from "lucide-react";
+import {
+  Download,
+  FileText,
+  ExternalLink,
+  Github,
+  Zap,
+  Clock,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "~/components/ui/button";
 import { PageLayout } from "~/components/layout/PageLayout";
-import { PageContentSkeleton } from "~/components/layout/PageLayoutSkeleton";
 
 // GitHub release URLs for PDFs
 const CV_URL =
@@ -28,111 +34,141 @@ export default function CVPage() {
   return (
     <PageLayout
       headerProps={{
-        title: "Curriculum Vitae",
-        description: (
-          <>
-            My academic and professional experience in computer science,
-            robotics, and engineering.
-          </>
-        ),
-        action: (
-          <Button asChild variant="default" size="sm">
-            <Link href={CV_URL} target="_blank" rel="noopener noreferrer">
-              <Download className="mr-1 h-4 w-4" />
-              Download CV
-            </Link>
-          </Button>
-        ),
+        title: "Resume & CV",
+        description:
+          "Academic and professional experience, compiled with LaTeX and automatically updated through GitHub Actions.",
+        icon: <FileText className="h-5 w-5" />,
       }}
     >
-      <Suspense
-        fallback={
-          <div>
-            <PageContentSkeleton />
-          </div>
-        }
+      <Tabs
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="space-y-6"
       >
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="cv">CV</TabsTrigger>
             <TabsTrigger value="resume">Resume</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="cv">
-            <div className="overflow-hidden rounded-lg bg-background shadow-sm">
-              <iframe
-                src={`https://docs.google.com/viewer?url=${encodeURIComponent(CV_URL)}&embedded=true`}
-                width="100%"
-                height="600"
-                style={{ border: "none" }}
-                className="h-[calc(100vh-21rem)] w-full lg:h-[calc(100vh-18rem)]"
+          <div className="flex gap-2">
+            <Button asChild variant="outline" size="sm">
+              <Link
+                href={activeTab === "cv" ? CV_URL : RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Card>
-                  <CardHeader className="pb-2">
-                    <div className="flex items-center justify-between">
-                      <CardTitle>PDF Preview Not Supported</CardTitle>
-                    </div>
-                    <CardDescription className="text-base">
-                      Your browser doesn&apos;t support PDF preview.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      <Link
-                        href={CV_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Badge variant="secondary" className="capitalize">
-                          <Download className="h-4 w-4" />
-                          Download CV
-                        </Badge>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              </iframe>
-            </div>
-          </TabsContent>
+                <Download className="mr-1 h-4 w-4" />
+                Download PDF
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="sm">
+              <Link
+                href="https://github.com/soconnor0919/resume-cv"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="mr-1 h-4 w-4" />
+                Source
+              </Link>
+            </Button>
+          </div>
+        </div>
 
-          <TabsContent value="resume">
-            <div className="overflow-hidden rounded-lg bg-background shadow-sm">
-              <iframe
-                src={`https://docs.google.com/viewer?url=${encodeURIComponent(RESUME_URL)}&embedded=true`}
-                width="100%"
-                height="600"
-                style={{ border: "none" }}
-                className="h-[calc(100vh-21rem)] w-full lg:h-[calc(100vh-18rem)]"
-              >
-                <Card>
-                  <CardHeader className="pb-2">
-                    <div className="flex items-center justify-between">
-                      <CardTitle>PDF Preview Not Supported</CardTitle>
-                    </div>
-                    <CardDescription className="text-base">
-                      Your browser doesn&apos;t support PDF preview.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      <Link
-                        href={RESUME_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Badge variant="secondary" className="capitalize">
-                          <Download className="h-4 w-4" />
-                          Download Resume
-                        </Badge>
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              </iframe>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </Suspense>
+        <TabsContent value="cv" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5" />
+                    Academic Curriculum Vitae
+                  </CardTitle>
+                  <CardDescription>
+                    Comprehensive academic and research experience
+                  </CardDescription>
+                </div>
+                <Badge variant="secondary">LaTeX Generated</Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="rounded-lg border bg-muted/30 p-1">
+                <iframe
+                  src={`https://docs.google.com/viewer?url=${encodeURIComponent(CV_URL)}&embedded=true`}
+                  width="100%"
+                  height="800"
+                  style={{ border: "none" }}
+                  className="h-[800px] w-full rounded-md"
+                  title="Academic CV PDF Preview"
+                />
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button asChild size="sm">
+                  <Link href={CV_URL} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-1 h-4 w-4" />
+                    Open in New Tab
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="sm">
+                  <Link href={CV_URL} download>
+                    <Download className="mr-1 h-4 w-4" />
+                    Download CV
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="resume" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="flex items-center gap-2">
+                    <FileText className="h-5 w-5" />
+                    Industry Resume
+                  </CardTitle>
+                  <CardDescription>
+                    Focused professional experience for industry roles
+                  </CardDescription>
+                </div>
+                <Badge variant="secondary">LaTeX Generated</Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="rounded-lg border bg-muted/30 p-1">
+                <iframe
+                  src={`https://docs.google.com/viewer?url=${encodeURIComponent(RESUME_URL)}&embedded=true`}
+                  width="100%"
+                  height="800"
+                  style={{ border: "none" }}
+                  className="h-[800px] w-full rounded-md"
+                  title="Industry Resume PDF Preview"
+                />
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button asChild size="sm">
+                  <Link
+                    href={RESUME_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="mr-1 h-4 w-4" />
+                    Open in New Tab
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="sm">
+                  <Link href={RESUME_URL} download>
+                    <Download className="mr-1 h-4 w-4" />
+                    Download Resume
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </PageLayout>
   );
 }

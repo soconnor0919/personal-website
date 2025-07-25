@@ -74,3 +74,62 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Colored cards dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .blue-card {
+    background-color: rgb(30 58 138) !important;
+    border-color: rgb(29 78 216) !important;
+  }
+  .blue-card .text-blue-800 {
+    color: rgb(191 219 254) !important;
+  }
+  .blue-card .text-blue-700 {
+    color: rgb(147 197 253) !important;
+  }
+  .blue-card .text-blue-600 {
+    color: rgb(147 197 253) !important;
+  }
+
+  .green-card {
+    background-color: rgb(20 83 45) !important;
+    border-color: rgb(21 128 61) !important;
+  }
+  .green-card .text-green-800 {
+    color: rgb(187 247 208) !important;
+  }
+  .green-card .text-green-700 {
+    color: rgb(134 239 172) !important;
+  }
+  .green-card .text-green-600 {
+    color: rgb(134 239 172) !important;
+  }
+
+  .purple-card {
+    background-color: rgb(88 28 135) !important;
+    border-color: rgb(126 34 206) !important;
+  }
+  .purple-card .text-purple-800 {
+    color: rgb(221 214 254) !important;
+  }
+  .purple-card .text-purple-700 {
+    color: rgb(196 181 253) !important;
+  }
+  .purple-card .text-purple-600 {
+    color: rgb(196 181 253) !important;
+  }
+
+  .orange-card {
+    background-color: rgb(154 52 18) !important;
+    border-color: rgb(194 65 12) !important;
+  }
+  .orange-card .text-orange-800 {
+    color: rgb(254 215 170) !important;
+  }
+  .orange-card .text-orange-700 {
+    color: rgb(251 191 36) !important;
+  }
+  .orange-card .text-orange-600 {
+    color: rgb(251 191 36) !important;
+  }
+}

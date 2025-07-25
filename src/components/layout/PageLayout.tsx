@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import { BreadcrumbWrapper } from "~/components/BreadcrumbWrapper";
 import { PageHeader } from "~/components/layout/PageHeader";
 import { PageContent } from "~/components/layout/PageContent";
-import { PageLayoutSkeleton } from "~/components/layout/PageLayoutSkeleton";
 
 export interface PageLayoutProps {
   headerProps: {
