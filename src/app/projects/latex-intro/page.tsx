@@ -5,7 +5,8 @@ import { AccessibleVideo } from "~/components/AccessibleVideo";
 
 export const metadata: Metadata = {
   title: "LaTeX Introduction Tutorial",
-  description: "A comprehensive 5-minute introduction to LaTeX document preparation system for beginners.",
+  description:
+    "A comprehensive 5-minute introduction to LaTeX document preparation system for beginners.",
 };
 
 const transcript = `
@@ -23,59 +24,130 @@ const transcript = `
 <p>By the end of this tutorial, you'll be able to create your own professional-looking documents with proper formatting and mathematical notation.</p>
 `;
 
+import { PageLayout } from "~/components/layout/PageLayout";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "~/components/ui/card";
+import { FileText } from "lucide-react";
+
 export default function LatexTutorialPage() {
   // Find the LaTeX project data
-  const project = projects.find((p) => p.title === "LaTeX Introduction Tutorial");
+  const project = projects.find(
+    (p) => p.title === "LaTeX Introduction Tutorial",
+  );
 
   return (
-    <div className="container pt-0 pb-6">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-bold tracking-tight mb-4">{project?.title}</h1>
-          <p className="text-lg text-muted-foreground">{project?.longDescription}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
+    <PageLayout
+      headerProps={{
+        title: project?.title,
+        description: project?.longDescription,
+        icon: <FileText className="h-5 w-5" />,
+      }}
+    >
+      <Card>
+        <CardHeader>
+          <div className="flex flex-wrap gap-2">
             {project?.tags.map((tag) => (
               <Badge key={tag} variant="secondary">
                 {tag}
               </Badge>
             ))}
           </div>
-        </div>
+        </CardHeader>
+        <CardContent>
+          <Card>
+            <CardHeader>
+              <CardTitle>Video Tutorial</CardTitle>
+              <CardDescription>
+                A 5-minute introduction to LaTeX, covering basic syntax,
+                document structure, and common use cases.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <AccessibleVideo
+                src="/videos/latex-intro.mp4"
+                poster="/latex-thumbnail.jpg"
+                captionSrc="/videos/latex-intro.vtt"
+                title="LaTeX Introduction Tutorial"
+                description="A 5-minute introduction to LaTeX, covering basic syntax, document structure, and common use cases."
+                transcript={transcript}
+                posterAlt="Decorative thumbnail showing LaTeX code and formatting example"
+              />
+            </CardContent>
+          </Card>
 
-        <div className="mt-8">
-          <AccessibleVideo
-            src="/videos/latex-intro.mp4"
-            poster="/latex-thumbnail.jpg"
-            captionSrc="/videos/latex-intro.vtt"
-            title="LaTeX Introduction Tutorial"
-            description="A 5-minute introduction to LaTeX, covering basic syntax, document structure, and common use cases."
-            transcript={transcript}
-            posterAlt="Decorative thumbnail showing LaTeX code and formatting example"
-          />
-        </div>
+          <Card className="mt-8">
+            <CardHeader>
+              <CardTitle>Why Learn LaTeX?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p>
+                LaTeX is a document preparation system widely used in academia,
+                especially in fields like mathematics, computer science,
+                physics, and engineering. It excels at:
+              </p>
+              <ul className="mt-2 list-disc space-y-2 pl-6">
+                <li>Professional typesetting of mathematical equations</li>
+                <li>Consistent document formatting</li>
+                <li>Automated handling of citations and references</li>
+                <li>Version control compatibility</li>
+                <li>Cross-platform document creation</li>
+              </ul>
+              <p className="mt-4">
+                This tutorial provides a gentle introduction to get you started
+                with your first LaTeX document.
+              </p>
+            </CardContent>
+          </Card>
 
-        <div className="mt-8 space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight">Why Learn LaTeX?</h2>
-          <p>LaTeX is a document preparation system widely used in academia, especially in fields like mathematics, computer science, physics, and engineering. It excels at:</p>
-          
-          <ul className="list-disc pl-6 space-y-2">
-            <li>Professional typesetting of mathematical equations</li>
-            <li>Consistent document formatting</li>
-            <li>Automated handling of citations and references</li>
-            <li>Version control compatibility</li>
-            <li>Cross-platform document creation</li>
-          </ul>
-          
-          <p>This tutorial provides a gentle introduction to get you started with your first LaTeX document.</p>
-          
-          <h2 className="text-2xl font-bold tracking-tight">Key Resources</h2>
-          <ul className="list-disc pl-6 space-y-2">
-            <li><a href="https://www.overleaf.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Overleaf</a> - A popular online LaTeX editor</li>
-            <li><a href="https://www.latex-project.org/get/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">LaTeX Project</a> - Official downloads for local installation</li>
-            <li><a href="https://en.wikibooks.org/wiki/LaTeX" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">LaTeX Wikibook</a> - Comprehensive reference guide</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+          <Card className="mt-8">
+            <CardHeader>
+              <CardTitle>Key Resources</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc space-y-2 pl-6">
+                <li>
+                  <a
+                    href="https://www.overleaf.com"
+                    className="text-primary hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Overleaf
+                  </a>{" "}
+                  - A popular online LaTeX editor
+                </li>
+                <li>
+                  <a
+                    href="https://www.latex-project.org/get/"
+                    className="text-primary hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LaTeX Project
+                  </a>{" "}
+                  - Official downloads for local installation
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikibooks.org/wiki/LaTeX"
+                    className="text-primary hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LaTeX Wikibook
+                  </a>{" "}
+                  - Comprehensive reference guide
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+        </CardContent>
+      </Card>
+    </PageLayout>
   );
-} 
+}

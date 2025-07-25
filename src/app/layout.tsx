@@ -1,42 +1,46 @@
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Footer } from "~/components/Footer"
-import { Navigation } from "~/components/Navigation"
-import { Sidebar } from "~/components/Sidebar"
-import { BreadcrumbWrapper } from "~/components/BreadcrumbWrapper"
+import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Footer } from "~/components/Footer";
+import { Navigation } from "~/components/Navigation";
+import { Sidebar } from "~/components/Sidebar";
+import { BreadcrumbWrapper } from "~/components/BreadcrumbWrapper";
+import { PageSkeleton } from "~/components/layout/PageSkeleton";
 
-import { inter } from "~/lib/fonts"
+import { inter } from "~/lib/fonts";
 import { description, name } from "~/lib/data";
-import "~/styles/globals.css"
+import "~/styles/globals.css";
 
 export const metadata = {
   title: `${name[0]?.first} ${name[0]?.last}`,
   description: description,
   icons: [{ rel: "icon", url: "/favicon.ico" }],
-}
+};
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body className="font-sans bg-background text-foreground min-h-screen flex flex-col" suppressHydrationWarning>
+      <body
+        className="flex min-h-screen flex-col bg-background font-sans text-foreground"
+        suppressHydrationWarning
+      >
         <Analytics />
         <SpeedInsights />
         <Navigation />
-        <div className="flex-1">
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row lg:gap-12">
-              <aside className="lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] overflow-y-auto">
-                <Sidebar />
-              </aside>
-              <main className="flex-1 overflow-y-auto py-8">
-                <BreadcrumbWrapper />
-                {children}
-              </main>
+        <div className="flex flex-1">
+          <aside className="fixed left-0 top-16 z-10 hidden h-[calc(100vh-4rem)] w-80 py-6 pl-6 pr-3 lg:block">
+            <Sidebar />
+          </aside>
+          <main className="flex-1 py-6 pl-3 pr-6 lg:ml-80">
+            {/* Mobile sidebar above content */}
+            <div className="mb-6 lg:hidden">
+              <Sidebar />
             </div>
-          </div>
+            <Suspense fallback={<PageSkeleton />}>{children}</Suspense>
+          </main>
         </div>
         <Footer />
       </body>
     </html>
-  )
+  );
 }
