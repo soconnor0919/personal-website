@@ -14,6 +14,8 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Card, CardContent } from "~/components/ui/card";
+import { cn } from "~/lib/utils";
 
 const navItems = [
   { href: "/", label: "About", icon: Home },
@@ -35,50 +37,55 @@ export function Navigation() {
 
   return (
     <>
-      <nav
-        className={`sticky top-0 z-[51] border-b bg-background shadow-sm ${
-          isOpen ? "border-transparent" : "border-border"
-        }`}
-      >
-        <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/">
-              <span className="text-lg font-bold">Sean O&apos;Connor</span>
-            </Link>
-            <div className="flex items-center space-x-4">
-              <div className="hidden lg:flex lg:justify-end lg:space-x-4">
-                {navItems.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`text-sm font-medium transition-colors ${isActive ? "text-primary" : "text-muted-foreground"} flex items-center gap-2 hover:text-primary`}
+      <nav className="sticky top-0 z-[51]">
+        <div className="p-6">
+          <Card className="bg-background/80 shadow-lg backdrop-blur-sm">
+            <CardContent className="px-6 py-3">
+              <div className="flex h-10 items-center justify-between">
+                <Link href="/" className="transition-colors hover:text-primary">
+                  <span className="text-lg font-bold">Sean O&apos;Connor</span>
+                </Link>
+                <div className="flex items-center space-x-4">
+                  <div className="hidden lg:flex lg:justify-end lg:space-x-6">
+                    {navItems.map((item) => {
+                      const isActive = pathname === item.href;
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={cn(
+                            "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
+                            isActive
+                              ? "bg-primary/10 text-primary shadow-sm"
+                              : "text-muted-foreground hover:bg-primary/5 hover:text-primary",
+                          )}
+                        >
+                          <item.icon size={16} />
+                          {item.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors hover:bg-primary/10 hover:text-primary focus:outline-none lg:hidden"
+                    aria-label={isOpen ? "Close menu" : "Open menu"}
+                  >
+                    <span
+                      className={`absolute transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`}
                     >
-                      <item.icon size={16} />
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                      <Menu size={20} />
+                    </span>
+                    <span
+                      className={`absolute transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}
+                    >
+                      <X size={20} />
+                    </span>
+                  </button>
+                </div>
               </div>
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="relative h-6 w-6 text-gray-500 hover:text-primary focus:outline-none lg:hidden"
-                aria-label={isOpen ? "Close menu" : "Open menu"}
-              >
-                <span
-                  className={`absolute inset-0 transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`}
-                >
-                  <Menu size={24} />
-                </span>
-                <span
-                  className={`absolute inset-0 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}
-                >
-                  <X size={24} />
-                </span>
-              </button>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </nav>
       <div
@@ -89,28 +96,35 @@ export function Navigation() {
         aria-hidden="true"
       />
       <div
-        className={`fixed left-0 right-0 top-16 z-50 overflow-hidden border-b border-border bg-background shadow-sm transition-all duration-300 lg:hidden ${
-          isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
+        className={`fixed left-6 right-6 top-28 z-50 overflow-hidden transition-all duration-300 lg:hidden ${
+          isOpen ? "max-h-[calc(100vh-8rem)] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col space-y-2 p-4">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex items-center text-sm font-medium transition-colors ${
-                  isActive ? "text-primary" : "text-muted-foreground"
-                } gap-2 hover:text-primary`}
-                onClick={() => setIsOpen(false)}
-              >
-                <item.icon size={16} />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </div>
+        <Card className="shadow-xl">
+          <CardContent className="p-4">
+            <div className="flex flex-col space-y-1">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-all duration-200",
+                      isActive
+                        ? "bg-primary/10 text-primary shadow-sm"
+                        : "text-muted-foreground hover:bg-primary/5 hover:text-primary",
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <item.icon size={18} />
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </>
   );

@@ -28,10 +28,10 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
         <SpeedInsights />
         <Navigation />
         <div className="flex flex-1">
-          <aside className="fixed left-0 top-16 z-10 hidden h-[calc(100vh-4rem)] w-80 py-6 pl-6 pr-3 lg:block">
+          <aside className="fixed bottom-0 left-0 top-28 z-10 hidden w-80 pb-6 pl-6 pr-3 lg:block">
             <Sidebar />
           </aside>
-          <main className="flex-1 px-6 py-6 lg:ml-80">
+          <main className="flex-1 px-6 pb-6 lg:ml-80 lg:pb-6 lg:pt-0">
             {/* Mobile sidebar above content */}
             <div className="mb-6 lg:hidden">
               <Sidebar />

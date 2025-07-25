@@ -13,7 +13,7 @@ export function Sidebar() {
     <>
       {/* Mobile layout - compressed "who am I" box */}
       <Card className="w-full lg:hidden">
-        <CardContent className="p-4">
+        <CardContent className="p-6">
           <div className="flex items-center gap-4">
             <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg">
               <Image
@@ -25,30 +25,34 @@ export function Sidebar() {
                 priority
               />
             </div>
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0 flex-1 space-y-1">
               <h2 className="text-lg font-bold transition-colors hover:text-primary">
                 {name[0]?.first}&nbsp;{name[0]?.last}
               </h2>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+              <div className="space-y-1">
                 {location.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center gap-1"
+                    className="flex items-center gap-1.5 text-sm text-muted-foreground"
                     {...(item.href && {
                       target: "_blank",
                       rel: "noopener noreferrer",
                     })}
                   >
-                    {item.icon && <item.icon className="h-3.5 w-3.5" />}
-                    {item.label}
+                    {item.icon && (
+                      <item.icon className="h-3.5 w-3.5 flex-shrink-0" />
+                    )}
+                    <span>{item.label}</span>
                   </a>
                 ))}
+              </div>
+              <div className="flex flex-wrap gap-3 pt-1">
                 {contact.slice(0, 2).map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
-                    className="flex items-center gap-1 transition-colors hover:text-primary"
+                    className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
                     {...(item.external && {
                       target: "_blank",
                       rel: "noopener noreferrer",
