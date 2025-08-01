@@ -49,10 +49,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="animate-fade-in-up-delay-4 flex gap-3">
-            <Button asChild>
+            <Button variant="outline" asChild>
               <Link href="/cv">
+                <ExternalLink className="mr-2 h-4 w-4" />
                 View CV
-                <ExternalLink className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button variant="outline" asChild>
