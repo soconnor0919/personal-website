@@ -1,11 +1,18 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "~/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
-import { ArrowUpRight, Play, BookOpen } from "lucide-react";
+import { ArrowUpRight, Play, BookOpen, Star } from "lucide-react";
 import { projects } from "~/lib/data";
 import Image from "next/image";
 import { CardSkeleton } from "~/components/ui/skeletons";
@@ -20,10 +27,13 @@ export default function ProjectsPage() {
   return (
     <div className="space-y-6">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="text-2xl font-bold">Featured Projects 🌟</h1>
-        <p className="text-lg text-muted-foreground mt-2">
-          A selection of my academic and professional projects, focusing on robotics, 
-          web development, and embedded systems.
+        <h1 className="flex items-center gap-2 text-2xl font-bold">
+          <Star className="h-6 w-6" />
+          Featured Projects
+        </h1>
+        <p className="mt-2 text-lg text-muted-foreground">
+          A selection of my academic and professional projects, focusing on
+          robotics, web development, and embedded systems.
         </p>
       </section>
 
@@ -42,8 +52,8 @@ export default function ProjectsPage() {
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
                       <CardTitle>{project.title}</CardTitle>
-                      {project.link && !project.link.startsWith('/') && (
-                        <Link 
+                      {project.link && !project.link.startsWith("/") && (
+                        <Link
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -53,13 +63,15 @@ export default function ProjectsPage() {
                         </Link>
                       )}
                     </div>
-                    <CardDescription className="text-base">{project.description}</CardDescription>
+                    <CardDescription className="text-base">
+                      {project.description}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="pt-0">
                     <p className="text-sm text-muted-foreground">
                       {project.longDescription}
                     </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="secondary">
                           {tag}
@@ -67,15 +79,11 @@ export default function ProjectsPage() {
                       ))}
                     </div>
                   </CardContent>
-                  
-                  {project.link && project.link.startsWith('/') && (
+
+                  {project.link && project.link.startsWith("/") && (
                     <CardFooter className="pt-0">
                       <Link href={project.link}>
-                        <Button 
-                          variant="default" 
-                          size="sm"
-                          className="mt-0"
-                        >
+                        <Button variant="default" size="sm" className="mt-0">
                           {project.title === "LaTeX Introduction Tutorial" ? (
                             <>
                               <Play className="mr-2 h-4 w-4" />
@@ -92,23 +100,32 @@ export default function ProjectsPage() {
                     </CardFooter>
                   )}
                 </div>
-                
+
                 {project.image && (
-                  <div className="px-6 pb-6 lg:py-6 lg:w-1/3 md:px-24 lg:px-6">
-                    <Link href={project.link?.startsWith('/') ? project.link : project.link || '#'}>
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md transition-all hover:opacity-90">
+                  <div className="px-6 pb-6 md:px-24 lg:w-1/3 lg:px-6 lg:py-6">
+                    <Link
+                      href={
+                        project.link?.startsWith("/")
+                          ? project.link
+                          : project.link || "#"
+                      }
+                    >
+                      <div className="relative aspect-[4/3] w-full overflow-hidden transition-all hover:opacity-90">
                         <Image
                           src={project.image}
                           alt={project.imageAlt || project.title}
                           width={400}
                           height={300}
-                          className="object-cover w-full h-full"
+                          className="h-full w-full object-cover"
                           priority={index === 0}
                         />
                         {project.title === "LaTeX Introduction Tutorial" && (
                           <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                            <div className="rounded-full bg-white/80 p-3">
-                              <Play className="h-8 w-8 text-primary" fill="currentColor" />
+                            <div className="bg-white/80 p-3">
+                              <Play
+                                className="h-8 w-8 text-primary"
+                                fill="currentColor"
+                              />
                             </div>
                           </div>
                         )}

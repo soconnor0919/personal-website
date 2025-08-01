@@ -1,6 +1,12 @@
-import { ArrowUpRight, Code, FlaskConical, Users } from 'lucide-react';
+import { ArrowUpRight, Code, FlaskConical, Users, Star } from "lucide-react";
 import Link from "next/link";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 import { projects, name } from "~/lib/data";
 
 export default function HomePage() {
@@ -9,11 +15,15 @@ export default function HomePage() {
       {/* About Section */}
       <section className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">Hi! I'm {name[0]?.first}. 👋</h1>
-          <p className="text-lg text-muted-foreground mt-2">
-            I am a Computer Science and Engineering student at Bucknell University, passionate about robotics,
-            software development, and human-computer interaction. With a strong foundation in both academic
-            research and practical development, I bridge the gap between theoretical concepts and real-world applications.
+          <h1 className="flex items-center gap-2 text-2xl font-bold">
+            Hi! I'm {name[0]?.first}.
+          </h1>
+          <p className="mt-2 text-lg text-muted-foreground">
+            I am a Computer Science and Engineering student at Bucknell
+            University, passionate about robotics, software development, and
+            human-computer interaction. With a strong foundation in both
+            academic research and practical development, I bridge the gap
+            between theoretical concepts and real-world applications.
           </p>
         </div>
 
@@ -25,8 +35,11 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-              <li>Full-stack development with modern frameworks (React, Next.js, Node.js)</li>
+            <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+              <li>
+                Full-stack development with modern frameworks (React, Next.js,
+                Node.js)
+              </li>
               <li>Robotics development using ROS2 and C++</li>
               <li>Systems programming and architecture design</li>
               <li>Database design and optimization (SQL, PostgreSQL)</li>
@@ -43,7 +56,7 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+            <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
               <li>Human-Robot Interaction studies and experimental design</li>
               <li>Published researcher at IEEE RO-MAN 2024</li>
               <li>Development of experimental platforms for HRI research</li>
@@ -60,7 +73,7 @@ export default function HomePage() {
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+            <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
               <li>President of AIChE Chem-E-Car Competition Team</li>
               <li>Treasurer of Bucknell Coffee Society</li>
               <li>Teaching Assistant for Computer Science courses</li>
@@ -73,10 +86,13 @@ export default function HomePage() {
       {/* Featured Projects Section */}
       <section className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Featured Projects 🌟</h2>
+          <h2 className="flex items-center gap-2 text-2xl font-bold">
+            <Star className="h-6 w-6" />
+            Featured Projects
+          </h2>
           <Link
             href="/projects"
-            className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1"
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
           >
             View all projects
             <ArrowUpRight className="h-4 w-4" />
@@ -84,7 +100,7 @@ export default function HomePage() {
         </div>
         <div className="space-y-6">
           {projects
-            .filter(project => project.featured)
+            .filter((project) => project.featured)
             .slice(0, 2)
             .map((project, index) => (
               <Card key={index}>
@@ -102,7 +118,9 @@ export default function HomePage() {
                       </Link>
                     )}
                   </div>
-                  <CardDescription className="text-base">{project.description}</CardDescription>
+                  <CardDescription className="text-base">
+                    {project.description}
+                  </CardDescription>
                 </CardHeader>
               </Card>
             ))}
