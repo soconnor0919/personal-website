@@ -10,6 +10,7 @@ import {
   CardDescription,
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
+
 import {
   Download,
   ExternalLink,
@@ -21,6 +22,8 @@ import {
   ChevronRight,
   AlertCircle,
   Loader2,
+  Maximize2,
+  Minimize2,
   Eye,
 } from "lucide-react";
 import Link from "next/link";
@@ -220,7 +223,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
   const downloadBlob = () => {
     if (!pdfBlob) return;
 
-    const blob = new Blob([pdfBlob], { type: "application/pdf" });
+    const blob = new Blob([pdfBlob as BlobPart], { type: "application/pdf" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -235,7 +238,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
     return (
       <div className="space-y-4">
         {/* Action Bar */}
-        <div className="bg-muted/50 flex items-center justify-between gap-4 rounded-lg border p-4">
+        <div className="flex items-center justify-between gap-4 rounded-lg border bg-muted/50 p-4">
           <div className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-muted-foreground" />
             <div>
@@ -273,7 +276,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
     return (
       <div className="space-y-4">
         {/* Action Bar */}
-        <div className="bg-muted/50 flex items-center justify-between gap-4 rounded-lg border p-4">
+        <div className="flex items-center justify-between gap-4 rounded-lg border bg-muted/50 p-4">
           <div className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-muted-foreground" />
             <h3 className="font-medium">{title}</h3>
@@ -348,7 +351,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
   return (
     <div className="space-y-4">
       {/* Action Bar */}
-      <div className="bg-muted/50 flex items-center justify-between gap-4 rounded-lg border p-4">
+      <div className="flex items-center justify-between gap-4 rounded-lg border bg-muted/50 p-4">
         <div className="flex items-center gap-2">
           <FileText className="h-5 w-5 text-muted-foreground" />
           <h3 className="font-medium">{title}</h3>
@@ -436,7 +439,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
       >
         {isLoading && (
           <>
-            <div className="bg-background/80 absolute inset-0 z-10 flex items-center justify-center backdrop-blur-sm">
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/80 backdrop-blur-sm">
               <div className="flex flex-col items-center gap-2">
                 <Loader2 className="h-6 w-6 animate-spin text-primary" />
                 <p className="text-sm text-muted-foreground">
@@ -464,7 +467,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
       </div>
 
       {/* Mobile Notice */}
-      <div className="block rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/50 md:hidden">
+      <div className="block rounded-lg border border-amber-200 bg-amber-50 p-4 md:hidden dark:border-amber-800 dark:bg-amber-950/50">
         <div className="flex items-start gap-2">
           <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
           <div>
@@ -487,7 +490,7 @@ export default function CVPage() {
 
   return (
     <div className="space-y-6">
-      <section className="prose prose-zinc dark:prose-invert max-w-none">
+      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
         <div className="flex items-start gap-3">
           <FileText className="h-8 w-8 text-primary" />
           <div>
@@ -500,33 +503,35 @@ export default function CVPage() {
         </p>
       </section>
 
-      <Tabs
-        value={activeTab}
-        onValueChange={setActiveTab}
-        className="space-y-6"
-      >
-        <TabsList className="grid w-fit grid-cols-2">
-          <TabsTrigger value="cv" className="gap-2">
-            <FileText className="h-4 w-4" />
-            Academic CV
-          </TabsTrigger>
-          <TabsTrigger value="resume" className="gap-2">
-            <FileText className="h-4 w-4" />
-            Resume
-          </TabsTrigger>
-        </TabsList>
+      <div className="animate-fade-in-up-delay-2">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
+          <TabsList className="grid w-fit grid-cols-2">
+            <TabsTrigger value="cv" className="gap-2">
+              <FileText className="h-4 w-4" />
+              Academic CV
+            </TabsTrigger>
+            <TabsTrigger value="resume" className="gap-2">
+              <FileText className="h-4 w-4" />
+              Resume
+            </TabsTrigger>
+          </TabsList>
 
-        <TabsContent value="cv" className="space-y-0">
-          <PDFViewer url={CV_URL} title="Academic CV" type="cv" />
-        </TabsContent>
+          <TabsContent value="cv" className="space-y-0">
+            <PDFViewer url={CV_URL} title="Academic CV" type="cv" />
+          </TabsContent>
 
-        <TabsContent value="resume" className="space-y-0">
-          <PDFViewer url={RESUME_URL} title="Resume" type="resume" />
-        </TabsContent>
-      </Tabs>
+          <TabsContent value="resume" className="space-y-0">
+            <PDFViewer url={RESUME_URL} title="Resume" type="resume" />
+          </TabsContent>
+        </Tabs>
+      </div>
 
       {/* Last Updated */}
-      <div className="text-center text-xs text-muted-foreground">
+      <div className="animate-fade-in-up-delay-4 text-center text-xs text-muted-foreground">
         Last updated: {new Date().toLocaleDateString()}
       </div>
     </div>

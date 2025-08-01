@@ -95,6 +95,27 @@ export const projects = [
     featured: true,
   },
   {
+    title: "BeenVoice - Professional Invoicing Platform",
+    description:
+      "A comprehensive business invoicing application built with the T3 stack for reliable invoice and client management.",
+    longDescription:
+      "Developed a full-stack invoicing platform prioritizing reliability, security, and professional user experience. Features include multi-step invoice creation with flexible line items, automated PDF generation, client management with complete contact details, business profile management with branding support, and comprehensive status tracking (draft → sent → paid/overdue). The application implements proper authentication, input validation, and error handling throughout, with a mobile-first responsive design using shadcn/ui components.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "tRPC",
+      "Drizzle ORM",
+      "NextAuth.js",
+      "LibSQL",
+      "Tailwind CSS",
+      "shadcn/ui",
+    ],
+    link: "https://github.com/soconnor0919/beenvoice", // Update with actual repository URL
+    image: "/images/beenvoice.png",
+    imageAlt: "Screenshot of BeenVoice",
+    featured: true,
+  },
+  {
     title: "Personal Website",
     description:
       "Modern, responsive personal website built with Next.js and TailwindCSS.",
@@ -102,6 +123,8 @@ export const projects = [
       "Designed and developed a personal portfolio website using modern web technologies. Features include responsive design, dark mode support, PDF rendering for CV display, and a clean, professional interface for showcasing projects and experience.",
     tags: ["Next.js", "TypeScript", "TailwindCSS", "React"],
     link: "https://github.com/soconnor0919/personal-website",
+    image: "/images/personal-website.png",
+    imageAlt: "Screenshot of Personal Website",
     featured: true,
   },
   {
@@ -128,13 +151,39 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Race Statistics Platform",
+    title: "RaceHub Next - Motorsports Track Management Platform",
     description:
-      "High-performance race statistics platform serving real-time data to 1500+ concurrent users.",
+      "A comprehensive web platform for Riverhead Raceway, a local motorsports track in New York, serving 1500+ concurrent users during race events.",
     longDescription:
-      "Developed and deployed a complete race management system that handles registration, live timing, and results distribution. The platform replaced manual processes with digital solutions, significantly improving efficiency and user experience.",
-    tags: ["PHP", "MariaDB", "WebSockets", "Docker"],
+      "The platform combines a public website for fans to access event schedules, race results, and competitor information with a sophisticated content management system for track staff. Features include automated email newsletters reaching thousands of subscribers, real-time race data management across multiple racing divisions, championship standings tracking, and mobile-responsive design for on-site access. The system centralizes all track operations from event scheduling to competitor management, replacing a legacy system while maintaining critical functionality for one of Long Island's premier racing venues",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Auth.js",
+      "Tailwind CSS",
+    ],
     link: "https://riverheadraceway.com",
+    image: "/images/racehub.png",
+    imageAlt: "Screenshot of the RaceHub Next platform",
+    featured: true,
+  },
+  {
+    title: "Formula One Lap Time Prediction",
+    description:
+      "Machine learning project analyzing Formula One race data to predict lap times based on weather conditions and track characteristics.",
+    longDescription:
+      "A comprehensive data mining project that analyzes Formula One race data to predict lap times using machine learning models. Achieved significant success with varying models by incorporating weather conditions, track characteristics, and tire degradation metrics. Data sourced from FastF1 API with analysis covering multiple tracks and racing conditions.",
+    tags: [
+      "Python",
+      "Machine Learning",
+      "Data Science",
+      "LightGBM",
+      "FastF1",
+      "Jupyter",
+    ],
+    link: "https://github.com/soconnor0919/f1-race-prediction",
     featured: true,
   },
   {

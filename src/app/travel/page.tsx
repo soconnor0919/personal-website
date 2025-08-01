@@ -11,7 +11,9 @@ import {
 import { CardSkeleton } from "~/components/ui/skeletons";
 import Image from "next/image";
 import { Badge } from "~/components/ui/badge";
+import { Plane } from "lucide-react";
 import { travel } from "~/lib/data";
+
 export default function TripsPage() {
   const [loading, setLoading] = useState(true);
 
@@ -24,14 +26,19 @@ export default function TripsPage() {
 
   return (
     <div className="space-y-6">
-      <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="text-2xl font-bold">My Trips & Events 🌍</h1>
+      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+        <div className="flex items-start gap-3">
+          <Plane className="h-8 w-8 text-primary" />
+          <div>
+            <h1 className="mb-2 text-2xl font-bold">My Trips & Events</h1>
+          </div>
+        </div>
         <p className="mt-2 text-lg text-muted-foreground">
           A collection of memorable trips and events I&apos;ve attended.
         </p>
       </section>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="animate-fade-in-up-delay-2 grid grid-cols-1 gap-6 md:grid-cols-2">
         {loading ? (
           <>
             <CardSkeleton />
@@ -43,45 +50,50 @@ export default function TripsPage() {
           </>
         ) : (
           travel.map((trip, index) => (
-            <Card key={index} className="overflow-hidden rounded-lg">
-              <CardHeader className="p-0">
-                <div className="flex flex-col">
-                  <div className="flex space-x-0 overflow-x-auto">
-                    {trip.images.map((image, imgIndex) => (
-                      <div key={imgIndex} className="flex-shrink-0">
-                        <Image
-                          src={image}
-                          alt={
-                            trip.alts && trip.alts[imgIndex]
-                              ? trip.alts[imgIndex]
-                              : `${trip.title} - image ${imgIndex + 1}`
-                          }
-                          width={250}
-                          height={200}
-                          className="max-h-[200px] min-h-[200px] object-cover"
-                        />
-                      </div>
-                    ))}
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${Math.min(index + 3, 4)} card-hover`}
+            >
+              <Card className="overflow-hidden rounded-lg">
+                <CardHeader className="p-0">
+                  <div className="flex flex-col">
+                    <div className="flex space-x-0 overflow-x-auto">
+                      {trip.images.map((image, imgIndex) => (
+                        <div key={imgIndex} className="flex-shrink-0">
+                          <Image
+                            src={image}
+                            alt={
+                              trip.alts && trip.alts[imgIndex]
+                                ? trip.alts[imgIndex]
+                                : `${trip.title} - image ${imgIndex + 1}`
+                            }
+                            width={250}
+                            height={200}
+                            className="max-h-[200px] min-h-[200px] object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col content-between justify-items-start">
-                  <CardTitle className="mb-2 mt-6">{trip.title}</CardTitle>
-                  <CardDescription className="">
-                    {trip.description}
-                  </CardDescription>
-                  {/* Show badges for tags */}
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {trip.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary">
-                        {tag}
-                      </Badge>
-                    ))}
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-col content-between justify-items-start">
+                    <CardTitle className="mb-2 mt-6">{trip.title}</CardTitle>
+                    <CardDescription className="">
+                      {trip.description}
+                    </CardDescription>
+                    {/* Show badges for tags */}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {trip.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="secondary">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           ))
         )}
       </div>

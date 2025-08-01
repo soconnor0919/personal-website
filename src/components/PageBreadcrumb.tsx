@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import {
   Home,
   ChevronRight,
-  Folder,
-  BookOpen,
+  FolderGit2,
+  BookOpenText,
   Newspaper,
   Plane,
   FileText,
@@ -58,13 +58,14 @@ export function PageBreadcrumb() {
       // Assign appropriate icons based on path
       switch (segment) {
         case "projects":
-          icon = <Folder className="mr-1 h-3.5 w-3.5" />;
+          icon = <FolderGit2 className="mr-1 h-3.5 w-3.5" />;
           break;
         case "articles":
           icon = <Newspaper className="mr-1 h-3.5 w-3.5" />;
           break;
         case "publications":
-          icon = <BookOpen className="mr-1 h-3.5 w-3.5" />;
+          icon = <BookOpenText className="mr-1 h-3.5 w-3.5" />;
+          label = "Publications";
           break;
         case "travel":
           icon = <Plane className="mr-1 h-3.5 w-3.5" />;
@@ -74,7 +75,7 @@ export function PageBreadcrumb() {
           label = "CV";
           break;
         case "latex-intro":
-          icon = <BookOpen className="mr-1 h-3.5 w-3.5" />;
+          icon = <BookOpenText className="mr-1 h-3.5 w-3.5" />;
           label = "LaTeX Tutorial";
           break;
         case "accessibility":

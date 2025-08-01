@@ -75,12 +75,12 @@ export function Sidebar() {
           {/* Profile Section */}
           <div className="flex-shrink-0 border-b border-border px-8 py-8">
             <div className="flex flex-col items-center space-y-4">
-              <div className="relative h-24 w-24 overflow-hidden border border-border">
+              <div className="relative h-40 w-40 overflow-hidden border border-border">
                 <Image
                   src="/headshot.png"
                   alt={`${name[0]?.first} ${name[0]?.last}`}
-                  width={96}
-                  height={96}
+                  width={400}
+                  height={400}
                   className="h-full w-full object-cover"
                   priority
                 />

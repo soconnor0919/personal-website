@@ -197,4 +197,67 @@ body {
     white-space: nowrap;
     max-width: 180px;
   }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-in-out;
+  }
+
+  .animate-fade-in-up-delay-1 {
+    animation: fadeInUp 0.5s ease-in-out 0.1s backwards;
+  }
+
+  .animate-fade-in-up-delay-2 {
+    animation: fadeInUp 0.5s ease-in-out 0.2s backwards;
+  }
+
+  .animate-fade-in-up-delay-3 {
+    animation: fadeInUp 0.5s ease-in-out 0.3s backwards;
+  }
+
+  .animate-fade-in-up-delay-4 {
+    animation: fadeInUp 0.5s ease-in-out 0.4s backwards;
+  }
+
+  .hover-lift {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px hsl(var(--foreground) / 0.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

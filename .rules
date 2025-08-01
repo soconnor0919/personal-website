@@ -1,0 +1,384 @@
+# Personal Website - AI Assistant Rules
+
+## Project Overview
+This is a professional personal website and academic portfolio built with Next.js 15, TypeScript, Tailwind CSS, and shadcn/ui components. The site showcases academic achievements, research publications, projects, and professional experience. This is a content-focused static website where accuracy, professionalism, and accessibility are paramount.
+
+## Core Development Principles
+
+### 1. Content-First Approach
+- **Priority**: Accuracy and professionalism over flashy features
+- **Content Integrity**: All information must be factually accurate and match CV/resume
+- **User Experience**: Clean, accessible, and intuitive navigation
+- **Performance**: Fast loading times and optimal Core Web Vitals
+- **Accessibility**: WCAG compliant design for all users
+
+### 2. Type Safety & Code Quality
+- **TypeScript**: Use strict TypeScript for all new code
+- **Static Typing**: Define interfaces for all data structures
+- **Validation**: Validate all external data sources
+- **Error Boundaries**: Implement proper error handling at all levels
+
+## Tech Stack Guidelines
+
+### Frontend (Next.js 15 + App Router)
+- Use App Router patterns consistently
+- Implement proper loading states and error boundaries
+- Follow Next.js 15 best practices for performance
+- Use React Server Components where appropriate
+- Leverage static generation for optimal performance
+
+### Content Management (Static Data)
+- Store content data in `src/lib/data.ts`
+- Use TypeScript interfaces for all content types
+- Implement proper data validation
+- Maintain content accuracy across all pages
+
+### Styling & UI (Tailwind CSS + shadcn/ui)
+- Use shadcn/ui components as the foundation
+- Follow Tailwind CSS utility-first approach
+- Implement responsive design (mobile-first)
+- Support system-based dark mode
+
+### Development Tools
+- Use ESLint and Prettier for code formatting
+- Use TypeScript for type safety
+- Run lints and typechecks when helpful
+- Avoid starting development servers unless absolutely necessary
+
+## Component Architecture
+
+### UI Components (shadcn/ui)
+- Use shadcn/ui components as the foundation
+- Follow existing component patterns
+- Use `cn()` utility for conditional className merging
+- Maintain consistent spacing (4px grid system)
+
+### Component Organization
+- **Base UI Components**: `src/components/ui/` - Pure, portable shadcn/ui components
+- **Project Components**: `src/components/` - Project-specific reusable components
+- **Page Components**: Page-specific components within respective page files
+
+### UI Component Rules
+
+#### What Belongs in `src/components/ui/` (Portable)
+- **Pure shadcn/ui components**: button, input, select, dialog, etc.
+- **Generic layout components**: card, skeleton, progress
+- **Basic form components**: input, textarea, checkbox, switch
+- **Navigation components**: breadcrumb, tabs
+- **Feedback components**: badge, toast
+- **Data display**: table, skeleton, progress
+- **Overlay components**: dialog, sheet, popover, dropdown-menu
+
+#### What Should Stay in `src/components/` (Project-Specific)
+- **Navigation**: Navigation, Sidebar, PageBreadcrumb, BreadcrumbWrapper
+- **Content Display**: AccessibleVideo, Footer
+- **Layout**: Any site-specific layout components
+- **Feature Components**: CV PDF viewer, project cards, publication lists
+
+#### Component Design Principles
+- **High Reusability**: Components should accept props for customization
+- **Composition over Inheritance**: Use children props and render props
+- **Default Values**: Provide sensible defaults for all optional props
+- **Type Safety**: Use TypeScript interfaces for all props
+- **Accessibility**: Include proper ARIA labels and keyboard navigation
+- **Responsive Design**: Mobile-first approach with responsive variants
+
+#### Component Props Pattern
+```typescript
+interface ComponentProps {
+  // Required props
+  title: string;
+
+  // Optional props with defaults
+  variant?: "default" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
+
+  // Styling props
+  className?: string;
+
+  // Event handlers
+  onClick?: () => void;
+  onChange?: (value: string) => void;
+
+  // Content
+  children?: React.ReactNode;
+
+  // Accessibility
+  "aria-label"?: string;
+}
+```
+
+### Styling Guidelines
+- **Primary Color**: Use consistent primary color for branding
+- **Typography**: Professional typography hierarchy
+- **Tailwind CSS**: Use utility classes consistently
+- **Dark Mode**: System preference-based dark mode support
+- **Responsive Design**: Mobile-first approach
+
+## Content Management Patterns
+
+### Data Structure (src/lib/data.ts)
+```typescript
+// Follow this pattern for all content types
+interface Project {
+  title: string;
+  description: string;
+  longDescription?: string;
+  image?: string;
+  imageAlt?: string;
+  link?: string;
+  tags: string[];
+  featured: boolean;
+}
+
+interface Publication {
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  type: "conference" | "journal" | "workshop" | "thesis";
+  abstract?: string;
+  paperUrl?: string;
+  doi?: string;
+}
+```
+
+### Content Accuracy Rules
+- **CV Synchronization**: All content must match the current CV/resume
+- **Factual Accuracy**: No embellishments or inaccurate information
+- **Professional Tone**: Maintain academic and professional language
+- **Regular Updates**: Keep content current with latest achievements
+
+### External Content Integration
+- **PDF Documents**: Use secure proxy for GitHub-hosted PDFs
+- **Media Files**: Optimize images and videos for web delivery
+- **External Links**: Validate all external links regularly
+- **Citations**: Proper citation format for publications
+
+## Page Structure Patterns
+
+### Standard Page Header
+All pages should follow this consistent header pattern:
+```typescript
+<section className="prose prose-zinc dark:prose-invert max-w-none">
+  <div className="flex items-start gap-3">
+    <IconComponent className="h-8 w-8 text-primary" />
+    <div>
+      <h1 className="mb-2 text-2xl font-bold">Page Title</h1>
+    </div>
+  </div>
+  <p className="mt-2 text-lg text-muted-foreground">
+    Page description
+  </p>
+</section>
+```
+
+### Navigation Consistency
+- **Icons**: Use consistent icons between navigation and breadcrumbs
+- **Routing**: Follow Next.js App Router conventions
+- **Active States**: Clear indication of current page
+- **Mobile Navigation**: Responsive mobile menu
+
+### Content Sections
+- **Consistent Spacing**: Use standardized spacing between sections
+- **Loading States**: Implement skeleton loaders for dynamic content
+- **Empty States**: Handle cases with no content gracefully
+- **Error States**: Provide clear error messages and recovery options
+
+## Icon System
+
+### Navigation Icons (Lucide React)
+- **Home**: `Home` icon
+- **Articles**: `Newspaper` icon
+- **Projects**: `FolderGit2` icon
+- **Publications**: `BookOpenText` icon
+- **Travel**: `Plane` icon
+- **CV**: `FileText` icon
+- **Accessibility**: `Accessibility` icon
+
+### Icon Usage Rules
+- Use consistent icon sizes (h-8 w-8 for headers, h-4 w-4 for small elements)
+- Apply `text-primary` class for header icons
+- Maintain consistency between navigation and breadcrumbs
+- Use semantic icons that clearly represent content
+
+## File Naming Conventions
+
+### Pages & Components
+- **Pages**: kebab-case (e.g., `latex-intro/page.tsx`)
+- **Components**: PascalCase (e.g., `AccessibleVideo.tsx`)
+- **Layouts**: `layout.tsx` (Next.js convention)
+- **API Routes**: `route.ts` (Next.js convention)
+
+### Assets & Content
+- **Images**: kebab-case (e.g., `project-thumbnail.jpg`)
+- **Videos**: kebab-case (e.g., `latex-intro.mp4`)
+- **Documents**: kebab-case (e.g., `academic-cv.pdf`)
+- **Data Files**: camelCase (e.g., `publications.bib`)
+
+### Utilities & Helpers
+- **Utilities**: camelCase (e.g., `formatDate.ts`)
+- **Constants**: UPPER_SNAKE_CASE
+- **Types**: PascalCase (e.g., `ProjectType`)
+
+## Development Workflow
+
+### Adding New Content
+1. **Data Update**: Update content in `src/lib/data.ts`
+2. **Type Definitions**: Update TypeScript interfaces
+3. **UI Implementation**: Create/update components
+4. **Page Integration**: Implement in appropriate pages
+5. **Testing**: Verify functionality and accessibility
+
+### Code Quality
+- **ESLint**: Follow existing linting rules
+- **Prettier**: Consistent code formatting
+- **TypeScript**: Strict type checking
+- **Performance**: Optimize images and components
+
+## Content Types & Management
+
+### Publications
+- **BibTeX Integration**: Parse and display academic publications
+- **Citation Formats**: Proper academic citation formatting
+- **DOI Links**: Link to official publication sources
+- **PDF Access**: Secure hosting and viewing of papers
+
+### Projects
+- **Featured Projects**: Highlight most important work
+- **Project Categories**: Academic, professional, and personal projects
+- **Media Integration**: Screenshots, videos, and demonstrations
+- **Technology Tags**: Clear indication of technologies used
+
+### CV/Resume Management
+- **PDF Rendering**: High-quality PDF.js implementation
+- **Version Control**: Track CV updates with timestamps
+- **Multiple Formats**: Support both academic CV and professional resume
+- **Download Options**: Easy access to latest versions
+
+### Travel & Personal Content
+- **Image Optimization**: Compress and optimize travel photos
+- **Content Curation**: Select meaningful and professional content
+- **Privacy Considerations**: Avoid overly personal information
+
+## Performance Guidelines
+
+### Image Optimization
+- Use Next.js Image component for all images
+- Implement proper alt text for accessibility
+- Compress images for web delivery
+- Use responsive image loading
+
+### Loading Performance
+- Implement skeleton loading states
+- Use React.memo for expensive components
+- Optimize bundle size with proper imports
+- Leverage Next.js static optimization
+
+### Accessibility
+- **WCAG Compliance**: Follow WCAG 2.1 AA guidelines
+- **Keyboard Navigation**: Ensure full keyboard accessibility
+- **Screen Readers**: Proper ARIA labels and semantic HTML
+- **Color Contrast**: Maintain sufficient contrast ratios
+- **Focus Management**: Clear focus indicators
+
+## Security & Privacy
+
+### Content Security
+- **External Links**: Validate all external links
+- **PDF Security**: Secure proxy for document access
+- **Personal Information**: Limit exposure of personal details
+- **Professional Boundaries**: Maintain professional presentation
+
+### Performance Security
+- **Content Validation**: Validate all external content
+- **Safe Rendering**: Prevent XSS in dynamic content
+- **External Resources**: Use trusted CDNs and sources
+
+## SEO & Meta Data
+
+### Page Metadata
+- **Title Tags**: Descriptive and professional titles
+- **Meta Descriptions**: Clear page descriptions
+- **Open Graph**: Proper social media previews
+- **Structured Data**: Academic and professional markup
+
+### Content Optimization
+- **URL Structure**: Clean and descriptive URLs
+- **Internal Linking**: Proper cross-page navigation
+- **Content Hierarchy**: Clear heading structure
+- **Loading Speed**: Optimize for search engine performance
+
+## Testing & Quality Assurance
+
+### Manual Testing Checklist
+- [ ] All navigation links work correctly
+- [ ] Responsive design on all screen sizes
+- [ ] Dark mode functions properly
+- [ ] PDF viewing works correctly
+- [ ] All external links are functional
+- [ ] Accessibility features work as expected
+- [ ] Content accuracy verified against CV
+
+### Code Review Guidelines
+- Check for proper error handling
+- Verify type safety and TypeScript compliance
+- Ensure consistent styling and spacing
+- Review accessibility implementation
+- Validate content accuracy
+
+## Content Update Procedures
+
+### Regular Maintenance
+- **Content Review**: Quarterly review of all content
+- **Link Validation**: Check all external links monthly
+- **CV Synchronization**: Update website when CV changes
+- **Performance Monitoring**: Regular performance audits
+
+### Publication Updates
+- **New Publications**: Add to publications.bib immediately
+- **Citation Updates**: Maintain proper citation formats
+- **PDF Updates**: Update hosted documents as needed
+- **Archive Management**: Maintain historical accuracy
+
+## Common Patterns & Anti-Patterns
+
+### ✅ Do's
+- Keep content accurate and professional
+- Use consistent component patterns
+- Implement proper loading states
+- Follow accessibility guidelines
+- Maintain responsive design
+- Use semantic HTML and proper TypeScript
+
+### ❌ Don'ts
+- Don't add inaccurate or embellished content
+- Don't skip accessibility considerations
+- Don't ignore responsive design
+- Don't use hardcoded content where data structures exist
+- Don't skip proper error handling
+- Don't start unnecessary development servers
+
+## Emergency Procedures
+
+### Content Issues
+- **Inaccurate Information**: Immediate correction required
+- **Broken Links**: Priority fix for external resources
+- **Performance Issues**: Optimize images and components
+- **Accessibility Problems**: High priority accessibility fixes
+
+### Technical Issues
+- **Build Failures**: Check TypeScript and ESLint errors
+- **Performance Degradation**: Audit and optimize components
+- **Browser Compatibility**: Test across major browsers
+
+## Remember
+This is a professional academic and personal website where accuracy, accessibility, and professional presentation are critical. Every decision should prioritize these values over development convenience or flashy features.
+
+- Exclusively use bun, not any other runtime. no npm commands.
+- Don't create demo content unless absolutely necessary
+- Don't add inaccurate or embellished information
+- Don't run builds unless absolutely necessary
+- Don't start new dev servers unless asked
+- Always verify content accuracy against source documents
+- Maintain professional and academic standards in all content

@@ -81,17 +81,21 @@ export default function PublicationsPage() {
 
   return (
     <div className="space-y-6">
-      <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="flex items-center gap-2 text-2xl font-bold">
-          <BookOpen className="h-6 w-6" />
-          Peer-Reviewed Publications
-        </h1>
+      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+        <div className="flex items-start gap-3">
+          <BookOpenText className="h-8 w-8 text-primary" />
+          <div>
+            <h1 className="mb-2 text-2xl font-bold">
+              Peer-Reviewed Publications
+            </h1>
+          </div>
+        </div>
         <p className="mt-2 text-lg text-muted-foreground">
           My research publications in human-robot interaction and robotics.
         </p>
       </section>
 
-      <div className="space-y-6">
+      <div className="animate-fade-in-up-delay-2 space-y-6">
         {loading ? (
           <>
             <CardSkeleton />
@@ -100,97 +104,102 @@ export default function PublicationsPage() {
           </>
         ) : (
           publications.map((pub, index) => (
-            <Card key={index}>
-              <CardHeader className="pb-2">
-                <div className="flex items-center justify-between">
-                  <CardTitle>{pub.title}</CardTitle>
-                  {pub.paperUrl && (
-                    <Link
-                      href={pub.paperUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      <ArrowUpRight className="h-5 w-5" />
-                    </Link>
-                  )}
-                </div>
-                <CardDescription className="text-base">
-                  {pub.authors.join(", ")}
-                </CardDescription>
-                <CardDescription className="text-sm">
-                  {pub.venue} ({pub.year})
-                </CardDescription>
-                {pub.address && (
-                  <CardDescription className="text-sm text-muted-foreground">
-                    {pub.address}
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${Math.min(index + 3, 4)} card-hover`}
+            >
+              <Card>
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between">
+                    <CardTitle>{pub.title}</CardTitle>
+                    {pub.paperUrl && (
+                      <Link
+                        href={pub.paperUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        <ArrowUpRight className="h-5 w-5" />
+                      </Link>
+                    )}
+                  </div>
+                  <CardDescription className="text-base">
+                    {pub.authors.join(", ")}
                   </CardDescription>
-                )}
-                {pub.notes && (
-                  <div className="mt-1">
-                    <Badge variant="outline" className="text-xs">
-                      {pub.notes}
+                  <CardDescription className="text-sm">
+                    {pub.venue} ({pub.year})
+                  </CardDescription>
+                  {pub.address && (
+                    <CardDescription className="text-sm text-muted-foreground">
+                      {pub.address}
+                    </CardDescription>
+                  )}
+                  {pub.notes && (
+                    <div className="mt-1">
+                      <Badge variant="outline" className="text-xs">
+                        {pub.notes}
+                      </Badge>
+                    </div>
+                  )}
+                </CardHeader>
+                <CardContent className="pt-0">
+                  {pub.abstract && (
+                    <p className="text-sm text-muted-foreground">
+                      {pub.abstract}
+                    </p>
+                  )}
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <Badge variant="secondary" className="capitalize">
+                      {pub.type}
+                    </Badge>
+                    {pub.doi && (
+                      <Link
+                        href={`https://doi.org/${pub.doi}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Badge variant="secondary" className="capitalize">
+                          <ArrowUpRight className="mr-1 h-3 w-3" />
+                          DOI
+                        </Badge>
+                      </Link>
+                    )}
+                    {pub.paperUrl && (
+                      <Link
+                        href={pub.paperUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Badge variant="secondary" className="capitalize">
+                          <FileText className="mr-1 h-3 w-3" />
+                          Paper
+                        </Badge>
+                      </Link>
+                    )}
+                    {pub.posterUrl && (
+                      <Link
+                        href={pub.posterUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Badge variant="secondary" className="capitalize">
+                          <Presentation className="mr-1 h-3 w-3" />
+                          Poster
+                        </Badge>
+                      </Link>
+                    )}
+                    <Badge
+                      onClick={() => downloadBibtex(pub)}
+                      className="cursor-pointer capitalize"
+                      variant="secondary"
+                    >
+                      <BookOpenText className="mr-1 h-3 w-3" />
+                      BibTeX
                     </Badge>
                   </div>
-                )}
-              </CardHeader>
-              <CardContent className="pt-0">
-                {pub.abstract && (
-                  <p className="text-sm text-muted-foreground">
-                    {pub.abstract}
-                  </p>
-                )}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <Badge variant="secondary" className="capitalize">
-                    {pub.type}
-                  </Badge>
-                  {pub.doi && (
-                    <Link
-                      href={`https://doi.org/${pub.doi}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Badge variant="secondary" className="capitalize">
-                        <ArrowUpRight className="mr-1 h-3 w-3" />
-                        DOI
-                      </Badge>
-                    </Link>
-                  )}
-                  {pub.paperUrl && (
-                    <Link
-                      href={pub.paperUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Badge variant="secondary" className="capitalize">
-                        <FileText className="mr-1 h-3 w-3" />
-                        Paper
-                      </Badge>
-                    </Link>
-                  )}
-                  {pub.posterUrl && (
-                    <Link
-                      href={pub.posterUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Badge variant="secondary" className="capitalize">
-                        <Presentation className="mr-1 h-3 w-3" />
-                        Poster
-                      </Badge>
-                    </Link>
-                  )}
-                  <Badge
-                    onClick={() => downloadBibtex(pub)}
-                    className="cursor-pointer capitalize"
-                    variant="secondary"
-                  >
-                    <BookOpenText className="mr-1 h-3 w-3" />
-                    BibTeX
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           ))
         )}
       </div>
