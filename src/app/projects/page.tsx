@@ -103,7 +103,11 @@ export default function ProjectsPage() {
 
                         <div className="flex gap-2">
                           {project.link && project.link.startsWith("/") && (
-                            <Button variant="outline" asChild>
+                            <Button
+                              variant="outline"
+                              asChild
+                              className="button-hover"
+                            >
                               <Link href={project.link}>
                                 {project.title ===
                                 "LaTeX Introduction Tutorial" ? (
@@ -122,7 +126,11 @@ export default function ProjectsPage() {
                           )}
 
                           {project.link && !project.link.startsWith("/") && (
-                            <Button variant="outline" asChild>
+                            <Button
+                              variant="outline"
+                              asChild
+                              className="button-hover"
+                            >
                               <Link
                                 href={project.link}
                                 target="_blank"
@@ -202,7 +210,11 @@ export default function ProjectsPage() {
                           </div>
 
                           {project.link && (
-                            <Button variant="outline" asChild>
+                            <Button
+                              variant="outline"
+                              asChild
+                              className="button-hover"
+                            >
                               <Link
                                 href={project.link}
                                 {...(!project.link.startsWith("/") && {

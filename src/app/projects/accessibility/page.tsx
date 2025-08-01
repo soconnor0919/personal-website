@@ -418,7 +418,7 @@ export default function AccessibilityPage() {
               </div>
 
               <div className="pt-4">
-                <Button asChild variant="outline">
+                <Button asChild variant="outline" className="button-hover">
                   <Link href="/projects">
                     <Eye className="mr-2 h-4 w-4" />
                     View All Projects

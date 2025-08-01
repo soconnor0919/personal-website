@@ -241,6 +241,16 @@ body {
     box-shadow: 0 4px 8px hsl(var(--foreground) / 0.1);
   }
 
+  /* Button hover effects to match card interactions */
+  .button-hover {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .button-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px hsl(var(--foreground) / 0.1);
+  }
+
   /* Equal height cards in grid layouts */
   .grid-equal-height > * {
     height: 100%;

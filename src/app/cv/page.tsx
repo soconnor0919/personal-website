@@ -292,7 +292,12 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
               <Download className="h-4 w-4" />
               <span className="hidden sm:inline">Download</span>
             </Button>
-            <Button variant="outline" size="sm" asChild className="gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              asChild
+              className="button-hover gap-2"
+            >
               <Link
                 href={`/api/pdf-proxy?url=${encodeURIComponent(url)}`}
                 target="_blank"
@@ -325,7 +330,12 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
                 <Download className="h-4 w-4" />
                 <span className="hidden sm:inline">Download {title}</span>
               </Button>
-              <Button variant="outline" size="sm" asChild className="gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="button-hover gap-2"
+              >
                 <Link
                   href={`/api/pdf-proxy?url=${encodeURIComponent(url)}`}
                   target="_blank"
@@ -367,7 +377,12 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
             <Download className="h-4 w-4" />
             <span className="hidden sm:inline">Download</span>
           </Button>
-          <Button variant="outline" size="sm" asChild className="gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="button-hover gap-2"
+          >
             <Link
               href={`/api/pdf-proxy?url=${encodeURIComponent(url)}`}
               target="_blank"

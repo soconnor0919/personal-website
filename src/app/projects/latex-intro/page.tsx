@@ -274,7 +274,7 @@ export default function LatexTutorialPage() {
               </div>
 
               <div className="pt-4">
-                <Button variant="outline" asChild>
+                <Button variant="outline" asChild className="button-hover">
                   <Link
                     href="https://www.overleaf.com"
                     target="_blank"
