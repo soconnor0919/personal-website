@@ -11,7 +11,7 @@ import {
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import Link from "next/link";
-import { ArrowUpRight, Play, BookOpen, FolderGit2 } from "lucide-react";
+import { ArrowUpRight, Play, BookOpen, FolderGit2, Github } from "lucide-react";
 import { projects } from "~/lib/data";
 import Image from "next/image";
 import { CardSkeleton } from "~/components/ui/skeletons";
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                         </p>
                       </div>
 
-                      <div className="mt-6 flex items-center justify-between gap-4">
+                      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
                             <Badge key={tag} variant="secondary">
@@ -101,7 +101,7 @@ export default function ProjectsPage() {
                           ))}
                         </div>
 
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 sm:flex-shrink-0">
                           {project.link && project.link.startsWith("/") && (
                             <Button
                               variant="outline"
@@ -125,22 +125,59 @@ export default function ProjectsPage() {
                             </Button>
                           )}
 
-                          {project.link && !project.link.startsWith("/") && (
+                          {project.websiteLink && (
                             <Button
                               variant="outline"
                               asChild
                               className="button-hover"
                             >
                               <Link
-                                href={project.link}
+                                href={project.websiteLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
                                 <ArrowUpRight className="mr-2 h-4 w-4" />
-                                View Project
+                                Visit Site
                               </Link>
                             </Button>
                           )}
+
+                          {project.gitLink && (
+                            <Button
+                              variant="outline"
+                              asChild
+                              className="button-hover"
+                            >
+                              <Link
+                                href={project.gitLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Github className="mr-2 h-4 w-4" />
+                                View Code
+                              </Link>
+                            </Button>
+                          )}
+
+                          {project.link &&
+                            !project.link.startsWith("/") &&
+                            !project.websiteLink &&
+                            !project.gitLink && (
+                              <Button
+                                variant="outline"
+                                asChild
+                                className="button-hover"
+                              >
+                                <Link
+                                  href={project.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <ArrowUpRight className="mr-2 h-4 w-4" />
+                                  View Project
+                                </Link>
+                              </Button>
+                            )}
                         </div>
                       </div>
                     </div>
@@ -196,7 +233,7 @@ export default function ProjectsPage() {
                       </div>
 
                       <CardContent className="p-0 pt-4">
-                        <div className="flex items-center justify-between gap-4">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                           <div className="flex flex-wrap gap-2">
                             {project.tags.map((tag) => (
                               <Badge
@@ -209,33 +246,74 @@ export default function ProjectsPage() {
                             ))}
                           </div>
 
-                          {project.link && (
-                            <Button
-                              variant="outline"
-                              asChild
-                              className="button-hover"
-                            >
-                              <Link
-                                href={project.link}
-                                {...(!project.link.startsWith("/") && {
-                                  target: "_blank",
-                                  rel: "noopener noreferrer",
-                                })}
+                          <div className="flex gap-2">
+                            {project.link && project.link.startsWith("/") && (
+                              <Button
+                                variant="outline"
+                                asChild
+                                className="button-hover sm:flex-shrink-0"
                               >
-                                {project.link.startsWith("/") ? (
-                                  <>
-                                    <BookOpen className="mr-2 h-4 w-4" />
-                                    Learn More
-                                  </>
-                                ) : (
-                                  <>
+                                <Link href={project.link}>
+                                  <BookOpen className="mr-2 h-4 w-4" />
+                                  Learn More
+                                </Link>
+                              </Button>
+                            )}
+
+                            {project.websiteLink && (
+                              <Button
+                                variant="outline"
+                                asChild
+                                className="button-hover sm:flex-shrink-0"
+                              >
+                                <Link
+                                  href={project.websiteLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <ArrowUpRight className="mr-2 h-4 w-4" />
+                                  Visit Site
+                                </Link>
+                              </Button>
+                            )}
+
+                            {project.gitLink && (
+                              <Button
+                                variant="outline"
+                                asChild
+                                className="button-hover sm:flex-shrink-0"
+                              >
+                                <Link
+                                  href={project.gitLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <Github className="mr-2 h-4 w-4" />
+                                  View Code
+                                </Link>
+                              </Button>
+                            )}
+
+                            {project.link &&
+                              !project.link.startsWith("/") &&
+                              !project.websiteLink &&
+                              !project.gitLink && (
+                                <Button
+                                  variant="outline"
+                                  asChild
+                                  className="button-hover sm:flex-shrink-0"
+                                >
+                                  <Link
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
                                     <ArrowUpRight className="mr-2 h-4 w-4" />
                                     View Project
-                                  </>
-                                )}
-                              </Link>
-                            </Button>
-                          )}
+                                  </Link>
+                                </Button>
+                              )}
+                          </div>
                         </div>
                       </CardContent>
                     </div>

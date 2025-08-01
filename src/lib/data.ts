@@ -1,5 +1,19 @@
 import { Github, Linkedin, Mail, School, GraduationCap } from "lucide-react";
 
+// TypeScript interfaces
+export interface Project {
+  title: string;
+  description: string;
+  longDescription?: string;
+  tags: string[];
+  link?: string; // For internal links (like /projects/accessibility)
+  gitLink?: string; // For GitHub repository links
+  websiteLink?: string; // For deployed website links
+  image?: string;
+  imageAlt?: string;
+  featured: boolean;
+}
+
 export const name = [
   {
     first: "Sean",
@@ -80,7 +94,7 @@ export const articles = [
   // Add more articles as needed
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: "HRIStudio",
     description:
@@ -88,7 +102,7 @@ export const projects = [
     longDescription:
       "Engineered a comprehensive platform that enables researchers to conduct human-robot interaction experiments without requiring extensive programming knowledge. The system integrates with ROS2 and provides a user-friendly interface for experiment design and execution.",
     tags: ["ROS2", "React", "TypeScript", "C++", "Python"],
-    link: "https://github.com/soconnor0919/hristudio",
+    gitLink: "https://github.com/soconnor0919/hristudio",
     image: "/hristudio_laptop.png",
     imageAlt:
       "Screenshot of HRIStudio application showing the robot control dashboard on a laptop",
@@ -110,7 +124,8 @@ export const projects = [
       "Tailwind CSS",
       "shadcn/ui",
     ],
-    link: "https://github.com/soconnor0919/beenvoice", // Update with actual repository URL
+    gitLink: "https://github.com/soconnor0919/beenvoice",
+    websiteLink: "https://beenvoice.soconnor.dev",
     image: "/images/beenvoice.png",
     imageAlt: "Screenshot of BeenVoice",
     featured: true,
@@ -122,7 +137,8 @@ export const projects = [
     longDescription:
       "Designed and developed a personal portfolio website using modern web technologies. Features include responsive design, dark mode support, PDF rendering for CV display, and a clean, professional interface for showcasing projects and experience.",
     tags: ["Next.js", "TypeScript", "TailwindCSS", "React"],
-    link: "https://github.com/soconnor0919/personal-website",
+    gitLink: "https://github.com/soconnor0919/personal-website",
+    websiteLink: "https://soconnor.dev",
     image: "/images/personal-website.png",
     imageAlt: "Screenshot of Personal Website",
     featured: true,
@@ -164,7 +180,7 @@ export const projects = [
       "Auth.js",
       "Tailwind CSS",
     ],
-    link: "https://riverheadraceway.com",
+    websiteLink: "https://riverheadraceway.com",
     image: "/images/racehub.png",
     imageAlt: "Screenshot of the RaceHub Next platform",
     featured: true,
@@ -183,7 +199,7 @@ export const projects = [
       "FastF1",
       "Jupyter",
     ],
-    link: "https://github.com/soconnor0919/f1-race-prediction",
+    gitLink: "https://github.com/soconnor0919/f1-race-prediction",
     featured: true,
   },
   {
@@ -193,7 +209,7 @@ export const projects = [
     longDescription:
       "Pioneered the team's first custom hardware solution, implementing a finite state machine architecture that integrates spectrometer readings, relay control, and LED feedback for real-time reaction monitoring.",
     tags: ["C++", "Embedded Systems", "Hardware Design"],
-    link: "https://github.com/soconnor0919/national_fa24",
+    gitLink: "https://github.com/soconnor0919/national_fa24",
     image: "/car.png",
     imageAlt:
       "Photo of the Chem-E-Car with custom control system hardware visible, showing the microcontroller and sensor connections",
