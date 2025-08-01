@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Newspaper } from "lucide-react";
+import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import {
   Card,
@@ -54,25 +55,35 @@ export default function ArticlesPage() {
             >
               <Card>
                 <CardHeader>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <CardTitle>{article.title}</CardTitle>
                     <Link
                       href={article.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary"
+                      className="hidden items-center gap-1 text-sm text-muted-foreground hover:text-primary sm:flex sm:flex-shrink-0"
                     >
-                      <ArrowUpRight className="h-5 w-5" />
+                      Read Article
+                      <ArrowUpRight className="h-4 w-4" />
                     </Link>
                   </div>
                   <CardDescription className="text-sm text-muted-foreground">
                     Written by {article.author}, found in {article.source}.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">
                     {article.description}
                   </p>
+                  <Link
+                    href={article.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary sm:hidden"
+                  >
+                    Read Article
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
                 </CardContent>
               </Card>
             </div>

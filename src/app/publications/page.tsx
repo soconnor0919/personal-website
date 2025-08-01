@@ -110,14 +110,14 @@ export default function PublicationsPage() {
             >
               <Card>
                 <CardHeader className="pb-2">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <CardTitle>{pub.title}</CardTitle>
                     {pub.paperUrl && (
                       <Link
                         href={pub.paperUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary"
+                        className="text-muted-foreground hover:text-primary sm:flex-shrink-0"
                       >
                         <ArrowUpRight className="h-5 w-5" />
                       </Link>
