@@ -285,7 +285,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
             <Button
               variant="outline"
               size="sm"
-              className="gap-2"
+              className="button-hover gap-2"
               onClick={pdfBlob ? downloadBlob : undefined}
               disabled={!pdfBlob}
             >
@@ -321,9 +321,9 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
           <CardContent className="space-y-4">
             <div className="flex flex-wrap gap-2">
               <Button
-                variant="default"
+                variant="outline"
                 size="sm"
-                className="gap-2"
+                className="button-hover gap-2"
                 onClick={pdfBlob ? downloadBlob : undefined}
                 disabled={!pdfBlob}
               >
@@ -370,8 +370,8 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
           <Button
             variant="outline"
             size="sm"
-            className="gap-2"
-            onClick={downloadBlob}
+            className="button-hover gap-2"
+            onClick={pdfBlob ? downloadBlob : undefined}
             disabled={!pdfBlob}
           >
             <Download className="h-4 w-4" />
