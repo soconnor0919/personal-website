@@ -38,7 +38,7 @@ export default function TripsPage() {
         </p>
       </section>
 
-      <div className="animate-fade-in-up-delay-2 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="animate-fade-in-up-delay-2 grid-equal-height grid grid-cols-1 gap-6 md:grid-cols-2">
         {loading ? (
           <>
             <CardSkeleton />
@@ -54,7 +54,7 @@ export default function TripsPage() {
               key={index}
               className={`animate-fade-in-up-delay-${Math.min(index + 3, 4)} card-hover`}
             >
-              <Card className="overflow-hidden rounded-lg">
+              <Card className="card-full-height overflow-hidden rounded-lg">
                 <CardHeader className="p-0">
                   <div className="flex flex-col">
                     <div className="flex space-x-0 overflow-x-auto">
@@ -76,12 +76,14 @@ export default function TripsPage() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col content-between justify-items-start">
-                    <CardTitle className="mb-2 mt-6">{trip.title}</CardTitle>
-                    <CardDescription className="">
-                      {trip.description}
-                    </CardDescription>
+                <CardContent className="card-content-stretch">
+                  <div className="flex flex-1 flex-col">
+                    <div className="flex-1">
+                      <CardTitle className="mb-2 mt-6">{trip.title}</CardTitle>
+                      <CardDescription className="">
+                        {trip.description}
+                      </CardDescription>
+                    </div>
                     {/* Show badges for tags */}
                     <div className="mt-4 flex flex-wrap gap-2">
                       {trip.tags.map((tag, tagIndex) => (

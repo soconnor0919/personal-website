@@ -76,16 +76,16 @@ export default function LatexTutorialPage() {
       {/* What You'll Learn */}
       <section className="animate-fade-in-up-delay-3 space-y-4">
         <h2 className="text-2xl font-bold">What You&apos;ll Learn</h2>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid-equal-height grid gap-4 md:grid-cols-2">
           <div className="animate-fade-in-up-delay-4 card-hover">
-            <Card>
+            <Card className="card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2">
                   <Play className="h-5 w-5" />
                   Getting Started
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li>• Setting up Overleaf</li>
                   <li>• Basic document structure</li>
@@ -97,14 +97,14 @@ export default function LatexTutorialPage() {
           </div>
 
           <div className="animate-fade-in-up-delay-4 card-hover">
-            <Card>
+            <Card className="card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2">
                   <Code className="h-5 w-5" />
                   Core Features
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   <li>• Mathematical equations</li>
                   <li>• Document organization</li>
@@ -128,7 +128,7 @@ export default function LatexTutorialPage() {
               and engineering fields.
             </p>
 
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid-equal-height grid gap-4 md:grid-cols-2">
               <div>
                 <h3 className="mb-2 font-semibold">Academic Excellence</h3>
                 <ul className="space-y-1 text-sm text-muted-foreground">
@@ -153,15 +153,15 @@ export default function LatexTutorialPage() {
       {/* Resources */}
       <section className="animate-fade-in-up-delay-4 space-y-4">
         <h2 className="text-2xl font-bold">Essential Resources</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          <Card className="group cursor-pointer transition-colors hover:bg-accent">
+        <div className="grid-equal-height grid gap-4 md:grid-cols-3">
+          <Card className="card-full-height group cursor-pointer transition-colors hover:bg-accent">
             <Link
               href="https://www.overleaf.com"
               target="_blank"
               rel="noopener noreferrer"
               className="block p-4"
             >
-              <CardContent className="p-0">
+              <CardContent className="card-content-stretch p-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Play className="h-6 w-6 text-primary" />
@@ -178,14 +178,14 @@ export default function LatexTutorialPage() {
             </Link>
           </Card>
 
-          <Card className="group cursor-pointer transition-colors hover:bg-accent">
+          <Card className="card-full-height group cursor-pointer transition-colors hover:bg-accent">
             <Link
               href="https://www.latex-project.org/get/"
               target="_blank"
               rel="noopener noreferrer"
               className="block p-4"
             >
-              <CardContent className="p-0">
+              <CardContent className="card-content-stretch p-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Code className="h-6 w-6 text-primary" />
@@ -202,14 +202,14 @@ export default function LatexTutorialPage() {
             </Link>
           </Card>
 
-          <Card className="group cursor-pointer transition-colors hover:bg-accent">
+          <Card className="card-full-height group cursor-pointer transition-colors hover:bg-accent">
             <Link
               href="https://en.wikibooks.org/wiki/LaTeX"
               target="_blank"
               rel="noopener noreferrer"
               className="block p-4"
             >
-              <CardContent className="p-0">
+              <CardContent className="card-content-stretch p-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <BookOpen className="h-6 w-6 text-primary" />

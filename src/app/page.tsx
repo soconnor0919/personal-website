@@ -65,9 +65,9 @@ export default function HomePage() {
       {/* Current Focus */}
       <section className="animate-fade-in-up space-y-6">
         <h2 className="text-2xl font-bold">Current Focus</h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid-equal-height grid gap-6 md:grid-cols-2">
           <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <FlaskConical className="h-5 w-5" />
@@ -76,7 +76,7 @@ export default function HomePage() {
                   </CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Developing a web-based platform for HRI experiments that
                   addresses reproducibility challenges in Wizard-of-Oz studies.
@@ -88,14 +88,14 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2">
                   <GraduationCap className="h-5 w-5" />
                   <CardTitle className="mb-1">Academic Excellence</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Bachelor of Science in Computer Science and Engineering at
                   Bucknell University. 3.86 Engineering GPA, Dean&apos;s List
@@ -112,7 +112,7 @@ export default function HomePage() {
         <h2 className="text-2xl font-bold">Experience Highlights</h2>
         <div className="space-y-6">
           <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div>
@@ -192,13 +192,13 @@ export default function HomePage() {
           <Code className="h-6 w-6" />
           Technical Skills
         </h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid-equal-height grid gap-6 md:grid-cols-2">
           <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">Languages & Frameworks</CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Java, C/C++, Python, JavaScript/TypeScript, React, Next.js,
                   PHP, SQL
@@ -208,11 +208,11 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">Backend & DevOps</CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   REST APIs, MySQL, PostgreSQL, Docker, Apache Web Server,
                   NGINX, ROS2
@@ -222,11 +222,11 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">Cloud & Infrastructure</CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   AWS, GCP, Azure, Backblaze, Linux (RHEL/Debian), CI/CD
                 </p>
@@ -235,11 +235,11 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-4">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">Development Tools</CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Git, JetBrains Suite, VS Code, Cursor, Linux CLI
                 </p>
@@ -255,9 +255,9 @@ export default function HomePage() {
           <Users className="h-6 w-6" />
           Leadership & Activities
         </h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid-equal-height grid gap-6 md:grid-cols-2">
           <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">
                   AIChE Chem-E-Car Competition Team
@@ -266,7 +266,7 @@ export default function HomePage() {
                   Former President, Electrical and Mechanical Team Lead
                 </CardDescription>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Pioneered team&apos;s first custom hardware solution by
                   designing and fabricating a microcontroller-based control
@@ -278,12 +278,12 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">Bucknell Coffee Society</CardTitle>
                 <CardDescription>Treasurer</CardDescription>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Co-established and launched a new campus organization,
                   managing financial operations and coordinating event
@@ -294,12 +294,12 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover">
+            <Card className="card-hover card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="mb-1">RoboLab@Bucknell</CardTitle>
                 <CardDescription>Founding Member</CardDescription>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-muted-foreground">
                   Led and participated in group discussions in a new lab
                   bridging computer science and psychology perspectives on
@@ -315,12 +315,12 @@ export default function HomePage() {
       {/* Quick Links */}
       <section className="animate-fade-in-up space-y-6">
         <h2 className="text-2xl font-bold">Explore More</h2>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid-equal-height grid gap-4 md:grid-cols-3">
           <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover group cursor-pointer transition-colors hover:bg-accent">
-              <Link href="/publications" className="block p-4">
-                <CardContent className="p-0">
-                  <div className="flex items-center justify-between">
+            <Card className="card-hover card-full-height group cursor-pointer transition-colors hover:bg-accent">
+              <Link href="/publications" className="block h-full p-4">
+                <CardContent className="card-content-stretch p-0">
+                  <div className="flex h-full items-center justify-between">
                     <div className="flex items-center gap-3">
                       <FlaskConical className="h-6 w-6 text-primary" />
                       <div>
@@ -338,10 +338,10 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover group cursor-pointer transition-colors hover:bg-accent">
-              <Link href="/projects" className="block p-4">
-                <CardContent className="p-0">
-                  <div className="flex items-center justify-between">
+            <Card className="card-hover card-full-height group cursor-pointer transition-colors hover:bg-accent">
+              <Link href="/projects" className="block h-full p-4">
+                <CardContent className="card-content-stretch p-0">
+                  <div className="flex h-full items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Code className="h-6 w-6 text-primary" />
                       <div>
@@ -359,10 +359,10 @@ export default function HomePage() {
           </div>
 
           <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover group cursor-pointer transition-colors hover:bg-accent">
-              <Link href="/cv" className="block p-4">
-                <CardContent className="p-0">
-                  <div className="flex items-center justify-between">
+            <Card className="card-hover card-full-height group cursor-pointer transition-colors hover:bg-accent">
+              <Link href="/cv" className="block h-full p-4">
+                <CardContent className="card-content-stretch p-0">
+                  <div className="flex h-full items-center justify-between">
                     <div className="flex items-center gap-3">
                       <GraduationCap className="h-6 w-6 text-primary" />
                       <div>

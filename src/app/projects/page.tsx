@@ -76,7 +76,7 @@ export default function ProjectsPage() {
                     )}
 
                     {/* Project Content */}
-                    <div className="flex flex-1 flex-col p-6">
+                    <div className="card-content-stretch flex flex-1 flex-col p-6">
                       <div className="flex-1 space-y-4">
                         <div>
                           <CardTitle className="text-xl">
@@ -148,7 +148,7 @@ export default function ProjectsPage() {
       {otherProjects.length > 0 && (
         <section className="animate-fade-in-up space-y-6">
           <h2 className="text-2xl font-bold">Additional Projects</h2>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid-equal-height grid gap-6 md:grid-cols-2">
             {loading ? (
               <>
                 <CardSkeleton />
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
                   key={index}
                   className={`animate-fade-in-up-delay-${Math.min(index + 1, 4)} card-hover`}
                 >
-                  <Card className="flex flex-col">
+                  <Card className="card-full-height flex flex-col">
                     {project.image && (
                       <div className="flex h-48 items-center justify-center p-4">
                         <Image

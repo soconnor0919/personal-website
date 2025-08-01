@@ -88,17 +88,17 @@ export default function AccessibilityPage() {
       <section className="animate-fade-in-up-delay-3 space-y-6">
         <h2 className="text-2xl font-bold">Implemented Features</h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid-equal-height grid gap-6 md:grid-cols-2">
           {/* Image Alt Text */}
           <div className="animate-fade-in-up-delay-4 card-hover">
-            <Card>
+            <Card className="card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2">
                   <Eye className="h-5 w-5" />
                   Image Accessibility
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-sm text-muted-foreground">
                   All images include descriptive alt text for screen readers
                 </p>
@@ -107,14 +107,14 @@ export default function AccessibilityPage() {
           </div>
 
           <div className="animate-fade-in-up-delay-4 card-hover">
-            <Card>
+            <Card className="card-full-height">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2">
                   <Keyboard className="h-5 w-5" />
                   Keyboard Navigation
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0">
+              <CardContent className="card-content-stretch pt-0">
                 <p className="text-sm text-muted-foreground">
                   Full keyboard support for all interactive elements
                 </p>
@@ -127,16 +127,16 @@ export default function AccessibilityPage() {
       {/* Additional Features */}
       <section className="space-y-6">
         <h2 className="text-2xl font-bold">Additional Features</h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid-equal-height grid gap-6 md:grid-cols-2">
           {/* Video Accessibility */}
-          <Card>
+          <Card className="card-full-height">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2">
                 <Volume2 className="h-5 w-5" />
                 Video Accessibility
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 pt-0">
+            <CardContent className="card-content-stretch space-y-3 pt-0">
               <p className="text-sm text-muted-foreground">
                 Custom video player with comprehensive accessibility features.
               </p>
@@ -158,7 +158,7 @@ export default function AccessibilityPage() {
           </Card>
 
           {/* Semantic HTML */}
-          <Card>
+          <Card className="card-full-height">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2">
                 <Globe className="h-5 w-5" />
@@ -225,7 +225,7 @@ export default function AccessibilityPage() {
             <CardHeader className="pb-3">
               <CardTitle>Custom Components</CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
+            <CardContent className="card-content-stretch pt-0">
               <p className="mb-3 text-sm text-muted-foreground">
                 Built custom accessible components to ensure consistent user
                 experience across the site.
@@ -335,15 +335,15 @@ export default function AccessibilityPage() {
       {/* Resources */}
       <section className="space-y-4">
         <h2 className="text-2xl font-bold">Accessibility Resources</h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card className="group cursor-pointer transition-colors hover:bg-accent">
+        <div className="grid-equal-height grid gap-4 md:grid-cols-2">
+          <Card className="card-full-height group cursor-pointer transition-colors hover:bg-accent">
             <Link
               href="https://www.w3.org/WAI/WCAG21/quickref/"
               target="_blank"
               rel="noopener noreferrer"
               className="block p-4"
             >
-              <CardContent className="p-0">
+              <CardContent className="card-content-stretch p-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-6 w-6 text-primary" />
@@ -360,14 +360,14 @@ export default function AccessibilityPage() {
             </Link>
           </Card>
 
-          <Card className="group cursor-pointer transition-colors hover:bg-accent">
+          <Card className="card-full-height group cursor-pointer transition-colors hover:bg-accent">
             <Link
               href="https://webaim.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="block p-4"
             >
-              <CardContent className="p-0">
+              <CardContent className="card-content-stretch p-0">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Eye className="h-6 w-6 text-primary" />
@@ -398,7 +398,7 @@ export default function AccessibilityPage() {
                 with user feedback and updated standards.
               </p>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid-equal-height grid gap-4 md:grid-cols-2">
                 <div>
                   <h3 className="mb-2 font-semibold">Regular Testing</h3>
                   <ul className="space-y-1 text-sm text-muted-foreground">
