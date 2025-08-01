@@ -36,8 +36,10 @@ export function Navigation() {
       >
         <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/">
-              <span className="text-lg font-bold">Sean O&apos;Connor</span>
+            <Link href="/" className="flex items-center py-2">
+              <span className="text-xl font-semibold tracking-tight transition-colors hover:text-primary">
+                Sean O&apos;Connor
+              </span>
             </Link>
             <div className="flex items-center space-x-4">
               <div className="hidden lg:flex lg:justify-end lg:space-x-4">
@@ -76,7 +78,7 @@ export function Navigation() {
         </div>
       </nav>
       <div
-        className={`bg-background/80 fixed inset-0 z-40 backdrop-blur-sm transition-opacity duration-200 ${
+        className={`fixed inset-0 z-40 bg-background/80 backdrop-blur-sm transition-opacity duration-200 ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsOpen(false)}
