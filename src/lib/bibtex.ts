@@ -10,7 +10,9 @@ export type Publication = {
   abstract?: string;
   citationType?: string;
   citationKey?: string;
-  type: 'conference' | 'journal' | 'workshop' | 'thesis';
+  notes?: string;
+  address?: string;
+  type: "conference" | "journal" | "workshop" | "thesis";
 };
 
 type BibTeXEntry = {
@@ -21,11 +23,11 @@ type BibTeXEntry = {
 
 function parseAuthors(authorString: string): string[] {
   return authorString
-    .split(' and ')
-    .map(author => author.trim())
-    .map(author => {
-      if (author.includes(',')) {
-        const [lastName, firstName] = author.split(',').map(s => s.trim());
+    .split(" and ")
+    .map((author) => author.trim())
+    .map((author) => {
+      if (author.includes(",")) {
+        const [lastName, firstName] = author.split(",").map((s) => s.trim());
         return `${firstName} ${lastName}`;
       }
       return author;
@@ -42,14 +44,14 @@ function parseBibTeXEntry(entry: string): BibTeXEntry | null {
   const content = entry.slice(typeMatch[0].length);
 
   const fields: Record<string, string> = {};
-  let currentField = '';
-  let buffer = '';
+  let currentField = "";
+  let buffer = "";
 
   // Split into lines and process each line
-  const lines = content.split('\n');
+  const lines = content.split("\n");
   for (const line of lines) {
     const trimmedLine = line.trim();
-    if (!trimmedLine || trimmedLine === '}') continue;
+    if (!trimmedLine || trimmedLine === "}") continue;
 
     // Try to match a new field
     const fieldMatch = trimmedLine.match(/(\w+)\s*=\s*{(.+?)},?$/);
@@ -63,7 +65,7 @@ function parseBibTeXEntry(entry: string): BibTeXEntry | null {
       buffer = fieldMatch[2];
     } else if (currentField) {
       // Continue previous field
-      buffer += ' ' + trimmedLine.replace(/},$/, '');
+      buffer += " " + trimmedLine.replace(/},$/, "");
     }
   }
 
@@ -77,33 +79,38 @@ function parseBibTeXEntry(entry: string): BibTeXEntry | null {
 
 export function parseBibtex(bibtex: string): Publication[] {
   const entries = bibtex
-    .split('@')
+    .split("@")
     .slice(1) // Skip first empty element
-    .map(entry => parseBibTeXEntry(entry))
+    .map((entry) => parseBibTeXEntry(entry))
     .filter((entry): entry is BibTeXEntry => entry !== null);
 
-  return entries.map(entry => {
+  return entries.map((entry) => {
     const publicationType = (() => {
       switch (entry.type) {
-        case 'inproceedings':
-        case 'conference':
-          return 'conference';
-        case 'article':
-          return 'journal';
-        case 'mastersthesis':
-          return 'thesis';
-        case 'workshop':
-          return 'workshop';
+        case "inproceedings":
+        case "conference":
+          return "conference";
+        case "article":
+          return "journal";
+        case "mastersthesis":
+          return "thesis";
+        case "workshop":
+          return "workshop";
         default:
-          return 'journal';
+          return "journal";
       }
     })();
 
     return {
-      title: entry.fields.title?.replace(/[{}]/g, '') || '',
-      authors: parseAuthors(entry.fields.author || ''),
-      venue: entry.fields.booktitle || entry.fields.journal || entry.fields.organization || entry.fields.school || '',
-      year: parseInt(entry.fields.year || '0', 10),
+      title: entry.fields.title?.replace(/[{}]/g, "") || "",
+      authors: parseAuthors(entry.fields.author || ""),
+      venue:
+        entry.fields.booktitle ||
+        entry.fields.journal ||
+        entry.fields.organization ||
+        entry.fields.school ||
+        "",
+      year: parseInt(entry.fields.year || "0", 10),
       doi: entry.fields.doi,
       url: entry.fields.url,
       paperUrl: entry.fields.paperurl,
@@ -111,7 +118,9 @@ export function parseBibtex(bibtex: string): Publication[] {
       abstract: entry.fields.abstract,
       citationType: entry.type,
       citationKey: entry.citationKey,
-      type: publicationType
+      notes: entry.fields.note || entry.fields.notes,
+      address: entry.fields.address,
+      type: publicationType,
     };
   });
 }

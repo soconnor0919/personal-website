@@ -9,7 +9,6 @@ import {
   Newspaper,
   Plane,
   X,
-  Accessibility,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -19,11 +18,6 @@ const navItems = [
   { href: "/", label: "About", icon: Home },
   { href: "/articles", label: "Articles", icon: Newspaper },
   { href: "/projects", label: "Projects", icon: FolderGit2 },
-  {
-    href: "/projects/accessibility",
-    label: "Accessibility",
-    icon: Accessibility,
-  },
   { href: "/publications", label: "Publications", icon: BookOpenText },
   { href: "/travel", label: "Travel", icon: Plane },
   { href: "/cv", label: "CV", icon: FileText },
@@ -43,7 +37,7 @@ export function Navigation() {
         <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/">
-              <span className="text-lg font-bold">Sean O'Connor</span>
+              <span className="text-lg font-bold">Sean O&apos;Connor</span>
             </Link>
             <div className="flex items-center space-x-4">
               <div className="hidden lg:flex lg:justify-end lg:space-x-4">

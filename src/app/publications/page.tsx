@@ -1,10 +1,22 @@
-'use client';
+"use client";
 
-import { ArrowUpRight, BookOpenText, FileText, Presentation } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpenText,
+  FileText,
+  Presentation,
+  BookOpen,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "~/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CardSkeleton } from "~/components/ui/skeletons";
 import type { Publication } from "~/lib/bibtex";
@@ -13,12 +25,12 @@ import { parseBibtex } from "~/lib/bibtex";
 export default function PublicationsPage() {
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
-  const tagsToStrip = ['paperUrl', 'posterUrl'];
+  const tagsToStrip = ["paperUrl", "posterUrl"];
 
   useEffect(() => {
-    fetch('/publications.bib')
-      .then(res => res.text())
-      .then(text => {
+    fetch("/publications.bib")
+      .then((res) => res.text())
+      .then((text) => {
         const pubs = parseBibtex(text);
         setPublications(pubs);
         setLoading(false);
@@ -26,16 +38,26 @@ export default function PublicationsPage() {
   }, []);
 
   const downloadBibtex = (pub: Publication) => {
-    const { title, authors, venue, year, doi, abstract, type, citationType, citationKey } = pub;
+    const {
+      title,
+      authors,
+      venue,
+      year,
+      doi,
+      abstract,
+      type,
+      citationType,
+      citationKey,
+    } = pub;
     let bibtexEntry = `@${citationType}{${citationKey},\n`;
     bibtexEntry += `  title = {${title}},\n`;
-    bibtexEntry += `  author = {${authors.join(' and ')}},\n`;
+    bibtexEntry += `  author = {${authors.join(" and ")}},\n`;
     bibtexEntry += `  year = {${year}},\n`;
-    if (type === 'conference' || type === 'workshop') {
+    if (type === "conference" || type === "workshop") {
       bibtexEntry += `  organization = {${venue}},\n`;
-    } else if (type === 'journal') {
+    } else if (type === "journal") {
       bibtexEntry += `  journal = {${venue}},\n`;
-    } else if (type === 'thesis') {
+    } else if (type === "thesis") {
       bibtexEntry += `  school = {${venue}},\n`;
     }
     if (doi) {
@@ -46,9 +68,9 @@ export default function PublicationsPage() {
     }
     bibtexEntry += `}\n`;
 
-    const blob = new Blob([bibtexEntry], { type: 'text/plain' });
+    const blob = new Blob([bibtexEntry], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
     a.download = `${citationKey}.bib`;
     document.body.appendChild(a);
@@ -60,8 +82,11 @@ export default function PublicationsPage() {
   return (
     <div className="space-y-6">
       <section className="prose prose-zinc dark:prose-invert max-w-none">
-        <h1 className="text-2xl font-bold">Peer-Reviewed Publications 📚</h1>
-        <p className="text-lg text-muted-foreground mt-2">
+        <h1 className="flex items-center gap-2 text-2xl font-bold">
+          <BookOpen className="h-6 w-6" />
+          Peer-Reviewed Publications
+        </h1>
+        <p className="mt-2 text-lg text-muted-foreground">
           My research publications in human-robot interaction and robotics.
         </p>
       </section>
@@ -80,7 +105,7 @@ export default function PublicationsPage() {
                 <div className="flex items-center justify-between">
                   <CardTitle>{pub.title}</CardTitle>
                   {pub.paperUrl && (
-                    <Link 
+                    <Link
                       href={pub.paperUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -91,11 +116,23 @@ export default function PublicationsPage() {
                   )}
                 </div>
                 <CardDescription className="text-base">
-                  {pub.authors.join(', ')}
+                  {pub.authors.join(", ")}
                 </CardDescription>
                 <CardDescription className="text-sm">
                   {pub.venue} ({pub.year})
                 </CardDescription>
+                {pub.address && (
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {pub.address}
+                  </CardDescription>
+                )}
+                {pub.notes && (
+                  <div className="mt-1">
+                    <Badge variant="outline" className="text-xs">
+                      {pub.notes}
+                    </Badge>
+                  </div>
+                )}
               </CardHeader>
               <CardContent className="pt-0">
                 {pub.abstract && (
@@ -103,52 +140,52 @@ export default function PublicationsPage() {
                     {pub.abstract}
                   </p>
                 )}
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="mt-4 flex flex-wrap gap-2">
                   <Badge variant="secondary" className="capitalize">
                     {pub.type}
                   </Badge>
                   {pub.doi && (
-                    <Link 
+                    <Link
                       href={`https://doi.org/${pub.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Badge variant="secondary" className="capitalize">
-                        <ArrowUpRight className="h-4 w-4" />
+                        <ArrowUpRight className="mr-1 h-3 w-3" />
                         DOI
                       </Badge>
                     </Link>
                   )}
                   {pub.paperUrl && (
-                    <Link 
+                    <Link
                       href={pub.paperUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Badge variant="secondary" className="capitalize">
-                        <FileText className="h-4 w-4" />
+                        <FileText className="mr-1 h-3 w-3" />
                         Paper
                       </Badge>
                     </Link>
                   )}
                   {pub.posterUrl && (
-                    <Link 
+                    <Link
                       href={pub.posterUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Badge variant="secondary" className="capitalize">
-                        <Presentation className="h-4 w-4" />
+                        <Presentation className="mr-1 h-3 w-3" />
                         Poster
                       </Badge>
                     </Link>
                   )}
                   <Badge
-                    onClick={() => downloadBibtex(pub)} 
+                    onClick={() => downloadBibtex(pub)}
                     className="cursor-pointer capitalize"
                     variant="secondary"
                   >
-                    <BookOpenText className="h-4 w-4" />
+                    <BookOpenText className="mr-1 h-3 w-3" />
                     BibTeX
                   </Badge>
                 </div>
