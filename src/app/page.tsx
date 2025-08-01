@@ -8,6 +8,7 @@ import {
   MapPin,
   Mail,
   ExternalLink,
+  BookOpen,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -56,7 +57,10 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/publications">Publications</Link>
+              <Link href="/publications">
+                <BookOpen className="mr-2 h-4 w-4" />
+                Publications
+              </Link>
             </Button>
           </div>
         </div>
