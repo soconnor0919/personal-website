@@ -69,7 +69,7 @@ export function trackPdfView(
     pdfType: "paper" | "poster";
   },
 ) {
-  track("Publication PDF View", {
+  track("Publication PDF Click", {
     title: data.publicationTitle,
     type: data.publicationType,
     year: data.publicationYear.toString(),
@@ -96,12 +96,12 @@ export function trackDoiClick(
 }
 
 /**
- * Track slides views specifically
+ * Track slides clicks - user intent/engagement
  */
 export function trackSlidesView(
   data: Omit<PublicationTrackingData, "linkType">,
 ) {
-  track("Publication Slides View", {
+  track("Publication Slides Click", {
     title: data.publicationTitle,
     type: data.publicationType,
     year: data.publicationYear.toString(),
