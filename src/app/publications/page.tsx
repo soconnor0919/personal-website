@@ -21,6 +21,11 @@ import { Skeleton } from "~/components/ui/skeleton";
 import { CardSkeleton } from "~/components/ui/skeletons";
 import type { Publication } from "~/lib/bibtex";
 import { parseBibtex } from "~/lib/bibtex";
+import {
+  trackPdfView,
+  trackDoiClick,
+  trackBibtexDownload,
+} from "~/lib/analytics";
 
 export default function PublicationsPage() {
   const [publications, setPublications] = useState<Publication[]>([]);
@@ -38,6 +43,15 @@ export default function PublicationsPage() {
   }, []);
 
   const downloadBibtex = (pub: Publication) => {
+    // Track the BibTeX download
+    trackBibtexDownload({
+      publicationTitle: pub.title,
+      publicationType: pub.type,
+      publicationYear: pub.year,
+      citationKey: pub.citationKey,
+      venue: pub.venue,
+    });
+
     const {
       title,
       authors,
@@ -79,6 +93,41 @@ export default function PublicationsPage() {
     URL.revokeObjectURL(url);
   };
 
+  const handlePaperClick = (pub: Publication) => {
+    trackPdfView({
+      publicationTitle: pub.title,
+      publicationType: pub.type,
+      publicationYear: pub.year,
+      citationKey: pub.citationKey,
+      venue: pub.venue,
+      pdfType: "paper",
+    });
+  };
+
+  const handlePosterClick = (pub: Publication) => {
+    trackPdfView({
+      publicationTitle: pub.title,
+      publicationType: pub.type,
+      publicationYear: pub.year,
+      citationKey: pub.citationKey,
+      venue: pub.venue,
+      pdfType: "poster",
+    });
+  };
+
+  const handleDoiClick = (pub: Publication) => {
+    if (pub.doi) {
+      trackDoiClick({
+        publicationTitle: pub.title,
+        publicationType: pub.type,
+        publicationYear: pub.year,
+        citationKey: pub.citationKey,
+        venue: pub.venue,
+        doi: pub.doi,
+      });
+    }
+  };
+
   return (
     <div className="space-y-6">
       <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
@@ -118,6 +167,7 @@ export default function PublicationsPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary sm:flex-shrink-0"
+                        onClick={() => handlePaperClick(pub)}
                       >
                         <ArrowUpRight className="h-5 w-5" />
                       </Link>
@@ -157,6 +207,7 @@ export default function PublicationsPage() {
                         href={`https://doi.org/${pub.doi}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => handleDoiClick(pub)}
                       >
                         <Badge variant="secondary" className="capitalize">
                           <ArrowUpRight className="mr-1 h-3 w-3" />
@@ -169,6 +220,7 @@ export default function PublicationsPage() {
                         href={pub.paperUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => handlePaperClick(pub)}
                       >
                         <Badge variant="secondary" className="capitalize">
                           <FileText className="mr-1 h-3 w-3" />
@@ -181,6 +233,7 @@ export default function PublicationsPage() {
                         href={pub.posterUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => handlePosterClick(pub)}
                       >
                         <Badge variant="secondary" className="capitalize">
                           <Presentation className="mr-1 h-3 w-3" />
