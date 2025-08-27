@@ -9,12 +9,12 @@ export function CardSkeleton() {
           <Skeleton className="h-6 w-1/3" />
           <Skeleton className="h-5 w-5 rounded-full" />
         </div>
-        <Skeleton className="h-4 w-full mt-2" />
+        <Skeleton className="mt-2 h-4 w-full" />
       </CardHeader>
       <CardContent>
         <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-5/6 mt-2" />
-        <div className="flex gap-2 mt-4">
+        <Skeleton className="mt-2 h-4 w-5/6" />
+        <div className="mt-4 flex gap-2">
           <Skeleton className="h-5 w-16" />
           <Skeleton className="h-5 w-16" />
           <Skeleton className="h-5 w-16" />

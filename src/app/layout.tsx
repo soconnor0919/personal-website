@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
 import { Footer } from "~/components/Footer";
 import { Navigation } from "~/components/Navigation";
 import { Sidebar } from "~/components/Sidebar";
@@ -9,7 +10,7 @@ import { inter } from "~/lib/fonts";
 import { description, name } from "~/lib/data";
 import "~/styles/globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: `${name[0]?.first} ${name[0]?.last}`,
   description: description,
   icons: [{ rel: "icon", url: "/favicon.ico" }],

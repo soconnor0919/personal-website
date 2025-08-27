@@ -7,6 +7,7 @@ export type Publication = {
   url?: string;
   paperUrl?: string;
   posterUrl?: string;
+  slidesUrl?: string;
   abstract?: string;
   citationType?: string;
   citationKey?: string;
@@ -115,6 +116,7 @@ export function parseBibtex(bibtex: string): Publication[] {
       url: entry.fields.url,
       paperUrl: entry.fields.paperurl,
       posterUrl: entry.fields.posterurl,
+      slidesUrl: entry.fields.slidesurl,
       abstract: entry.fields.abstract,
       citationType: entry.type,
       citationKey: entry.citationKey,

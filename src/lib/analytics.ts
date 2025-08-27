@@ -27,7 +27,7 @@ export interface PublicationTrackingData {
   publicationTitle: string;
   publicationType: "conference" | "journal" | "workshop" | "thesis";
   publicationYear: number;
-  linkType: "paper" | "poster" | "doi" | "bibtex";
+  linkType: "paper" | "poster" | "slides" | "doi" | "bibtex";
   citationKey?: string;
   venue?: string;
 }
@@ -90,6 +90,21 @@ export function trackDoiClick(
     type: data.publicationType,
     year: data.publicationYear.toString(),
     doi: data.doi,
+    citation_key: data.citationKey || "",
+    venue: data.venue || "",
+  });
+}
+
+/**
+ * Track slides views specifically
+ */
+export function trackSlidesView(
+  data: Omit<PublicationTrackingData, "linkType">,
+) {
+  track("Publication Slides View", {
+    title: data.publicationTitle,
+    type: data.publicationType,
+    year: data.publicationYear.toString(),
     citation_key: data.citationKey || "",
     venue: data.venue || "",
   });

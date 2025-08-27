@@ -6,9 +6,9 @@ import { join } from "path";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { filename: string } },
+  context: { params: Promise<{ filename: string }> },
 ) {
-  const filename = params.filename;
+  const { filename } = await context.params;
 
   // Validate filename to prevent path traversal
   if (!filename || filename.includes("..") || !filename.endsWith(".pdf")) {
@@ -24,18 +24,25 @@ export async function GET(
     // Find the publication that matches this PDF
     const publication = publications.find(
       (pub) =>
-        pub.paperUrl?.includes(filename) || pub.posterUrl?.includes(filename),
+        pub.paperUrl?.includes(filename) ||
+        pub.posterUrl?.includes(filename) ||
+        pub.slidesUrl?.includes(filename),
     );
 
     // Track the PDF access
     if (publication) {
       const isPoster = publication.posterUrl?.includes(filename);
+      const isSlides = publication.slidesUrl?.includes(filename);
+
+      let fileType = "paper";
+      if (isPoster) fileType = "poster";
+      if (isSlides) fileType = "slides";
 
       await track("Publication PDF Access", {
         title: publication.title,
         type: publication.type,
         year: publication.year.toString(),
-        pdf_type: isPoster ? "poster" : "paper",
+        pdf_type: fileType,
         citation_key: publication.citationKey || "",
         venue: publication.venue || "",
         access_method: "direct_url",

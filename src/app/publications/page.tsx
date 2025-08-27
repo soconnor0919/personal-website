@@ -6,6 +6,7 @@ import {
   FileText,
   Presentation,
   BookOpen,
+  Monitor,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -25,6 +26,7 @@ import {
   trackPdfView,
   trackDoiClick,
   trackBibtexDownload,
+  trackSlidesView,
 } from "~/lib/analytics";
 
 export default function PublicationsPage() {
@@ -128,6 +130,16 @@ export default function PublicationsPage() {
     }
   };
 
+  const handleSlidesClick = (pub: Publication) => {
+    trackSlidesView({
+      publicationTitle: pub.title,
+      publicationType: pub.type,
+      publicationYear: pub.year,
+      citationKey: pub.citationKey,
+      venue: pub.venue,
+    });
+  };
+
   return (
     <div className="space-y-6">
       <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
@@ -199,7 +211,10 @@ export default function PublicationsPage() {
                     </p>
                   )}
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="capitalize">
+                    <Badge
+                      variant="secondary"
+                      className="flex h-6 items-center capitalize"
+                    >
                       {pub.type}
                     </Badge>
                     {pub.doi && (
@@ -209,7 +224,10 @@ export default function PublicationsPage() {
                         rel="noopener noreferrer"
                         onClick={() => handleDoiClick(pub)}
                       >
-                        <Badge variant="secondary" className="capitalize">
+                        <Badge
+                          variant="secondary"
+                          className="flex h-6 items-center capitalize"
+                        >
                           <ArrowUpRight className="mr-1 h-3 w-3" />
                           DOI
                         </Badge>
@@ -222,7 +240,10 @@ export default function PublicationsPage() {
                         rel="noopener noreferrer"
                         onClick={() => handlePaperClick(pub)}
                       >
-                        <Badge variant="secondary" className="capitalize">
+                        <Badge
+                          variant="secondary"
+                          className="flex h-6 items-center capitalize"
+                        >
                           <FileText className="mr-1 h-3 w-3" />
                           Paper
                         </Badge>
@@ -235,15 +256,34 @@ export default function PublicationsPage() {
                         rel="noopener noreferrer"
                         onClick={() => handlePosterClick(pub)}
                       >
-                        <Badge variant="secondary" className="capitalize">
+                        <Badge
+                          variant="secondary"
+                          className="flex h-6 items-center capitalize"
+                        >
                           <Presentation className="mr-1 h-3 w-3" />
                           Poster
                         </Badge>
                       </Link>
                     )}
+                    {pub.slidesUrl && (
+                      <Link
+                        href={pub.slidesUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => handleSlidesClick(pub)}
+                      >
+                        <Badge
+                          variant="secondary"
+                          className="flex h-6 items-center capitalize"
+                        >
+                          <Monitor className="mr-1 h-3 w-3" />
+                          Slides
+                        </Badge>
+                      </Link>
+                    )}
                     <Badge
                       onClick={() => downloadBibtex(pub)}
-                      className="cursor-pointer capitalize"
+                      className="flex h-6 cursor-pointer items-center capitalize"
                       variant="secondary"
                     >
                       <BookOpenText className="mr-1 h-3 w-3" />
