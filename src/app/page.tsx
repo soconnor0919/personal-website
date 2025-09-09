@@ -137,7 +137,8 @@ export default function HomePage() {
                   Engineering GPA: {education.gpa}
                 </Badge>
                 <Badge variant="outline">
-                  Dean's List: {education.deansListSemesters.length} semesters
+                  Dean&apos;s List: {education.deansListSemesters.length}{" "}
+                  semesters
                 </Badge>
               </div>
             </CardContent>
