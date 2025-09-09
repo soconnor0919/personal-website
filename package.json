@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "bun run update-pdfs && next build",
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -12,7 +12,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache"
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
+    "update-pdfs": "bun scripts/update-pdfs.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -38,7 +39,7 @@
     "fs": "0.0.1-security",
     "geist": "^1.4.2",
     "lucide-react": "^0.454.0",
-    "next": "^15.4.5",
+    "next": "^15.5.2",
     "pdfjs-dist": "^4.10.38",
     "radix-ui": "^1.4.2",
     "react": "^18.3.1",

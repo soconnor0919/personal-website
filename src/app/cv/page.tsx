@@ -29,11 +29,9 @@ import {
 import Link from "next/link";
 import type { PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist";
 
-// GitHub release URLs for PDFs
-const CV_URL =
-  "https://github.com/soconnor0919/resume-cv/releases/download/latest/cv.pdf";
-const RESUME_URL =
-  "https://github.com/soconnor0919/resume-cv/releases/download/latest/resume.pdf";
+// Local PDF file URLs
+const CV_URL = "/publications/cv.pdf";
+const RESUME_URL = "/publications/resume.pdf";
 
 interface PDFViewerProps {
   url: string;
@@ -76,18 +74,8 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
       const arrayBuffer = await response.arrayBuffer();
       return new Uint8Array(arrayBuffer);
     } catch (error) {
-      // If direct fetch fails (e.g., CORS), try proxy
-      console.warn("Direct fetch failed, trying proxy:", error);
-
-      const proxyUrl = `/api/pdf-proxy?url=${encodeURIComponent(pdfUrl)}`;
-      const response = await fetch(proxyUrl);
-
-      if (!response.ok) {
-        throw new Error(`Failed to download PDF via proxy: ${response.status}`);
-      }
-
-      const arrayBuffer = await response.arrayBuffer();
-      return new Uint8Array(arrayBuffer);
+      console.error("Failed to download PDF:", error);
+      throw error;
     }
   };
 
@@ -298,11 +286,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
               asChild
               className="button-hover gap-2"
             >
-              <Link
-                href={`/api/pdf-proxy?url=${encodeURIComponent(url)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={url} target="_blank" rel="noopener noreferrer">
                 <Eye className="h-4 w-4" />
                 <span className="hidden sm:inline">View PDF</span>
               </Link>
@@ -336,11 +320,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
                 asChild
                 className="button-hover gap-2"
               >
-                <Link
-                  href={`/api/pdf-proxy?url=${encodeURIComponent(url)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={url} target="_blank" rel="noopener noreferrer">
                   <Eye className="h-4 w-4" />
                   <span className="hidden sm:inline">View PDF in New Tab</span>
                 </Link>
@@ -383,11 +363,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
             asChild
             className="button-hover gap-2"
           >
-            <Link
-              href={`/api/pdf-proxy?url=${encodeURIComponent(url)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href={url} target="_blank" rel="noopener noreferrer">
               <Eye className="h-4 w-4" />
               <span className="hidden sm:inline">View PDF</span>
             </Link>
