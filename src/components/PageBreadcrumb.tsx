@@ -11,6 +11,7 @@ import {
   Plane,
   FileText,
   Accessibility,
+  Briefcase,
 } from "lucide-react";
 import {
   Breadcrumb,
@@ -73,6 +74,10 @@ export function PageBreadcrumb() {
         case "cv":
           icon = <FileText className="mr-1 h-3.5 w-3.5" />;
           label = "CV";
+          break;
+        case "experience":
+          icon = <Briefcase className="mr-1 h-3.5 w-3.5" />;
+          label = "Experience";
           break;
         case "latex-intro":
           icon = <BookOpenText className="mr-1 h-3.5 w-3.5" />;

@@ -14,6 +14,44 @@ export interface Project {
   featured: boolean;
 }
 
+export interface Publication {
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  type: "conference" | "journal" | "workshop" | "thesis";
+  abstract?: string;
+  paperUrl?: string;
+  doi?: string;
+  address?: string;
+  notes?: string;
+}
+
+export interface Experience {
+  title: string;
+  organization: string;
+  location: string;
+  period: string;
+  description: string[];
+  type: "research" | "teaching" | "professional" | "leadership";
+}
+
+export interface Education {
+  institution: string;
+  location: string;
+  degree: string;
+  expectedGraduation: string;
+  gpa: string;
+  deansListSemesters: string[];
+}
+
+export interface Award {
+  title: string;
+  organization?: string;
+  year: number;
+  description?: string;
+}
+
 export const name = [
   {
     first: "Sean",
@@ -21,7 +59,26 @@ export const name = [
   },
 ];
 
-export const description = "Personal website and portfolio";
+export const description =
+  "Computer Science and Engineering student passionate about human-robot interaction and developing technologies that make robots better collaborators with humans.";
+
+export const researchInterests =
+  "I'm passionate about human-robot interaction and developing technologies that make robots better collaborators with humans. My work focuses on creating reproducible research methodologies, particularly through Wizard-of-Oz experiments, and building platforms that lower barriers for HRI researchers. I'm especially interested in how we can make robot behaviors more trustworthy and explainable, and how to design effective frameworks for studying human-robot collaboration across different contexts and applications.";
+
+export const education: Education = {
+  institution: "Bucknell University",
+  location: "Lewisburg, PA",
+  degree: "Bachelor of Science in Computer Science and Engineering",
+  expectedGraduation: "May 2026",
+  gpa: "3.86/4.0",
+  deansListSemesters: [
+    "Fall 2022",
+    "Fall 2023",
+    "Spring 2024",
+    "Fall 2024",
+    "Spring 2025",
+  ],
+};
 
 export const location = [
   {
@@ -91,7 +148,263 @@ export const articles = [
       "RoboLab provides an environment for scholarly and creative conversations.",
     source: "the Bucknell College of Engineering Report 2024",
   },
-  // Add more articles as needed
+];
+
+export const experiences: Experience[] = [
+  {
+    title: "Lead Researcher - HRIStudio Platform Development",
+    organization: "Human-Robot Interaction Research, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Jan 2023 – Present",
+    description: [
+      "Developing HRIStudio, a novel web-based platform addressing reproducibility challenges in Wizard-of-Oz HRI studies, with two first-author publications at IEEE RO-MAN 2024 and 2025",
+      "Designed modular architecture enabling cross-platform robot control without specialized programming knowledge, lowering technical barriers for HRI researchers across disciplines",
+      "Implemented comprehensive data logging and playback capabilities for experimental analysis, supporting rigorous scientific methodology in human-robot interaction studies",
+      "Conducted literature review identifying key challenges in WoZ methodology reproducibility, informing platform design decisions and feature prioritization",
+    ],
+    type: "research",
+  },
+  {
+    title:
+      "Computer Science Research Assistant - Chemical Engineering Department",
+    organization:
+      "Interdisciplinary Research Collaboration, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Aug 2023 – May 2025",
+    description: [
+      "Developed automated data collection and analysis tools for environmental research, processing real-time sensor data streams for atmospheric and water quality monitoring",
+      "Built custom Python pipelines integrating multiple data sources, enabling researchers to identify patterns in environmental data that informed conference presentations",
+      "Bridged computer science expertise with domain-specific research needs, demonstrating ability to collaborate across disciplines",
+    ],
+    type: "research",
+  },
+  {
+    title: "Founding Member and Research Participant",
+    organization: "RoboLab@Bucknell",
+    location: "Lewisburg, PA",
+    period: "Sep 2023 - Present",
+    description: [
+      "Participate in weekly research seminars exploring human-robot trust, automation bias, and ethical implications of autonomous systems",
+      "Contribute to discussions on experimental design for HRI studies, bringing technical perspective to psychological research questions",
+    ],
+    type: "research",
+  },
+  {
+    title: "Teaching Assistant - Software Engineering & Design",
+    organization: "Computer Science Department, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Jan 2024 - Present",
+    description: [
+      "Mentor 150+ students in software engineering principles, design patterns, and collaborative development practices",
+      "Developed automated testing frameworks with personalized feedback, improving learning outcomes while streamlining assessment processes",
+      "Created supplementary materials connecting theoretical concepts to real-world applications, drawing from industry experience",
+      "Hold regular office hours and code review sessions, fostering deep understanding of software architecture principles",
+    ],
+    type: "teaching",
+  },
+  {
+    title: "Computer Science Tutor",
+    organization: "Engineering Study Spot, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Aug 2024 - Dec 2024",
+    description: [
+      "Provided one-on-one tutoring across the entire computer science curriculum, from introductory programming to advanced algorithms",
+      "Developed personalized learning strategies for students with diverse backgrounds and learning styles",
+    ],
+    type: "teaching",
+  },
+  {
+    title: "Teaching Assistant - Engineering Design Experience",
+    organization: "Engineering Department, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Aug 2023 - Dec 2023",
+    description: [
+      "Guided 40+ engineering students through Arduino programming and breadboard circuit design",
+      "Supervised hands-on laboratory sessions involving microcontroller programming and sensor integration",
+      "Facilitated discussions on engineering ethics and the societal implications of embedded system design",
+    ],
+    type: "teaching",
+  },
+  {
+    title: "Teaching Assistant - Experimental Physics Laboratory",
+    organization: "Physics Department, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Aug 2023 - May 2024",
+    description: [
+      "Instructed 100+ students in experimental design, data analysis, and scientific writing",
+      "Emphasized connection between theoretical physics principles and experimental validation",
+      "Guided students through error analysis and uncertainty quantification in experimental measurements",
+    ],
+    type: "teaching",
+  },
+  {
+    title: "Software Developer",
+    organization: "Riverhead Raceway",
+    location: "Riverhead, NY",
+    period: "Oct 2020 – Present",
+    description: [
+      "Architected and deployed production systems handling 250k+ monthly users and $100,000+ in payment processing",
+      "Led digital transformation initiative, replacing legacy paper-based systems with modern web applications",
+      "Implemented CI/CD pipelines, containerization, and infrastructure as code using Docker and GitHub Actions",
+      "Developed RESTful APIs and microservices architecture for scalable, maintainable systems",
+    ],
+    type: "professional",
+  },
+  {
+    title: "IT Administrator",
+    organization: "Riverhead Raceway",
+    location: "Riverhead, NY",
+    period: "Oct 2020 - Apr 2024",
+    description: [
+      "Modernized IT infrastructure from consumer to enterprise-grade systems, improving uptime to 99.9%",
+      "Implemented comprehensive backup and disaster recovery protocols protecting critical business data",
+      "Automated system administration tasks using PowerShell and Bash scripting",
+    ],
+    type: "professional",
+  },
+  {
+    title: "Information Technology Intern",
+    organization: "Miller Place School District",
+    location: "Miller Place, NY",
+    period: "Sep 2020 - May 2022",
+    description: [
+      "Supported 1000+ students and faculty during COVID-19 transition to remote learning",
+      "Deployed and maintained educational technology platforms and troubleshooted hardware/software issues",
+    ],
+    type: "professional",
+  },
+  {
+    title: "Former President, Current Electrical/Mechanical Team Lead",
+    organization: "AIChE Chem-E-Car Competition Team, Bucknell University",
+    location: "Lewisburg, PA",
+    period: "Jan 2023 – Present",
+    description: [
+      "Led 15-member interdisciplinary team in designing autonomous chemical-powered vehicles for national competition",
+      "Introduced agile development methodologies and version control practices to hardware development process",
+      "Mentored junior members in embedded systems programming and control theory",
+    ],
+    type: "leadership",
+  },
+  {
+    title: "Co-Founder and Treasurer",
+    organization: "Bucknell Coffee Society",
+    location: "Lewisburg, PA",
+    period: "Oct 2023 – Present",
+    description: [
+      "Co-established campus organization promoting coffee education and community building",
+      "Manage $5,000+ annual budget, coordinate events, and maintain vendor relationships",
+      "Organized educational workshops on coffee science, brewing techniques, and sustainability",
+    ],
+    type: "leadership",
+  },
+];
+
+export const awards: Award[] = [
+  {
+    title: "Dean's List (5 semesters)",
+    organization: "Bucknell University",
+    year: 2024,
+    description: "Fall 2022, Fall 2023, Spring 2024, Fall 2024, Spring 2025",
+  },
+  {
+    title: "AIChE Mid-Atlantic Chem-E-Car Competition",
+    organization: "AIChE",
+    year: 2024,
+    description: "2nd Place",
+  },
+];
+
+export const conferences = [
+  {
+    title: "IEEE RO-MAN 2025",
+    location: "Eindhoven, The Netherlands",
+    date: "Aug 2025",
+    presentation:
+      "A Web-Based Wizard-of-Oz Platform for Collaborative and Reproducible Human-Robot Interaction Research",
+  },
+  {
+    title: "IEEE RO-MAN 2024",
+    location: "Pasadena, CA",
+    date: "Aug 2024",
+    presentation:
+      "HRIStudio: A Framework for Wizard-of-Oz Experiments in HRI Studies (Late Breaking Report)",
+  },
+  {
+    title: "AIChE Annual Student Conference",
+    location: "San Diego, CA",
+    date: "Oct 2024",
+    presentation:
+      "Chem-E-Car Performance Competition with autonomous hydrogen fuel cell vehicle",
+  },
+  {
+    title: "AIChE Mid-Atlantic Regional Conference",
+    location: "UMBC, Baltimore, MD",
+    date: "Apr 2024",
+    presentation: "Chem-E-Car Performance Competition - 2nd Place overall",
+  },
+];
+
+export const technicalSkills = {
+  "Programming Languages": [
+    "Python",
+    "C/C++",
+    "JavaScript/TypeScript",
+    "Java",
+    "MATLAB",
+    "SQL",
+    "Bash",
+    "LaTeX",
+  ],
+  "Robotics & HRI": [
+    "ROS/ROS2",
+    "Gazebo",
+    "NAO/Pepper SDK",
+    "WebSockets",
+    "Robot Operating System (ROS)",
+  ],
+  "Machine Learning & AI": [
+    "PyTorch",
+    "TensorFlow",
+    "scikit-learn",
+    "LightGBM",
+    "XGBoost",
+    "OpenCV",
+    "pandas",
+    "numpy",
+    "Jupyter",
+  ],
+  "Research Tools": [
+    "Git/GitHub",
+    "Docker",
+    "Statistical Analysis (R)",
+    "Experimental Design",
+    "Data Visualization",
+  ],
+  "Web & Systems": [
+    "React",
+    "Node.js",
+    "Next.js",
+    "REST APIs",
+    "PostgreSQL",
+    "Linux",
+    "Cloud Computing",
+    "Distributed Systems",
+  ],
+  "Hardware/Embedded": [
+    "Arduino",
+    "Raspberry Pi",
+    "I2C/SPI",
+    "Sensor Integration",
+    "Real-time Systems",
+  ],
+};
+
+export const relevantCoursework = [
+  "Artificial Intelligence & Data Science: Data Mining, Algorithm Design & Analysis",
+  "Systems & Software Engineering: Software Engineering & Design, Computer Systems, Operating Systems Design, Programming Language Design",
+  "Research & Analysis: Research Methods in Computer Science, Probability & Statistics, Experimental Design",
+  "Mathematics & Theory: Linear Algebra, Discrete Mathematics",
+  "Networks & Security: Computer Networks & Security",
 ];
 
 export const projects: Project[] = [
@@ -100,12 +413,82 @@ export const projects: Project[] = [
     description:
       "A modular web-based experimental platform for human-robot interaction studies using the Wizard of Oz experimental paradigm.",
     longDescription:
-      "Engineered a comprehensive platform that enables researchers to conduct human-robot interaction experiments without requiring extensive programming knowledge. The system integrates with ROS2 and provides a user-friendly interface for experiment design and execution.",
-    tags: ["ROS2", "React", "TypeScript", "C++", "Python"],
+      "Architected full-stack web application for managing HRI experiments with real-time robot control interfaces. Implemented WebSocket-based bidirectional communication protocols for low-latency robot teleoperation. Designed RESTful API leveraging Robot Operating System with JSON-defined plugins for extensibility across multiple robot platforms. Created comprehensive logging system capturing interaction data, timestamps, and experimental conditions for reproducibility. Technologies: Next.js, React, TypeScript, Node.js, WebSockets, PostgreSQL, Docker.",
+    tags: [
+      "ROS2",
+      "React",
+      "TypeScript",
+      "C++",
+      "Python",
+      "WebSockets",
+      "Next.js",
+      "PostgreSQL",
+      "Docker",
+    ],
     gitLink: "https://github.com/soconnor0919/hristudio",
     image: "/hristudio_laptop.png",
     imageAlt:
       "Screenshot of HRIStudio application showing the robot control dashboard on a laptop",
+    featured: true,
+  },
+  {
+    title: "Autonomous Vehicle Control System - Chem-E-Car Competition",
+    description:
+      "Custom microcontroller-based control system for hydrogen fuel cell regulation and reaction monitoring.",
+    longDescription:
+      "Designed embedded control system for autonomous hydrogen fuel cell-powered vehicle using finite state machine architecture. Implemented real-time sensor fusion combining spectrometer readings and power monitoring with calculated stopping algorithms. Developed PlatformIO-based build system with hardware abstraction layer for testing and simulation. Achieved precise distance control (±10cm) through chemical reaction timing at AIChE National Competition. Technologies: C++, Arduino, PlatformIO, I2C/SPI protocols, finite state machines.",
+    tags: [
+      "C++",
+      "Embedded Systems",
+      "Hardware Design",
+      "Arduino",
+      "PlatformIO",
+      "I2C/SPI",
+    ],
+    gitLink: "https://github.com/soconnor0919/national_fa24",
+    image: "/car.png",
+    imageAlt:
+      "Photo of the Chem-E-Car with custom control system hardware visible, showing the microcontroller and sensor connections",
+    featured: true,
+  },
+  {
+    title: "Formula One Performance Prediction Using Machine Learning",
+    description:
+      "Machine learning project analyzing Formula One race data to predict lap times based on weather conditions and track characteristics.",
+    longDescription:
+      "Developed ensemble machine learning models (LightGBM, XGBoost, Random Forest) to predict F1 lap times with high accuracy. Engineered features from weather data, track characteristics, and historical performance using domain knowledge. Implemented cross-validation and hyperparameter optimization for model evaluation across multiple racing circuits. Analyzed feature importance to understand factors influencing racing performance. Technologies: Python, LightGBM, XGBoost, Random Forest, pandas, scikit-learn, FastF1 API.",
+    tags: [
+      "Python",
+      "Machine Learning",
+      "Data Science",
+      "LightGBM",
+      "XGBoost",
+      "Random Forest",
+      "FastF1",
+      "Jupyter",
+    ],
+    gitLink: "https://github.com/soconnor0919/f1-race-prediction",
+    featured: true,
+  },
+  {
+    title: "Real-time Racing Statistics Platform",
+    description:
+      "A comprehensive web platform for Riverhead Raceway, a local motorsports track in New York, serving 1500+ concurrent users during race events.",
+    longDescription:
+      "Built production system serving 1500+ concurrent users and 250k+ monthly visitors. Implemented WebSocket-based real-time data streaming with automatic reconnection and state synchronization. Designed responsive UI with accessibility features meeting WCAG 2.1 AA standards. Optimized database queries reducing page load times by 60% through intelligent caching and indexing. Technologies: Next.js, TypeScript, PostgreSQL, Docker, DigitalOcean.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Auth.js",
+      "Tailwind CSS",
+      "WebSockets",
+      "Docker",
+    ],
+    websiteLink: "https://riverheadraceway.com",
+    image: "/images/racehub.png",
+    imageAlt: "Screenshot of the RaceHub Next platform",
     featured: true,
   },
   {
@@ -164,55 +547,6 @@ export const projects: Project[] = [
     image: "/latex-thumbnail.jpg",
     imageAlt:
       "Decorative thumbnail showing the project title 'Getting Started with LaTeX'",
-    featured: true,
-  },
-  {
-    title: "RaceHub Next - Motorsports Track Management Platform",
-    description:
-      "A comprehensive web platform for Riverhead Raceway, a local motorsports track in New York, serving 1500+ concurrent users during race events.",
-    longDescription:
-      "The platform combines a public website for fans to access event schedules, race results, and competitor information with a sophisticated content management system for track staff. Features include automated email newsletters reaching thousands of subscribers, real-time race data management across multiple racing divisions, championship standings tracking, and mobile-responsive design for on-site access. The system centralizes all track operations from event scheduling to competitor management, replacing a legacy system while maintaining critical functionality for one of Long Island's premier racing venues",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Drizzle ORM",
-      "Auth.js",
-      "Tailwind CSS",
-    ],
-    websiteLink: "https://riverheadraceway.com",
-    image: "/images/racehub.png",
-    imageAlt: "Screenshot of the RaceHub Next platform",
-    featured: true,
-  },
-  {
-    title: "Formula One Lap Time Prediction",
-    description:
-      "Machine learning project analyzing Formula One race data to predict lap times based on weather conditions and track characteristics.",
-    longDescription:
-      "A comprehensive data mining project that analyzes Formula One race data to predict lap times using machine learning models. Achieved significant success with varying models by incorporating weather conditions, track characteristics, and tire degradation metrics. Data sourced from FastF1 API with analysis covering multiple tracks and racing conditions.",
-    tags: [
-      "Python",
-      "Machine Learning",
-      "Data Science",
-      "LightGBM",
-      "FastF1",
-      "Jupyter",
-    ],
-    gitLink: "https://github.com/soconnor0919/f1-race-prediction",
-    featured: true,
-  },
-  {
-    title: "Chem-E-Car Control System",
-    description:
-      "Custom microcontroller-based control system for hydrogen fuel cell regulation and reaction monitoring.",
-    longDescription:
-      "Pioneered the team's first custom hardware solution, implementing a finite state machine architecture that integrates spectrometer readings, relay control, and LED feedback for real-time reaction monitoring.",
-    tags: ["C++", "Embedded Systems", "Hardware Design"],
-    gitLink: "https://github.com/soconnor0919/national_fa24",
-    image: "/car.png",
-    imageAlt:
-      "Photo of the Chem-E-Car with custom control system hardware visible, showing the microcontroller and sensor connections",
     featured: true,
   },
 ];

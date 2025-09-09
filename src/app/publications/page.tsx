@@ -114,27 +114,29 @@ export default function PublicationsPage() {
             >
               <Card>
                 <CardHeader className="pb-2">
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                    <CardTitle>{pub.title}</CardTitle>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                    <CardTitle className="break-words leading-tight">
+                      {pub.title}
+                    </CardTitle>
                     {pub.paperUrl && (
                       <Link
                         href={pub.paperUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary sm:flex-shrink-0"
+                        className="flex-shrink-0 text-muted-foreground hover:text-primary"
                       >
                         <ArrowUpRight className="h-5 w-5" />
                       </Link>
                     )}
                   </div>
-                  <CardDescription className="text-base">
+                  <CardDescription className="break-words text-base leading-relaxed">
                     {pub.authors.join(", ")}
                   </CardDescription>
-                  <CardDescription className="text-sm">
+                  <CardDescription className="break-words text-sm">
                     {pub.venue} ({pub.year})
                   </CardDescription>
                   {pub.address && (
-                    <CardDescription className="text-sm text-muted-foreground">
+                    <CardDescription className="break-words text-sm text-muted-foreground">
                       {pub.address}
                     </CardDescription>
                   )}
@@ -148,7 +150,7 @@ export default function PublicationsPage() {
                 </CardHeader>
                 <CardContent className="pt-0">
                   {pub.abstract && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="break-words text-sm leading-relaxed text-muted-foreground">
                       {pub.abstract}
                     </p>
                   )}

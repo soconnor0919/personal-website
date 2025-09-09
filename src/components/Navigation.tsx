@@ -2,6 +2,7 @@
 
 import {
   BookOpenText,
+  Briefcase,
   FileText,
   FolderGit2,
   Home,
@@ -19,6 +20,7 @@ const navItems = [
   { href: "/articles", label: "Articles", icon: Newspaper },
   { href: "/projects", label: "Projects", icon: FolderGit2 },
   { href: "/publications", label: "Publications", icon: BookOpenText },
+  { href: "/experience", label: "Experience", icon: Briefcase },
   { href: "/travel", label: "Travel", icon: Plane },
   { href: "/cv", label: "CV", icon: FileText },
 ];

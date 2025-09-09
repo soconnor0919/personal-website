@@ -9,6 +9,9 @@ import {
   Mail,
   ExternalLink,
   BookOpen,
+  School,
+  Award,
+  Calendar,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -19,8 +22,23 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
+import { Badge } from "~/components/ui/badge";
+import { researchInterests, education, experiences, awards } from "~/lib/data";
 
 export default function HomePage() {
+  const researchExperience = experiences.filter(
+    (exp) => exp.type === "research",
+  );
+  const teachingExperience = experiences.filter(
+    (exp) => exp.type === "teaching",
+  );
+  const professionalExperience = experiences.filter(
+    (exp) => exp.type === "professional",
+  );
+  const leadershipExperience = experiences.filter(
+    (exp) => exp.type === "leadership",
+  );
+
   return (
     <div className="space-y-12">
       {/* Hero Section */}
@@ -30,8 +48,9 @@ export default function HomePage() {
             Sean O&apos;Connor
           </h1>
           <p className="animate-fade-in-up-delay-2 text-xl text-muted-foreground">
-            Computer Science and Engineering student with experience in software
-            development, robotics research, and technical leadership.
+            Computer Science and Engineering student passionate about
+            human-robot interaction and developing technologies that make robots
+            better collaborators with humans.
           </p>
           <div className="animate-fade-in-up-delay-3 flex flex-wrap gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
@@ -40,6 +59,16 @@ export default function HomePage() {
                 sean@soconnor.dev
               </a>
             </div>
+            <div className="flex items-center gap-1">
+              <Mail className="h-4 w-4" />
+              <a
+                href="mailto:sso005@bucknell.edu"
+                className="hover:text-primary"
+              >
+                sso005@bucknell.edu
+              </a>
+            </div>
+
             <div className="flex items-center gap-1">
               <GraduationCap className="h-4 w-4" />
               Bucknell University
@@ -66,320 +95,330 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Current Focus */}
+      {/* Research Interests */}
       <section className="animate-fade-in-up space-y-6">
-        <h2 className="text-2xl font-bold">Current Focus</h2>
-        <div className="grid-equal-height grid gap-6 md:grid-cols-2">
-          <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <FlaskConical className="h-5 w-5" />
+        <h2 className="text-2xl font-bold">Research Interests</h2>
+        <div className="animate-fade-in-up-delay-1">
+          <Card className="card-hover">
+            <CardContent className="pt-6">
+              <p className="leading-relaxed text-muted-foreground">
+                {researchInterests}
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="animate-fade-in-up space-y-6">
+        <h2 className="text-2xl font-bold">Education</h2>
+        <div className="animate-fade-in-up-delay-1">
+          <Card className="card-hover">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <div>
                   <CardTitle className="mb-1">
-                    Human-Robot Interaction Research
+                    {education.institution}
                   </CardTitle>
+                  <CardDescription>{education.location}</CardDescription>
                 </div>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Developing a web-based platform for HRI experiments that
-                  addresses reproducibility challenges in Wizard-of-Oz studies.
-                  Published at IEEE RO-MAN 2024 with second publication
-                  forthcoming.
+                <School className="h-5 w-5 text-muted-foreground" />
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3 pt-0">
+              <div>
+                <p className="font-medium">{education.degree}</p>
+                <p className="text-sm text-muted-foreground">
+                  Expected {education.expectedGraduation}
                 </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="h-5 w-5" />
-                  <CardTitle className="mb-1">Academic Excellence</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Bachelor of Science in Computer Science and Engineering at
-                  Bucknell University. 3.86 Engineering GPA, Dean&apos;s List
-                  multiple semesters. Expected graduation: May 2026.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary">
+                  Engineering GPA: {education.gpa}
+                </Badge>
+                <Badge variant="outline">
+                  Dean's List: {education.deansListSemesters.length} semesters
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Experience Highlights */}
+      {/* Research Experience */}
       <section className="animate-fade-in-up space-y-6">
-        <h2 className="text-2xl font-bold">Experience Highlights</h2>
+        <h2 className="text-2xl font-bold">Research Experience</h2>
         <div className="space-y-6">
-          <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle className="mb-1">
-                      Software Developer - Riverhead Raceway
-                    </CardTitle>
-                    <CardDescription>Oct 2020 – Present</CardDescription>
+          {researchExperience.map((exp, index) => (
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${index + 1}`}
+            >
+              <Card className="card-hover">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="mb-1">{exp.title}</CardTitle>
+                      <CardDescription>{exp.organization}</CardDescription>
+                      <CardDescription className="text-xs">
+                        {exp.location} • {exp.period}
+                      </CardDescription>
+                    </div>
+                    <FlaskConical className="h-5 w-5 text-muted-foreground" />
                   </div>
-                  <Building className="h-5 w-5 text-muted-foreground" />
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground">
-                  Transformed organizational culture by building trust in
-                  data-driven decision making. Revolutionized fan engagement
-                  through a real-time statistics platform serving 1500+
-                  concurrent users. Modernized entire technical infrastructure
-                  through containerization and automated systems.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle className="mb-1">
-                      Computer Science Researcher - Bucknell University
-                    </CardTitle>
-                    <CardDescription>Jan 2023 – Present</CardDescription>
-                  </div>
-                  <FlaskConical className="h-5 w-5 text-muted-foreground" />
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground">
-                  Led research and authored first-author paper presented at
-                  international conference. Built framework that enables
-                  researchers to conduct experiments across different robot
-                  platforms without specialized programming knowledge.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover">
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle className="mb-1">
-                      Teaching Assistant - Computer Science
-                    </CardTitle>
-                    <CardDescription>Jan 2024 – Present</CardDescription>
-                  </div>
-                  <Users className="h-5 w-5 text-muted-foreground" />
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground">
-                  Mentored 150+ students in software engineering principles,
-                  connecting theoretical concepts to real-world applications.
-                  Developed learning environments that embrace productive
-                  failure.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {exp.description.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-2">
+                        <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-muted-foreground" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Technical Skills */}
+      {/* Professional Experience Highlights */}
       <section className="animate-fade-in-up space-y-6">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Code className="h-6 w-6" />
-          Technical Skills
+        <h2 className="text-2xl font-bold">
+          Professional Experience Highlights
         </h2>
+        <div className="space-y-6">
+          {professionalExperience.slice(0, 2).map((exp, index) => (
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${index + 1}`}
+            >
+              <Card className="card-hover">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle className="mb-1">{exp.title}</CardTitle>
+                      <CardDescription>{exp.organization}</CardDescription>
+                      <CardDescription className="text-xs">
+                        {exp.location} • {exp.period}
+                      </CardDescription>
+                    </div>
+                    <Building className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {exp.description.slice(0, 3).map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-2">
+                        <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-muted-foreground" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Teaching Experience */}
+      <section className="animate-fade-in-up space-y-6">
+        <h2 className="text-2xl font-bold">Teaching Experience</h2>
         <div className="grid-equal-height grid gap-6 md:grid-cols-2">
-          <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">Languages & Frameworks</CardTitle>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Java, C/C++, Python, JavaScript/TypeScript, React, Next.js,
-                  PHP, SQL
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">Backend & DevOps</CardTitle>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  REST APIs, MySQL, PostgreSQL, Docker, Apache Web Server,
-                  NGINX, ROS2
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">Cloud & Infrastructure</CardTitle>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  AWS, GCP, Azure, Backblaze, Linux (RHEL/Debian), CI/CD
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-4">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">Development Tools</CardTitle>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Git, JetBrains Suite, VS Code, Cursor, Linux CLI
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {teachingExperience.slice(0, 4).map((exp, index) => (
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${index + 1}`}
+            >
+              <Card className="card-hover card-full-height">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <CardTitle className="mb-1 break-words text-base leading-tight">
+                        {exp.title}
+                      </CardTitle>
+                      <CardDescription className="break-words text-xs">
+                        {exp.organization}
+                      </CardDescription>
+                      <CardDescription className="text-xs">
+                        {exp.period}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="card-content-stretch pt-0">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {exp.description[0]}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Leadership & Activities */}
       <section className="animate-fade-in-up space-y-6">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Users className="h-6 w-6" />
-          Leadership & Activities
-        </h2>
+        <h2 className="text-2xl font-bold">Leadership & Activities</h2>
         <div className="grid-equal-height grid gap-6 md:grid-cols-2">
-          <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">
-                  AIChE Chem-E-Car Competition Team
-                </CardTitle>
-                <CardDescription>
-                  Former President, Electrical and Mechanical Team Lead
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Pioneered team&apos;s first custom hardware solution by
-                  designing and fabricating a microcontroller-based control
-                  system. Improved team dynamics by introducing agile
-                  development principles and structured communication protocols.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {leadershipExperience.map((exp, index) => (
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${index + 1}`}
+            >
+              <Card className="card-hover card-full-height">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-5 w-5 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <CardTitle className="mb-1 break-words text-base leading-tight">
+                        {exp.title}
+                      </CardTitle>
+                      <CardDescription className="break-words text-xs">
+                        {exp.organization}
+                      </CardDescription>
+                      <CardDescription className="text-xs">
+                        {exp.period}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="card-content-stretch pt-0">
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    {exp.description.slice(0, 2).map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-2">
+                        <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-muted-foreground" />
+                        <span className="break-words">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">Bucknell Coffee Society</CardTitle>
-                <CardDescription>Treasurer</CardDescription>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Co-established and launched a new campus organization,
-                  managing financial operations and coordinating event
-                  logistics.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover card-full-height">
-              <CardHeader className="pb-3">
-                <CardTitle className="mb-1">RoboLab@Bucknell</CardTitle>
-                <CardDescription>Founding Member</CardDescription>
-              </CardHeader>
-              <CardContent className="card-content-stretch pt-0">
-                <p className="text-muted-foreground">
-                  Led and participated in group discussions in a new lab
-                  bridging computer science and psychology perspectives on
-                  human-robot interaction, working with the complexities of
-                  human-robot trust, job replacement, and autonomy.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+      {/* Recent Awards & Recognition */}
+      <section className="animate-fade-in-up space-y-6">
+        <h2 className="text-2xl font-bold">Recent Awards & Recognition</h2>
+        <div className="grid-equal-height grid gap-4 md:grid-cols-2">
+          {awards.map((award, index) => (
+            <div
+              key={index}
+              className={`animate-fade-in-up-delay-${index + 1}`}
+            >
+              <Card className="card-hover card-full-height">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-2">
+                    <Award className="h-5 w-5 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <CardTitle className="mb-1 break-words text-base leading-tight">
+                        {award.title}
+                      </CardTitle>
+                      {award.organization && (
+                        <CardDescription className="break-words">
+                          {award.organization} • {award.year}
+                        </CardDescription>
+                      )}
+                    </div>
+                  </div>
+                </CardHeader>
+                {award.description && (
+                  <CardContent className="card-content-stretch pt-0">
+                    <p className="break-words text-sm leading-relaxed text-muted-foreground">
+                      {award.description}
+                    </p>
+                  </CardContent>
+                )}
+              </Card>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Quick Links */}
       <section className="animate-fade-in-up space-y-6">
         <h2 className="text-2xl font-bold">Explore More</h2>
-        <div className="grid-equal-height grid gap-4 md:grid-cols-3">
+        <div className="grid-equal-height grid gap-6 md:grid-cols-3">
           <div className="animate-fade-in-up-delay-1">
-            <Card className="card-hover card-full-height group cursor-pointer transition-colors hover:bg-accent">
-              <Link href="/publications" className="block h-full p-4">
-                <CardContent className="card-content-stretch p-0">
-                  <div className="flex h-full items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <FlaskConical className="h-6 w-6 text-primary" />
-                      <div>
-                        <div className="font-medium">Research Publications</div>
-                        <div className="text-sm text-muted-foreground">
-                          IEEE conferences and ongoing research
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
-                  </div>
-                </CardContent>
-              </Link>
+            <Card className="card-hover card-full-height">
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-2">
+                  <Code className="h-5 w-5 flex-shrink-0" />
+                  <CardTitle className="mb-1 break-words">Projects</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="card-content-stretch pt-0">
+                <div className="flex h-full flex-col">
+                  <p className="break-words leading-relaxed text-muted-foreground">
+                    Explore my featured projects including HRIStudio, machine
+                    learning research, and web applications.
+                  </p>
+                  <Button variant="outline" asChild className="mt-auto w-full">
+                    <Link href="/projects">
+                      View Projects
+                      <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           </div>
 
           <div className="animate-fade-in-up-delay-2">
-            <Card className="card-hover card-full-height group cursor-pointer transition-colors hover:bg-accent">
-              <Link href="/projects" className="block h-full p-4">
-                <CardContent className="card-content-stretch p-0">
-                  <div className="flex h-full items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Code className="h-6 w-6 text-primary" />
-                      <div>
-                        <div className="font-medium">Projects</div>
-                        <div className="text-sm text-muted-foreground">
-                          Software development and research work
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
-                  </div>
-                </CardContent>
-              </Link>
+            <Card className="card-hover card-full-height">
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 flex-shrink-0" />
+                  <CardTitle className="mb-1 break-words">
+                    Publications
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="card-content-stretch pt-0">
+                <div className="flex h-full flex-col">
+                  <p className="break-words leading-relaxed text-muted-foreground">
+                    Read my peer-reviewed publications in human-robot
+                    interaction research.
+                  </p>
+                  <Button variant="outline" asChild className="mt-auto w-full">
+                    <Link href="/publications">
+                      View Publications
+                      <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           </div>
 
           <div className="animate-fade-in-up-delay-3">
-            <Card className="card-hover card-full-height group cursor-pointer transition-colors hover:bg-accent">
-              <Link href="/cv" className="block h-full p-4">
-                <CardContent className="card-content-stretch p-0">
-                  <div className="flex h-full items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <GraduationCap className="h-6 w-6 text-primary" />
-                      <div>
-                        <div className="font-medium">Curriculum Vitae</div>
-                        <div className="text-sm text-muted-foreground">
-                          Complete academic and professional record
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
-                  </div>
-                </CardContent>
-              </Link>
+            <Card className="card-hover card-full-height">
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-2">
+                  <ExternalLink className="h-5 w-5 flex-shrink-0" />
+                  <CardTitle className="mb-1 break-words">
+                    Complete CV
+                  </CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="card-content-stretch pt-0">
+                <div className="flex h-full flex-col">
+                  <p className="break-words leading-relaxed text-muted-foreground">
+                    View my complete academic and professional curriculum vitae.
+                  </p>
+                  <Button variant="outline" asChild className="mt-auto w-full">
+                    <Link href="/cv">
+                      View CV
+                      <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           </div>
         </div>

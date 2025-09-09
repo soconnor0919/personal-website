@@ -79,23 +79,27 @@ export default function ProjectsPage() {
                     <div className="card-content-stretch flex flex-1 flex-col p-6">
                       <div className="flex-1 space-y-4">
                         <div>
-                          <CardTitle className="text-xl">
+                          <CardTitle className="break-words text-xl leading-tight">
                             {project.title}
                           </CardTitle>
-                          <CardDescription className="mt-2 text-base">
+                          <CardDescription className="mt-2 break-words text-base leading-relaxed">
                             {project.description}
                           </CardDescription>
                         </div>
 
-                        <p className="text-muted-foreground">
+                        <p className="break-words leading-relaxed text-muted-foreground">
                           {project.longDescription}
                         </p>
                       </div>
 
-                      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
-                            <Badge key={tag} variant="secondary">
+                            <Badge
+                              key={tag}
+                              variant="secondary"
+                              className="break-words"
+                            >
                               {tag}
                             </Badge>
                           ))}
@@ -219,34 +223,32 @@ export default function ProjectsPage() {
                     )}
 
                     <div className="flex flex-1 flex-col p-6">
-                      <div className="flex-1">
+                      <div className="flex flex-1 flex-col">
                         <CardHeader className="p-0">
                           <div>
-                            <CardTitle className="text-lg">
+                            <CardTitle className="break-words text-lg leading-tight">
                               {project.title}
                             </CardTitle>
                           </div>
-                          <CardDescription className="mt-2">
+                          <CardDescription className="mt-2 break-words leading-relaxed">
                             {project.description}
                           </CardDescription>
                         </CardHeader>
-                      </div>
 
-                      <CardContent className="p-0 pt-4">
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <CardContent className="flex flex-1 flex-col p-0 pt-4">
                           <div className="flex flex-wrap gap-2">
                             {project.tags.map((tag) => (
                               <Badge
                                 key={tag}
                                 variant="secondary"
-                                className="text-xs"
+                                className="break-words text-xs"
                               >
                                 {tag}
                               </Badge>
                             ))}
                           </div>
 
-                          <div className="flex gap-2">
+                          <div className="mt-auto flex gap-2 pt-4">
                             {project.link && project.link.startsWith("/") && (
                               <Button
                                 variant="outline"
@@ -314,8 +316,8 @@ export default function ProjectsPage() {
                                 </Button>
                               )}
                           </div>
-                        </div>
-                      </CardContent>
+                        </CardContent>
+                      </div>
                     </div>
                   </Card>
                 </div>
