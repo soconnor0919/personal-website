@@ -31,8 +31,6 @@
     "@react-pdf/renderer": "^4.3.0",
     "@t3-oss/env-nextjs": "^0.11.1",
     "@types/pdfjs-dist": "^2.10.378",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cn": "^0.1.1",

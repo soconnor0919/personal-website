@@ -1,6 +1,7 @@
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import Script from "next/script";
 import type { Metadata } from "next";
+import { env } from "~/env";
 import { Footer } from "~/components/Footer";
 import { Navigation } from "~/components/Navigation";
 import { Sidebar } from "~/components/Sidebar";
@@ -23,8 +24,17 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
         className="flex min-h-screen flex-col bg-background font-sans text-foreground"
         suppressHydrationWarning
       >
-        <Analytics />
-        <SpeedInsights />
+        {env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+          <Script
+            defer
+            src={
+              env.NEXT_PUBLIC_UMAMI_SCRIPT_URL ||
+              "https://analytics.umami.is/script.js"
+            }
+            data-website-id={env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          />
+        )}
+
         <Navigation />
         <div className="flex flex-1">
           {/* Desktop sidebar - extends to edge */}
