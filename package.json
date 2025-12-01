@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun run update-pdfs && next build",
+    "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",

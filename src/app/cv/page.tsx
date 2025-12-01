@@ -521,10 +521,7 @@ export default function CVPage() {
         </Tabs>
       </div>
 
-      {/* Last Updated */}
-      <div className="animate-fade-in-up-delay-4 text-center text-xs text-muted-foreground">
-        Last updated: {new Date().toLocaleDateString()}
-      </div>
+
     </div>
   );
 }

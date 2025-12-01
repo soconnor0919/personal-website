@@ -12,6 +12,7 @@ const nextConfig = {
       bodySizeLimit: "2mb",
     },
   },
+  turbopack: {},
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     config.resolve.alias.encoding = false;
@@ -20,6 +21,14 @@ const nextConfig = {
   // Add this section
   async rewrites() {
     return [
+      {
+        source: "/publications/cv.pdf",
+        destination: "https://git.soconnor.dev/soconnor/resume-cv/releases/download/latest/cv.pdf",
+      },
+      {
+        source: "/publications/resume.pdf",
+        destination: "https://git.soconnor.dev/soconnor/resume-cv/releases/download/latest/resume.pdf",
+      },
       {
         source: "/content/:path*",
         destination: "/api/content/:path*",
