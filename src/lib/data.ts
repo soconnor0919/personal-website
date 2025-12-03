@@ -409,6 +409,27 @@ export const relevantCoursework = [
 
 export const projects: Project[] = [
   {
+    title: "Nand2Tetris Implementation (ECEG 431)",
+    description:
+      "A complete implementation of a general-purpose computer system, from NAND gates to a high-level object-oriented compiler.",
+    longDescription:
+      "Built a complete computer system from the ground up as part of the Nand2Tetris course (ECEG 431). Starting with a single NAND gate, I designed and simulated all hardware components including logic gates, ALU, RAM, and the CPU. On the software side, I developed an assembler, a virtual machine translator, and a compiler for a high-level object-oriented language, culminating in a fully functional Operating System. This project provided a deep, demystified understanding of how computers actually work under the hood.",
+    tags: [
+      "Computer Architecture",
+      "Hardware Simulation",
+      "Compiler Design",
+      "Python",
+      "Assembly",
+      "Virtual Machine",
+      "Operating Systems",
+    ],
+    link: "/blog/eceg431",
+    gitLink: "https://github.com/soconnor0919/eceg431",
+    image: "/images/nand2tetris.png",
+    imageAlt: "Diagram of the Hack Computer architecture",
+    featured: true,
+  },
+  {
     title: "HRIStudio",
     description:
       "A modular web-based experimental platform for human-robot interaction studies using the Wizard of Oz experimental paradigm.",
@@ -533,7 +554,7 @@ export const projects: Project[] = [
     longDescription:
       "This page details the importance of web accessibility and the specific features implemented on this website to ensure an inclusive experience for all users, including those with disabilities. It documents the accessibility practices, standards compliance, and testing methodologies used.",
     tags: ["Accessibility", "WCAG", "Inclusive Design", "Web Standards"],
-    link: "/projects/accessibility",
+    link: "/blog/accessibility",
     featured: true,
   },
   {
@@ -543,7 +564,7 @@ export const projects: Project[] = [
     longDescription:
       "Created an accessible tutorial video explaining LaTeX, a typesetting system commonly used for technical and scientific documents in academia. The video covers how to set up Overleaf as an editor, explains key LaTeX tags and formatting, demonstrates both inline and display math equations, and provides a complete walkthrough of creating your first document with proper formatting.",
     tags: ["LaTeX", "Tutorial", "Accessibility", "Education", "Overleaf"],
-    link: "/projects/latex-intro",
+    link: "/blog/latex-intro",
     image: "/latex-thumbnail.jpg",
     imageAlt:
       "Decorative thumbnail showing the project title 'Getting Started with LaTeX'",

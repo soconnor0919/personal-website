@@ -1,3 +1,5 @@
+import createMDX from "@next/mdx";
+
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
  * for Docker builds.
@@ -6,6 +8,7 @@ await import("./src/env.js");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
   experimental: {
     serverActions: {
@@ -23,11 +26,13 @@ const nextConfig = {
     return [
       {
         source: "/publications/cv.pdf",
-        destination: "https://git.soconnor.dev/soconnor/resume-cv/releases/download/latest/cv.pdf",
+        destination:
+          "https://git.soconnor.dev/soconnor/resume-cv/releases/download/latest/cv.pdf",
       },
       {
         source: "/publications/resume.pdf",
-        destination: "https://git.soconnor.dev/soconnor/resume-cv/releases/download/latest/resume.pdf",
+        destination:
+          "https://git.soconnor.dev/soconnor/resume-cv/releases/download/latest/resume.pdf",
       },
       {
         source: "/content/:path*",
@@ -49,4 +54,8 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+});
+
+export default withMDX(nextConfig);

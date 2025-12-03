@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Book,
   BookOpenText,
   Briefcase,
   FileText,
@@ -17,6 +18,7 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { href: "/", label: "About", icon: Home },
+  { href: "/blog", label: "Blog", icon: Book },
   { href: "/articles", label: "Articles", icon: Newspaper },
   { href: "/projects", label: "Projects", icon: FolderGit2 },
   { href: "/publications", label: "Publications", icon: BookOpenText },
@@ -32,9 +34,8 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-[51] border-b bg-card shadow-sm ${
-          isOpen ? "border-transparent" : "border-border"
-        }`}
+        className={`sticky top-0 z-[51] border-b bg-card shadow-sm ${isOpen ? "border-transparent" : "border-border"
+          }`}
       >
         <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
@@ -80,16 +81,14 @@ export function Navigation() {
         </div>
       </nav>
       <div
-        className={`fixed inset-0 z-40 bg-background/80 backdrop-blur-sm transition-opacity duration-200 ${
-          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-40 bg-background/80 backdrop-blur-sm transition-opacity duration-200 ${isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
       <div
-        className={`fixed left-0 right-0 top-16 z-50 overflow-hidden border-b border-border bg-card shadow-sm transition-all duration-300 lg:hidden ${
-          isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`fixed left-0 right-0 top-16 z-50 overflow-hidden border-b border-border bg-card shadow-sm transition-all duration-300 lg:hidden ${isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <div className="flex flex-col space-y-2 p-4">
           {navItems.map((item) => {
@@ -98,9 +97,8 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center text-sm font-medium transition-colors ${
-                  isActive ? "text-primary" : "text-muted-foreground"
-                } gap-2 hover:text-primary`}
+                className={`flex items-center text-sm font-medium transition-colors ${isActive ? "text-primary" : "text-muted-foreground"
+                  } gap-2 hover:text-primary`}
                 onClick={() => setIsOpen(false)}
               >
                 <item.icon size={16} />

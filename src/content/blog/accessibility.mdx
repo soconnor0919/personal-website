@@ -1,0 +1,55 @@
+import { Button } from "~/components/ui/button";
+import { Eye } from "lucide-react";
+import Link from "next/link";
+
+export const metadata = {
+  title: "Accessibility Features",
+  publishedAt: "2024-11-01",
+  summary: "A deep dive into the process of building an inclusive web experience, from semantic HTML to custom accessible components.",
+  tags: ["Accessibility", "WCAG", "Inclusive Design", "Web Standards"],
+  image: "/images/accessibility.png"
+};
+
+# Building an Inclusive Web Experience
+
+When I set out to build this portfolio, I knew that accessibility couldn't just be an afterthought. It had to be a core principle of the design and development process. As a developer, I believe that ensuring universal access to content isn't just a legal or ethical requirement—it's a demonstration of professional competence and a commitment to inclusive design thinking.
+
+## Why It Matters
+
+For me, the motivation was twofold. Professionally, I wanted to demonstrate that I can build high-quality, robust applications that serve everyone. Attention to detail in accessibility often translates to better code quality overall. Academically, I see it as a responsibility to support educational equity. If I'm sharing knowledge or projects, that information should be accessible to all students and learners, regardless of how they access the web.
+
+## The Implementation Process
+
+### Starting with the Basics
+The journey began with the fundamentals: **Semantic HTML**. I ensured that the site uses a logical heading hierarchy (`h1` through `h6`) so that screen reader users can easily navigate the document structure. I also made sure to use appropriate semantic elements like `<article>`, `<nav>`, and `<main>` instead of just wrapping everything in `div`s.
+
+### Visual Accessibility
+Color and contrast were next on my list. I carefully selected a color palette that meets **WCAG AA standards** for contrast, ensuring that text is readable for users with visual impairments. I also implemented a system-aware dark mode, which isn't just a cool feature—it's essential for users with light sensitivity.
+
+I also built a strict **Image Alt System**. Every image on the site is required to have descriptive alt text. This ensures that users who rely on screen readers don't miss out on the context that images provide.
+
+### Interactive Elements
+One of the biggest challenges was ensuring **Keyboard Navigation**. I tested every interactive element—buttons, links, form inputs—to make sure they could be reached and operated using only a keyboard. This involved managing focus states and ensuring that the tab order was logical.
+
+## Overcoming Technical Challenges
+
+### The Hydration Problem
+Working with Next.js presented a unique challenge: **Hydration**. The split between server-side rendering (SSR) and client-side interactivity can sometimes cause issues with accessibility tools if the HTML structure changes during hydration. To solve this, I created client-side wrapper components for complex interactive features. This allowed me to keep the performance benefits of SSR while ensuring a stable, accessible experience on the client.
+
+### Video Accessibility
+I didn't want to just embed a standard video player. I built a custom **AccessibleVideo** component that includes closed captions with a toggle, a full transcript, and keyboard-accessible controls. This ensures that my video content is accessible to users who are deaf or hard of hearing, as well as those who prefer reading over watching.
+
+## Ongoing Commitment
+
+Accessibility is a journey, not a destination. I treat this site as a living project that evolves with user feedback and updated standards. I regularly test with screen readers and validate my color contrast to ensure I'm maintaining a high standard.
+
+Looking ahead, I plan to implement user preference settings for things like reduced motion and high contrast, as well as exploring voice navigation support. It's an exciting field, and I'm committed to learning and improving every day.
+
+<div className="pt-4">
+  <Button asChild variant="outline">
+    <Link href="/projects">
+      <Eye className="mr-2 h-4 w-4" />
+      View All Projects
+    </Link>
+  </Button>
+</div>

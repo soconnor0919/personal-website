@@ -1,0 +1,70 @@
+export const metadata = {
+  title: "Nand2Tetris Implementation (ECEG 431)",
+  publishedAt: "2025-12-01",
+  summary: "E-Portfolio and reflection for the Nand2Tetris course, covering the journey from NAND gates to a high-level compiler.",
+  tags: ["Computer Architecture", "Hardware Simulation", "Compiler Design", "Python", "Assembly", "Virtual Machine", "Operating Systems"],
+  image: "/images/nand2tetris.png"
+};
+
+# ECEG 431 E-Portfolio
+
+Sean O'Connor '26 • Fall 2025
+
+## Assignment Prompt
+
+An end-of-course reflection activity that is both
+
+1. intended to prepare for the after-action review during the final exam period, and
+2. a chance for you to reflect on what happened in the course.
+
+Before starting this, take some time to read back through your reflections on gradescope. Think through your own journey through the course. You must include specific quotes from your earlier reflections in your answers to these prompts, as well as artifacts such as code or screenshots of your programs. Remember to also look at your reading reflections as well as project reflections and also any responses I may have given back to you.
+
+## The Call
+
+The story begins ... where it begins. A downtrodden situation? A rough situation? But something prompts you to seek a change of status.
+
+> Aladdin goes about his life as usual, but then saves someone---and learns they are royalty! He then decides to set out to make something of his self (and maybe win a princess's heart).
+
+**What made you originally interested in this class? Or maybe, after hearing about things on the first week, what was it that really got you excited?**
+
+I was initially drawn to this class because of the promise of understanding the "black box" of the computer. As I noted in my first reading reflection, *"The idea of building a complete product from fundamentals was exciting."* I had some background in discrete math, but seeing how a simple NAND gate could eventually lead to a general-purpose computer was the hook that got me interested.
+
+## Getting out in the world and Initial successes
+
+You set out to better yourself. And you're able to make some gains in this quest for success! Or at least, it has the appearance of making inroads...
+
+> Aha! Aladdin finds a magic lamp! With a wish he can transform himself to be Prince Ali Ababwa, granting him access to the royal court!
+
+**As you started to get out into the course, things were generally going well. You were really making some progress. What were those initial successes? What made you feel good and helped you really start to see things connecting? In those early days of the course, where was it you were thinking you'd end up?**
+
+In the beginning, I felt very confident. My background in CSCI 306 and discrete math gave me a strong head start. As I wrote after the first project, *"Project 1 (logic gates) was easy due to prior knowledge in discrete math and computer systems."* The early hardware projects—building the ALU and RAM—felt like a review, and I was cruising. I thought the entire course would be this smooth, just applying known concepts to a new context.
+
+## Central Crisis
+
+The "oh crap" moment. A dark figure from the past comes to haunt you; a love is lost; the facade of success begins to crumble. The victories you've gained seem to slip away, and crushed, you are at your low point.
+
+> Aladdin decides to continue his ruse as Prince Ali so that the marriage to the princess can be lawful. But the Royal Vizier Jafar exposes Aladdin's true identity.
+
+**For the course, this could be lots of things. Work piling up? Concepts getting hard? Confusion setting in? Difficulty asking for help? Reliance on LLMs piling on? Not coming to class? Or maybe something entirely external to the course. What was it for you? There seems to be a common theme that happens to all of us in this course---we set out strong, start doing well with big dreams, but we typically all go through something and our original plans for the course start to crumble. What were those moments for you?**
+
+The reality check hit hard with Project 5: The CPU. It wasn't just about connecting wires anymore; it was about control logic and timing. I remember writing, *"The problem was taking the instruction and turning it into something the ALU could handle... I just repeatedly hit my head against a wall."* I struggled significantly with the instruction decoding and debugging the hardware simulator. It was the first time I couldn't just "figure it out" quickly. I had to step back, draw diagrams, and really wrestle with the physical reality of the signals.
+
+## Independence and Ordeal
+
+You find yourself back where you started. Or are you? You still have your traits, skills, abilities, knowledge and can overcome the problem! Don't dwell in the low point! The character really begins to realize their own independence and prove to the haters they can reach the goal. The final confrontation takes place!
+
+> Aladdin is back on the streets, the magic lamp is gone, and Jafar seems poised to rule the kingdom. But Aladdin knows a thing or two. He sneaks back to the castle, uses his wits, and is able to trick Jafar and imprison him.
+
+**You might still be more in the midst of this part of the ordeal. Or maybe you are just now realizing your independence and seeing how much you've gained and have been able to overcome. What worked for you? This could also be a story of you struggling through the crisis, moving on and really started to piece together some big questions you had about how computing works. How did your story and journey through this course go? What were your big connective moments, or the big challenge you worked through?**
+
+I found my independence when we switched to the software side. Leveraging my Python skills, I adopted a modular design philosophy that saved me. For the Snake game (Project 9), I noted that *"The modular design approach I'd been using in Projects 6-8 carried over well - separate classes for Point, Food, Snake, and SnakeGame made the code clean and easy to debug."* This approach of breaking down complex problems into manageable classes (Tokenizer, CompilationEngine, SymbolTable) became my superpower, allowing me to tackle the Assembler and Compiler with confidence.
+
+## Final Union, Completion, and Fulfillment
+
+You made it! And for real this time. It's the happily-ever-after moment where the hero recognizes they've reached or exceeded their goals. And it sticks. The reward is yours to claim.
+
+> The sultan is grateful to Aladdin for saving their country and changes the marriage rules to not require marrying royalty. Aladdin is welcomed into the royal family and Aladdin and Jasmine live happily ever after.
+
+**For you in the course, maybe you're not there. Maybe you still have some battles to fight. However, the course itself is done. Think through though, and really see what you've picked up and learn. What parts of "computing" now make more sense? What have you learned about yourself? Do you feel more knowledgeable or prepared for some things? It's your story! Tell it!**
+
+Standing at the end, looking back, it finally clicks. I've built every layer of the abstraction stack. As I reflected after the final project, *"The journey from NAND gates to compiling object-oriented programs is pretty wild when you think about it."* I now understand how high-level code translates to VM instructions, then to assembly, and finally to binary signals rushing through gates I designed. The "magic" is gone, replaced by a deep, satisfying understanding of the machine.

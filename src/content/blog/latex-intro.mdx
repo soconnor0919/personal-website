@@ -1,0 +1,84 @@
+import { Button } from "~/components/ui/button";
+import { AccessibleVideo } from "~/components/AccessibleVideo";
+import { ExternalLink } from "lucide-react";
+import Link from "next/link";
+
+export const metadata = {
+  title: "Getting Started with LaTeX",
+  publishedAt: "2024-10-15",
+  summary: "A guide to my 5-minute introduction to LaTeX, explaining why it's the gold standard for academic writing and how to get started.",
+  tags: ["LaTeX", "Tutorial", "Accessibility", "Education", "Overleaf"],
+  image: "/latex-thumbnail.jpg"
+};
+
+export const transcript = `
+<p>Hello, and welcome to getting started with LaTeX. This tutorial will walk you through creating your first document using the LaTeX system.</p>
+<p>LaTeX is a typesetting system commonly used for technical and scientific documents. It's widely used throughout the world of academia specifically in engineering and science fields.</p>
+<p>This is due to how easy LaTeX makes it for someone to include complex mathematical equations, models and more. Most documents written in math or physics courses here at Bucknell are written using LaTeX.</p>
+<p>Throughout this tutorial we'll be utilizing a free LaTeX editor called Overleaf which is available online at overleaf.com.</p>
+<p>We'll go through:</p>
+<ul>
+  <li>Setting up the editor</li>
+  <li>Commonly used tags and formatting</li>
+  <li>Working with math equations</li>
+  <li>Creating a complete document</li>
+</ul>
+<p>By the end of this tutorial, you'll be able to create your own professional-looking documents with proper formatting and mathematical notation.</p>
+`;
+
+# Why I Teach LaTeX
+
+In the world of engineering and science, clear communication is just as important as the technical work itself. I created this tutorial because I noticed many students struggling to format their mathematical equations and technical reports using standard word processors. **LaTeX** is the solution to that problem.
+
+It's the gold standard for academic and technical document preparation, especially in mathematics, computer science, and physics. Once you get past the initial learning curve, it allows you to focus entirely on the *content* of your work, trusting the system to handle the *presentation* professionally.
+
+## The Tutorial
+
+I designed this 5-minute introduction to be the quickest way to go from zero to a finished document. I chose to use **Overleaf** for this demonstration because it removes the barrier of installing complex software. It runs right in your browser, so you can start writing immediately.
+
+<div className="my-8">
+  <AccessibleVideo
+    src="/videos/latex-intro.mp4"
+    poster="/latex-thumbnail.jpg"
+    captionSrc="/videos/latex-intro.vtt"
+    title="LaTeX Introduction Tutorial"
+    description="A 5-minute introduction to LaTeX, covering basic syntax, document structure, and common use cases."
+    transcript={transcript}
+    posterAlt="Decorative thumbnail showing LaTeX code and formatting example"
+  />
+</div>
+
+## What We Cover
+
+In the video, I walk through the essential steps to get you up and running:
+
+1.  **Setting Up**: We start by creating a free account on Overleaf and setting up a new project.
+2.  **Document Structure**: I explain the basic structure of a `.tex` file, including the preamble and the document body.
+3.  **Formatting**: We cover common formatting commands for bolding, italicizing, and creating lists.
+4.  **The Power of Math**: The highlight is showing how easily you can write complex mathematical equations that look professional and are easy to read.
+
+## Why It's Worth Learning
+
+I always tell my peers that learning LaTeX is an investment that pays off for your entire career. It provides **version control friendliness**, meaning you can track changes to your documents just like code. It ensures **cross-platform compatibility**, so your document looks the same on every computer. And perhaps most importantly, it separates content from design, enforcing a consistent, professional look across all your work.
+
+## Ready to Start?
+
+If you're ready to dive in, I recommend following these steps:
+
+1.  **Create an account** on [Overleaf](https://www.overleaf.com).
+2.  **Watch the video** above and follow along in your own browser.
+3.  **Try it yourself** by writing up your next homework assignment or report in LaTeX.
+4.  **Explore further** using the [LaTeX Wikibook](https://en.wikibooks.org/wiki/LaTeX) when you need to do something more advanced.
+
+<div className="pt-4">
+  <Button variant="outline" asChild>
+    <Link
+      href="https://www.overleaf.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <ExternalLink className="mr-2 h-4 w-4" />
+      Get Started with Overleaf
+    </Link>
+  </Button>
+</div>
