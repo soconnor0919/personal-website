@@ -1,16 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { name, contact, location } from "~/lib/data";
 
-import { useState } from "react";
-import { Skeleton } from "~/components/ui/skeleton";
+import { ImageWithSkeleton } from "~/components/ui/image-with-skeleton";
 
 export function Sidebar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const [isImageLoading, setIsImageLoading] = useState(true);
 
   return (
     <>
@@ -18,19 +15,15 @@ export function Sidebar() {
       {isHomePage && (
         <div className="w-full space-y-4 px-6 pb-2 pt-6 sm:px-8 lg:hidden">
           <div className="flex items-center space-x-4">
-            <div className="relative h-24 w-24 overflow-hidden rounded-2xl border border-border/50 shadow-sm">
-              {isImageLoading && <Skeleton className="absolute inset-0 h-full w-full" />}
-              <Image
-                src="/headshot.png"
-                alt={`${name[0]?.first}&nbsp;${name[0]?.last}`}
-                width={240}
-                height={240}
-                className={`object-cover duration-700 ease-in-out ${isImageLoading ? "scale-110 blur-2xl grayscale" : "scale-100 blur-0 grayscale-0"
-                  }`}
-                onLoad={() => setIsImageLoading(false)}
-                priority
-              />
-            </div>
+            <ImageWithSkeleton
+              src="/headshot.png"
+              alt={`${name[0]?.first}&nbsp;${name[0]?.last}`}
+              width={240}
+              height={240}
+              containerClassName="h-24 w-24 rounded-2xl border border-border/50 shadow-sm"
+              className="object-cover"
+              priority
+            />
             <div className="flex flex-col space-y-1">
               <h2 className="text-xl font-bold transition-colors hover:text-primary">
                 {name[0]?.first}&nbsp;{name[0]?.last}
@@ -82,19 +75,15 @@ export function Sidebar() {
           {/* Profile Section */}
           <div className="flex-shrink-0 border-b border-border/50 px-8 py-8">
             <div className="flex flex-col items-center space-y-4">
-              <div className="relative h-40 w-40 overflow-hidden border border-border/50 rounded-3xl shadow-sm">
-                {isImageLoading && <Skeleton className="absolute inset-0 h-full w-full" />}
-                <Image
-                  src="/headshot.png"
-                  alt={`${name[0]?.first} ${name[0]?.last}`}
-                  width={400}
-                  height={400}
-                  className={`h-full w-full object-cover duration-700 ease-in-out ${isImageLoading ? "scale-110 blur-2xl grayscale" : "scale-100 blur-0 grayscale-0"
-                    }`}
-                  onLoad={() => setIsImageLoading(false)}
-                  priority
-                />
-              </div>
+              <ImageWithSkeleton
+                src="/headshot.png"
+                alt={`${name[0]?.first} ${name[0]?.last}`}
+                width={400}
+                height={400}
+                containerClassName="h-40 w-40 border border-border/50 rounded-3xl shadow-sm"
+                className="h-full w-full object-cover"
+                priority
+              />
               <div className="text-center">
                 <h2 className="text-lg font-semibold tracking-tight">
                   {name[0]?.first} {name[0]?.last}
