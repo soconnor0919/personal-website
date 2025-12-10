@@ -54,7 +54,7 @@ export default function TripsPage() {
               key={index}
               className={`animate-fade-in-up-delay-${Math.min(index + 3, 4)} card-hover`}
             >
-              <Card className="card-full-height overflow-hidden rounded-lg">
+              <Card className="card-full-height overflow-hidden">
                 <CardHeader className="p-0">
                   <div className="flex flex-col">
                     <div className="flex space-x-0 overflow-x-auto">

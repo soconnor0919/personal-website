@@ -3,17 +3,18 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: "media",
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.tsx", "./src/**/*.mdx"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        unineue: ["var(--font-unineue)"],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        heading: ["var(--font-heading)", ...fontFamily.sans],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
       },
       colors: {
         background: "hsl(var(--background))",

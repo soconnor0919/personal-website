@@ -49,12 +49,12 @@ export default async function BlogPost({ params }: PageProps) {
     return (
         <article className="animate-fade-in-up space-y-8">
             <div className="mb-8">
-                <Button variant="ghost" asChild className="-ml-4 text-muted-foreground mb-4">
+                {/* <Button variant="ghost" asChild className="-ml-4 text-muted-foreground mb-4">
                     <Link href="/blog">
                         <ArrowLeft className="mr-2 h-4 w-4" />
                         Back to Blog
                     </Link>
-                </Button>
+                </Button> */}
 
                 <h1 className="text-3xl font-bold mb-4">{metadata.title}</h1>
 

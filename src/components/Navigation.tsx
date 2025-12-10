@@ -34,13 +34,13 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-[51] border-b bg-card shadow-sm ${isOpen ? "border-transparent" : "border-border"
+        className={`fixed top-4 left-4 right-4 z-[51] rounded-2xl border bg-background/80 backdrop-blur-md shadow-sm transition-all duration-200 ${isOpen ? "border-transparent" : "border-border/60"
           }`}
       >
-        <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="relative px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center py-2">
-              <span className="text-xl font-semibold tracking-tight transition-colors hover:text-primary">
+              <span className="text-xl font-semibold font-heading tracking-tight transition-colors hover:text-primary">
                 Sean O&apos;Connor
               </span>
             </Link>
@@ -87,7 +87,7 @@ export function Navigation() {
         aria-hidden="true"
       />
       <div
-        className={`fixed left-0 right-0 top-16 z-50 overflow-hidden border-b border-border bg-card shadow-sm transition-all duration-300 lg:hidden ${isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
+        className={`fixed left-4 right-4 top-24 z-50 overflow-hidden rounded-2xl border border-border/50 bg-background/80 backdrop-blur-md shadow-sm transition-all duration-300 lg:hidden ${isOpen ? "max-h-[calc(100vh-8rem)] opacity-100" : "max-h-0 opacity-0"
           }`}
       >
         <div className="flex flex-col space-y-2 p-4">

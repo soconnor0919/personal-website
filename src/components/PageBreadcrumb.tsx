@@ -12,6 +12,7 @@ import {
   FileText,
   Accessibility,
   Briefcase,
+  File,
 } from "lucide-react";
 import {
   Breadcrumb,
@@ -64,6 +65,10 @@ export function PageBreadcrumb() {
         case "articles":
           icon = <Newspaper className="mr-1 h-3.5 w-3.5" />;
           break;
+        case "blog":
+          icon = <Newspaper className="mr-1 h-3.5 w-3.5" />;
+          label = "Blog";
+          break;
         case "publications":
           icon = <BookOpenText className="mr-1 h-3.5 w-3.5" />;
           label = "Publications";
@@ -88,7 +93,7 @@ export function PageBreadcrumb() {
           label = "Accessibility";
           break;
         default:
-          icon = <ChevronRight className="mr-1 h-3.5 w-3.5" />;
+          icon = <File className="mr-1 h-3.5 w-3.5" />;
       }
 
       breadcrumbItems.push({

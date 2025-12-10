@@ -1,0 +1,123 @@
+export const metadata = {
+  title: "Designing My System: Soft, Translucent, and Alive",
+  publishedAt: "2025-12-10",
+  summary: "A deep dive into the design philosophy behind my personal website's new theme, moving from rigid boxes to organic, living layers.",
+  tags: ["Design", "UI/UX", "TailwindCSS", "Frontend"],
+  image: "/images/design-system.png"
+};
+
+## The Philosophy: Soft, Translucent, and Alive
+
+When I set out to redesign my personal website, I wanted to move away from the standard "developer portfolio" aesthetic—rigid grids, harsh borders, and flat colors. I wanted something that felt organic, something that breathed.
+
+I call this simply **My Design System**. It's not a product; it's a reflection of my personal aesthetic. The core philosophy rests on three pillars:
+
+1.  **Soft**: Replacing sharp corners with deep `1rem` (16px) to `1.5rem` (24px) border radii.
+2.  **Translucent**: Using glassmorphism to create depth without heavy drop shadows.
+3.  **Alive**: Incorporating subtle, continuous motion that makes the site feel like a living organism rather than a static document.
+
+## The "Living Blob"
+
+The heartbeat of this theme is the background. Instead of a flat color or a static gradient, I implemented what I call the "Living Blob".
+
+```tsx
+// src/app/layout.tsx
+<div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none flex items-center justify-center">
+  <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px)...] bg-[size:24px_24px]"></div>
+  <div className="w-[800px] h-[800px] bg-neutral-400/40 dark:bg-neutral-500/30 rounded-full blur-3xl animate-blob"></div>
+</div>
+```
+
+This single element—a massive, blurred circle—animates on a 7-second infinite loop, gently pulsing and shifting. It sits behind a technical grid pattern, creating a juxtaposition between the organic and the engineered.
+
+## Floating UI
+
+One of the biggest structural changes was detaching the navigation and sidebar from the viewport edges.
+
+In a traditional layout, the sidebar is stuck to the left, and the navbar is stuck to the top. In this system, they are **floating cards**.
+
+-   **Navbar**: Fixed `top-4`, `left-4`, `right-4`.
+-   **Sidebar**: Fixed `top-24`, `left-4`, `bottom-4`.
+
+This creates a sense of layering. The UI elements aren't *part* of the window; they are tools floating *above* the content.
+
+## Design Tokens
+
+### 1. Shape & Rounding
+
+I chose a base radius of `1rem` (16px) because it strikes the perfect balance between friendly and professional.
+
+-   **Cards**: `rounded-3xl` (24px). Large containers need softer corners to feel less imposing.
+-   **Buttons**: `rounded-xl` (12px). Tactile and clickable.
+-   **Icons**: `rounded-full`.
+
+This softness extends to interaction states. When you hover over a card, the `overflow-hidden` property ensures that any inner content (like images or background fills) respects these curves perfectly.
+
+### 2. Shadows & Glassmorphism
+
+Instead of heavy drop shadows to show depth, I rely on **Glassmorphism**.
+
+-   **Surface**: `bg-background/80` with `backdrop-blur-md`. This allows the "Living Blob" to bleed through, tinting the UI with the background color.
+-   **Border**: `border-border/60`. A subtle, semi-transparent border defines the edges.
+-   **Shadow**: `shadow-sm`. A very light lift, just enough to separate the layer.
+
+### 3. Color Palette
+
+The system uses a strict monochrome HSL palette that adapts to the user's system preference.
+
+import { ColorPalette } from "~/components/ColorPalette";
+
+<ColorPalette />
+
+## Typography: Editorial Meets Digital
+
+For typography, I wanted to blend the readability of a digital product with the elegance of an editorial magazine. This "Editorial meets Digital" philosophy relies on the interplay between two distinct typefaces.
+
+### The Serif: Playfair Display
+
+<p className="text-4xl font-heading mb-6">Playfair Display</p>
+
+I chose **Playfair Display** for all headings (`h1`–`h6`). It's a transitional serif typeface with high contrast strokes and delicate hairlines.
+
+*   **Why Serif?** Serifs feel "human", "established", and "emotional". They break the sterile "tech" vibe common in developer portfolios.
+*   **Why Playfair?** Its high contrast makes it perfect for large display sizes. It commands attention and adds a layer of sophistication that a sans-serif simply cannot achieve.
+
+### The Sans: Inter
+
+<p className="text-4xl font-sans mb-6">Inter</p>
+
+I chose **Inter** for the body text. It is the gold standard for screen readability.
+
+*   **Why Sans?** Sans-serif fonts are "rational", "clean", and "invisible". They reduce cognitive load, making long-form reading (like this blog post) effortless.
+*   **Why Inter?** It was designed specifically for computer screens, with a tall x-height that remains legible even at small sizes.
+
+### Implementation
+
+The font stack is implemented using `next/font` for zero layout shift and CSS variables for Tailwind integration.
+
+```ts
+// tailwind.config.ts
+theme: {
+  extend: {
+    fontFamily: {
+      sans: ["var(--font-sans)", ...fontFamily.sans],
+      heading: ["var(--font-heading)", ...fontFamily.serif],
+    },
+  },
+}
+```
+
+```css
+/* src/styles/globals.css */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading; /* Playfair Display */
+}
+
+body {
+  @apply font-sans; /* Inter */
+}
+```
+
+## Conclusion
+
+This design system is more than just a theme; it's a statement about how I view software. It shouldn't just be functional; it should be inviting. It should feel like a space you want to inhabit. By combining soft shapes, organic motion, and editorial typography, I hope I've created a digital garden that feels a little more human.

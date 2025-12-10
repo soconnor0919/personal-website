@@ -4,23 +4,30 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { name, contact, location } from "~/lib/data";
 
+import { useState } from "react";
+import { Skeleton } from "~/components/ui/skeleton";
+
 export function Sidebar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   return (
     <>
       {/* Mobile layout - horizontal intro bar only on home page */}
       {isHomePage && (
-        <div className="w-full space-y-4 pb-2 pt-6 lg:hidden">
+        <div className="w-full space-y-4 px-6 pb-2 pt-6 sm:px-8 lg:hidden">
           <div className="flex items-center space-x-4">
-            <div className="relative h-24 w-24 overflow-hidden">
+            <div className="relative h-24 w-24 overflow-hidden rounded-2xl border border-border/50 shadow-sm">
+              {isImageLoading && <Skeleton className="absolute inset-0 h-full w-full" />}
               <Image
                 src="/headshot.png"
                 alt={`${name[0]?.first}&nbsp;${name[0]?.last}`}
                 width={240}
                 height={240}
-                className="object-cover"
+                className={`object-cover duration-700 ease-in-out ${isImageLoading ? "scale-110 blur-2xl grayscale" : "scale-100 blur-0 grayscale-0"
+                  }`}
+                onLoad={() => setIsImageLoading(false)}
                 priority
               />
             </div>
@@ -70,18 +77,21 @@ export function Sidebar() {
       )}
 
       {/* Desktop layout - clean and elegant sidebar */}
-      <div className="hidden h-full w-80 border-r border-border bg-card lg:block">
+      <div className="hidden fixed top-24 left-4 bottom-4 w-80 rounded-3xl border border-border/60 bg-background/80 backdrop-blur-xl lg:block overflow-hidden">
         <div className="flex h-full flex-col">
           {/* Profile Section */}
-          <div className="flex-shrink-0 border-b border-border px-8 py-8">
+          <div className="flex-shrink-0 border-b border-border/50 px-8 py-8">
             <div className="flex flex-col items-center space-y-4">
-              <div className="relative h-40 w-40 overflow-hidden border border-border">
+              <div className="relative h-40 w-40 overflow-hidden border border-border/50 rounded-3xl shadow-sm">
+                {isImageLoading && <Skeleton className="absolute inset-0 h-full w-full" />}
                 <Image
                   src="/headshot.png"
                   alt={`${name[0]?.first} ${name[0]?.last}`}
                   width={400}
                   height={400}
-                  className="h-full w-full object-cover"
+                  className={`h-full w-full object-cover duration-700 ease-in-out ${isImageLoading ? "scale-110 blur-2xl grayscale" : "scale-100 blur-0 grayscale-0"
+                    }`}
+                  onLoad={() => setIsImageLoading(false)}
                   priority
                 />
               </div>
@@ -127,7 +137,7 @@ export function Sidebar() {
           </div>
 
           {/* Footer */}
-          <div className="flex-shrink-0 border-t border-border px-8 py-4">
+          <div className="flex-shrink-0 border-t border-border/50 px-8 py-4">
             <p className="text-center text-xs text-muted-foreground">
               &copy; {new Date().getFullYear()} {name[0]?.first} {name[0]?.last}
             </p>

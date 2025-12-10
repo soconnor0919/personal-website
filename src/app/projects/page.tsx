@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                             alt={project.imageAlt || project.title}
                             width={400}
                             height={300}
-                            className="h-auto w-full object-contain"
+                            className="h-auto w-full object-contain rounded-xl shadow-md"
                             priority={index === 0}
                           />
                         </div>
@@ -114,7 +114,7 @@ export default function ProjectsPage() {
                             >
                               <Link href={project.link}>
                                 {project.title ===
-                                "LaTeX Introduction Tutorial" ? (
+                                  "LaTeX Introduction Tutorial" ? (
                                   <>
                                     <Play className="mr-2 h-4 w-4" />
                                     Watch Tutorial
@@ -217,7 +217,7 @@ export default function ProjectsPage() {
                           alt={project.imageAlt || project.title}
                           width={400}
                           height={250}
-                          className="h-auto max-h-full w-full object-contain"
+                          className="h-auto max-h-full w-full object-contain rounded-xl shadow-md"
                         />
                       </div>
                     )}
