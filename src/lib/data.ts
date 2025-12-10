@@ -434,7 +434,7 @@ export const projects: Project[] = [
     description:
       "A website showing off the best coffee shops in Lewisburg, PA.",
     longDescription:
-      "A website showing off the best coffee shops in Lewisburg, PA.",
+      "Aggregates coffee shop data from various sources and displays it in a user-friendly interface. Use it to find your next brew!",
     tags: ["Coffee", "Lewisburg, PA", "Bucknell"],
     link: "https://lewisburgcoffee.soconnor.dev",
     gitLink: "https://github.com/soconnor0919/lewisburg-coffee",
@@ -447,7 +447,7 @@ export const projects: Project[] = [
     description:
       "A web application that converts PDFs to Markdown files.",
     longDescription:
-      "A web application that converts PDFs to Markdown files. Uses OCR and PDF parsing to extract text and convert it to Markdown, for easy editing and formatting.",
+      "Uses OCR and PDF parsing to extract text and convert it to Markdown, for easy editing and formatting.",
     tags: ["PDF", "Markdown", "OCR"],
     link: "https://pdf2md.coolify.soconnor.dev",
     gitLink: "https://github.com/soconnor0919/pdf2md",
