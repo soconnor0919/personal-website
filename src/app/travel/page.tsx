@@ -9,7 +9,7 @@ import {
   CardDescription,
 } from "~/components/ui/card";
 import { CardSkeleton } from "~/components/ui/skeletons";
-import Image from "next/image";
+import { ImageWithSkeleton } from "~/components/ui/image-with-skeleton";
 import { Badge } from "~/components/ui/badge";
 import { Plane } from "lucide-react";
 import { travel } from "~/lib/data";
@@ -60,7 +60,7 @@ export default function TripsPage() {
                     <div className="flex space-x-0 overflow-x-auto">
                       {trip.images.map((image, imgIndex) => (
                         <div key={imgIndex} className="flex-shrink-0">
-                          <Image
+                          <ImageWithSkeleton
                             src={image}
                             alt={
                               trip.alts && trip.alts[imgIndex]
@@ -70,6 +70,7 @@ export default function TripsPage() {
                             width={250}
                             height={200}
                             className="max-h-[200px] min-h-[200px] object-cover"
+                            containerClassName="max-h-[200px] min-h-[200px]"
                           />
                         </div>
                       ))}

@@ -13,7 +13,7 @@ import { Button } from "~/components/ui/button";
 import Link from "next/link";
 import { ArrowUpRight, Play, BookOpen, FolderGit2, Github } from "lucide-react";
 import { projects } from "~/lib/data";
-import Image from "next/image";
+import { ImageWithSkeleton } from "~/components/ui/image-with-skeleton";
 import { CardSkeleton } from "~/components/ui/skeletons";
 
 export default function ProjectsPage() {
@@ -63,12 +63,13 @@ export default function ProjectsPage() {
                     {project.image && (
                       <div className="lg:w-1/3">
                         <div className="flex items-center justify-center p-4 lg:h-full">
-                          <Image
+                          <ImageWithSkeleton
                             src={project.image}
                             alt={project.imageAlt || project.title}
                             width={400}
                             height={300}
-                            className="h-auto w-full object-contain rounded-xl shadow-md"
+                            className="h-auto w-full object-contain"
+                            containerClassName="w-full rounded-xl shadow-md overflow-hidden"
                             priority={index === 0}
                           />
                         </div>
@@ -212,12 +213,13 @@ export default function ProjectsPage() {
                   <Card className="card-full-height flex flex-col">
                     {project.image && (
                       <div className="flex h-48 items-center justify-center p-4">
-                        <Image
+                        <ImageWithSkeleton
                           src={project.image}
                           alt={project.imageAlt || project.title}
                           width={400}
                           height={250}
-                          className="h-auto max-h-full w-full object-contain rounded-xl shadow-md"
+                          className="h-auto max-h-full w-full object-contain"
+                          containerClassName="w-full h-full flex items-center justify-center rounded-xl shadow-md overflow-hidden"
                         />
                       </div>
                     )}
