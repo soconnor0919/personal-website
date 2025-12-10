@@ -430,6 +430,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    title: "Lewisburg, PA Coffee Map",
+    description:
+      "A website showing off the best coffee shops in Lewisburg, PA.",
+    longDescription:
+      "A website showing off the best coffee shops in Lewisburg, PA.",
+    tags: ["Coffee", "Lewisburg, PA", "Bucknell"],
+    gitLink: "https://github.com/soconnor0919/lewisburg-coffee",
+    image: "/images/lewisburg-coffee.png",
+    imageAlt: "Screenshot of the Lewisburg, PA Coffee Map website",
+    featured: true,
+  },
+  {
     title: "HRIStudio",
     description:
       "A modular web-based experimental platform for human-robot interaction studies using the Wizard of Oz experimental paradigm.",
