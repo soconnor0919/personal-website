@@ -436,9 +436,23 @@ export const projects: Project[] = [
     longDescription:
       "A website showing off the best coffee shops in Lewisburg, PA.",
     tags: ["Coffee", "Lewisburg, PA", "Bucknell"],
+    link: "https://lewisburgcoffee.soconnor.dev",
     gitLink: "https://github.com/soconnor0919/lewisburg-coffee",
     image: "/images/lewisburg-coffee.png",
     imageAlt: "Screenshot of the Lewisburg, PA Coffee Map website",
+    featured: true,
+  },
+  {
+    title: "PDF2MD",
+    description:
+      "A web application that converts PDFs to Markdown files.",
+    longDescription:
+      "A web application that converts PDFs to Markdown files. Uses OCR and PDF parsing to extract text and convert it to Markdown, for easy editing and formatting.",
+    tags: ["PDF", "Markdown", "OCR"],
+    link: "https://pdf2md.coolify.soconnor.dev",
+    gitLink: "https://github.com/soconnor0919/pdf2md",
+    image: "/images/pdf2md.png",
+    imageAlt: "Screenshot of the PDF2MD website",
     featured: true,
   },
   {
