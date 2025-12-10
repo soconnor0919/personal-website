@@ -435,7 +435,7 @@ export const projects: Project[] = [
     longDescription:
       "Aggregates coffee shop data from various sources and displays it in a user-friendly interface. Use it to find your next brew!",
     tags: ["Coffee", "Lewisburg, PA", "Bucknell"],
-    link: "https://lewisburgcoffee.soconnor.dev",
+    websiteLink: "https://lewisburgcoffee.soconnor.dev",
     gitLink: "https://github.com/soconnor0919/lewisburg-coffee",
     image: "/images/lewisburg-coffee.png",
     imageAlt: "Screenshot of the Lewisburg, PA Coffee Map website",
@@ -448,7 +448,7 @@ export const projects: Project[] = [
     longDescription:
       "Uses OCR and PDF parsing to extract text and convert it to Markdown, for easy editing and formatting.",
     tags: ["PDF", "Markdown", "OCR"],
-    link: "https://pdf2md.coolify.soconnor.dev",
+    websiteLink: "https://pdf2md.coolify.soconnor.dev",
     gitLink: "https://github.com/soconnor0919/pdf2md",
     image: "/images/pdf2md.png",
     imageAlt: "Screenshot of the PDF2MD website",
