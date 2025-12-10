@@ -415,13 +415,12 @@ export const projects: Project[] = [
     longDescription:
       "Built a complete computer system from the ground up as part of the Nand2Tetris course (ECEG 431). Starting with a single NAND gate, I designed and simulated all hardware components including logic gates, ALU, RAM, and the CPU. On the software side, I developed an assembler, a virtual machine translator, and a compiler for a high-level object-oriented language, culminating in a fully functional Operating System. This project provided a deep, demystified understanding of how computers actually work under the hood.",
     tags: [
-      "Computer Architecture",
-      "Hardware Simulation",
-      "Compiler Design",
+      "Simulation",
+      "Compilers",
       "Python",
       "Assembly",
-      "Virtual Machine",
-      "Operating Systems",
+      "VM",
+      "OS",
     ],
     link: "/blog/eceg431",
     gitLink: "https://github.com/soconnor0919/eceg431",
