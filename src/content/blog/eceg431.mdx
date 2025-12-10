@@ -2,13 +2,14 @@ export const metadata = {
   title: "Nand2Tetris Implementation (ECEG 431)",
   publishedAt: "2025-12-01",
   summary: "E-Portfolio and reflection for the Nand2Tetris course, covering the journey from NAND gates to a high-level compiler.",
-  tags: ["Computer Architecture", "Hardware Simulation", "Compiler Design", "Python", "Assembly", "Virtual Machine", "Operating Systems"],
+  tags: ["Simulation", "Compilers", "Python", "Assembly", "VM", "OS"],
   image: "/images/nand2tetris.png"
 };
 
 # ECEG 431 E-Portfolio
 
-Sean O'Connor '26 • Fall 2025
+Sean O'Connor '26 \
+Fall 2025
 
 ## Assignment Prompt
 
@@ -25,9 +26,25 @@ The story begins ... where it begins. A downtrodden situation? A rough situation
 
 > Aladdin goes about his life as usual, but then saves someone---and learns they are royalty! He then decides to set out to make something of his self (and maybe win a princess's heart).
 
-**What made you originally interested in this class? Or maybe, after hearing about things on the first week, what was it that really got you excited?**
+What made you originally interested in this class? Or maybe, after hearing about things on the first week, what was it that really got you excited?
 
-I was initially drawn to this class because of the promise of understanding the "black box" of the computer. As I noted in my first reading reflection, *"The idea of building a complete product from fundamentals was exciting."* I had some background in discrete math, but seeing how a simple NAND gate could eventually lead to a general-purpose computer was the hook that got me interested.
+I wanted to know what happens inside the "black box". I had the theory from discrete math (MATH 241) and computer systems (CSCI 306), but I wanted to see it actually work.
+
+> The idea of building a complete product from fundamentals was exciting.
+
+— Reading 1 Reflection
+
+My initial thought was, "Building a product from fundamentals? Sign me up." But the reality was that [Project 1](https://github.com/soconnor0919/eceg431/tree/main/01) felt like a victory lap. `And`, `Or`, `Xor`- I'd done this before on paper. Implementing them in HDL was just a formality. I mean, look at this "code" for Xor. It's just wiring.
+
+```hdl
+// projects/01/Xor.hdl
+// a and not b path
+And(a=a, b=notB, out=aPath);
+// not a and b path
+And(a=notA, b=b, out=bPath);
+// combine both paths
+Or(a=aPath, b=bPath, out=out);
+```
 
 ## Getting out in the world and Initial successes
 
@@ -35,9 +52,21 @@ You set out to better yourself. And you're able to make some gains in this quest
 
 > Aha! Aladdin finds a magic lamp! With a wish he can transform himself to be Prince Ali Ababwa, granting him access to the royal court!
 
-**As you started to get out into the course, things were generally going well. You were really making some progress. What were those initial successes? What made you feel good and helped you really start to see things connecting? In those early days of the course, where was it you were thinking you'd end up?**
+As you started to get out into the course, things were generally going well. You were really making some progress. What were those initial successes? What made you feel good and helped you really start to see things connecting? In those early days of the course, where was it you were thinking you'd end up?
 
-In the beginning, I felt very confident. My background in CSCI 306 and discrete math gave me a strong head start. As I wrote after the first project, *"Project 1 (logic gates) was easy due to prior knowledge in discrete math and computer systems."* The early hardware projects—building the ALU and RAM—felt like a review, and I was cruising. I thought the entire course would be this smooth, just applying known concepts to a new context.
+I was cruising- absolutely cruising. The ALU and RAM ([Project 3](https://github.com/soconnor0919/eceg431/tree/main/03)) were logical extensions of the logic gates. Even the Program Counter was just a series of Muxes. I'm comfortable in the terminal, I know my way around a text editor. I thought, "If the whole class is just wrapping logic gates in different ways, I've got this."
+
+```hdl
+// projects/03/a/PC.hdl
+// choose current or inc'd val (based on inc)
+Mux16(a=regOut, b=incOut, sel=inc, out=postInc);
+// choose ^ vs input (based on load)
+Mux16(a=postInc, b=in, sel=load, out=postLoad);
+```
+
+> Project 1 was easy due to prior knowledge... I was cruising.
+
+— Project 1 Reflection
 
 ## Central Crisis
 
@@ -45,9 +74,25 @@ The "oh crap" moment. A dark figure from the past comes to haunt you; a love is 
 
 > Aladdin decides to continue his ruse as Prince Ali so that the marriage to the princess can be lawful. But the Royal Vizier Jafar exposes Aladdin's true identity.
 
-**For the course, this could be lots of things. Work piling up? Concepts getting hard? Confusion setting in? Difficulty asking for help? Reliance on LLMs piling on? Not coming to class? Or maybe something entirely external to the course. What was it for you? There seems to be a common theme that happens to all of us in this course---we set out strong, start doing well with big dreams, but we typically all go through something and our original plans for the course start to crumble. What were those moments for you?**
+For the course, this could be lots of things. Work piling up? Concepts getting hard? Confusion setting in? Difficulty asking for help? Reliance on LLMs piling on? Not coming to class? Or maybe something entirely external to the course. What was it for you? There seems to be a common theme that happens to all of us in this course---we set out strong, start doing well with big dreams, but we typically all go through something and our original plans for the course start to crumble. What were those moments for you?
 
-The reality check hit hard with Project 5: The CPU. It wasn't just about connecting wires anymore; it was about control logic and timing. I remember writing, *"The problem was taking the instruction and turning it into something the ALU could handle... I just repeatedly hit my head against a wall."* I struggled significantly with the instruction decoding and debugging the hardware simulator. It was the first time I couldn't just "figure it out" quickly. I had to step back, draw diagrams, and really wrestle with the physical reality of the signals.
+**[Project 5: The CPU](https://github.com/soconnor0919/eceg431/blob/main/05/CPU.hdl)**. This is where the "just wrapping logic gates" theory fell apart. It wasn't just logic anymore; it was *timing*. It was *control*. Decoding instructions was fine, but managing the control flow was a nightmare.
+
+```hdl
+// projects/05/CPU.hdl
+// decode instruction type
+Not(in=instruction[15], out=aInstr); // aInstr = 1 when instruction[15] = 0
+Not(in=aInstr, out=cInstr); // cInstr = 1 when instruction[15] = 1
+
+// pick A reg input (instruction or ALU out)
+Mux16(a=instruction, b=aluOut, sel=cInstr, out=aRegIn);
+```
+
+As I wrote in my reflection: *"The problem was taking the instruction and turning it into something the ALU could handle... I just repeatedly hit my head against a wall."* (Project 5 Reflection). The fix wasn't more code. I had to stop coding and start drawing. I couldn't "hack" my way through a hardware definition. I had to understand the signals.
+
+> There are three steps to solving a problem. Write down what you know, Think really hard, Write down the answer. You're at step 2.
+
+— Ned Ladd (in my head during Project 5)
 
 ## Independence and Ordeal
 
@@ -55,9 +100,31 @@ You find yourself back where you started. Or are you? You still have your traits
 
 > Aladdin is back on the streets, the magic lamp is gone, and Jafar seems poised to rule the kingdom. But Aladdin knows a thing or two. He sneaks back to the castle, uses his wits, and is able to trick Jafar and imprison him.
 
-**You might still be more in the midst of this part of the ordeal. Or maybe you are just now realizing your independence and seeing how much you've gained and have been able to overcome. What worked for you? This could also be a story of you struggling through the crisis, moving on and really started to piece together some big questions you had about how computing works. How did your story and journey through this course go? What were your big connective moments, or the big challenge you worked through?**
+You might still be more in the midst of this part of the ordeal. Or maybe you are just now realizing your independence and seeing how much you've gained and have been able to overcome. What worked for you? This could also be a story of you struggling through the crisis, moving on and really started to piece together some big questions you had about how computing works. How did your story and journey through this course go? What were your big connective moments, or the big challenge you worked through?
 
-I found my independence when we switched to the software side. Leveraging my Python skills, I adopted a modular design philosophy that saved me. For the Snake game (Project 9), I noted that *"The modular design approach I'd been using in Projects 6-8 carried over well - separate classes for Point, Food, Snake, and SnakeGame made the code clean and easy to debug."* This approach of breaking down complex problems into manageable classes (Tokenizer, CompilationEngine, SymbolTable) became my superpower, allowing me to tackle the Assembler and Compiler with confidence.
+**Modularity.**
+
+**[Snake Game](https://github.com/soconnor0919/eceg431/tree/main/09/Snake)** was where I finally felt like I was writing software again, but Jack is... painful. No built-in random functions? Seriously? I had to find a random number generator online using "Linear Congruential Generator" math that I didn't really understand, just to spawn food. And don't get me started on the lack of color support.
+
+But instead of a monolithic mess, I built it like a real software project. You can see this structure in my game controller, which composes the objects rather than managing raw state:
+
+```jack
+// projects/09/Snake/SnakeGame.jack
+class SnakeGame {
+    field Snake snake;
+    field Food food;
+    // ...
+    constructor SnakeGame new() {
+        let snake = Snake.new();
+        let food = Food.new();
+        do food.spawn(); // spawn food at random position
+```
+
+> The modular design approach I'd been using in Projects 6-8 carried over well - separate classes for Point, Food, Snake, and SnakeGame made the code clean and easy to debug.
+
+— Project 9 Reflection
+
+This approach carried me through the Assembler and Compiler. Break it down, solve the small piece, move on.
 
 ## Final Union, Completion, and Fulfillment
 
@@ -65,6 +132,24 @@ You made it! And for real this time. It's the happily-ever-after moment where th
 
 > The sultan is grateful to Aladdin for saving their country and changes the marriage rules to not require marrying royalty. Aladdin is welcomed into the royal family and Aladdin and Jasmine live happily ever after.
 
-**For you in the course, maybe you're not there. Maybe you still have some battles to fight. However, the course itself is done. Think through though, and really see what you've picked up and learn. What parts of "computing" now make more sense? What have you learned about yourself? Do you feel more knowledgeable or prepared for some things? It's your story! Tell it!**
+For you in the course, maybe you're not there. Maybe you still have some battles to fight. However, the course itself is done. Think through though, and really see what you've picked up and learn. What parts of "computing" now make more sense? What have you learned about yourself? Do you feel more knowledgeable or prepared for some things? It's your story! Tell it!
 
-Standing at the end, looking back, it finally clicks. I've built every layer of the abstraction stack. As I reflected after the final project, *"The journey from NAND gates to compiling object-oriented programs is pretty wild when you think about it."* I now understand how high-level code translates to VM instructions, then to assembly, and finally to binary signals rushing through gates I designed. The "magic" is gone, replaced by a deep, satisfying understanding of the machine.
+It finally clicked during the Compiler project ([Project 10/11](https://github.com/soconnor0919/eceg431/tree/main/10)). I was writing a compiler (in Python) that outputs VM code. Seeing the high-level logic translate directly to VM commands was the "glass box" moment:
+
+```python
+# projects/11/hjc.py
+def compileIf(self):
+    # ...
+    # Jump to true branch if condition is true
+    self.vmWriter.writeIf(trueLabel)
+    self.vmWriter.writeGoto(falseLabel)
+    self.vmWriter.writeLabel(trueLabel)
+```
+
+It translates to Assembly, which runs on the CPU I struggled with, composed of the NAND gates I breezed through. The "magic" is gone. It's just layers of abstraction all the way down. Even the "OS" we built is generous naming—it's really just a standard library.
+
+> Calling this an 'OS' is generous- it's really just a std lib (Math, String, Array) without the kernel overhead.
+
+— Reading 12 Reflection
+
+But the result is that I can look at code now and see the stack frame, the program counter, and the binary signals. It's not a black box anymore; it's a glass box. I built it, so I know exactly where the cracks are.
