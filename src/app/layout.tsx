@@ -6,6 +6,7 @@ import { Footer } from "~/components/Footer";
 import { Navigation } from "~/components/Navigation";
 import { Sidebar } from "~/components/Sidebar";
 import { BreadcrumbWrapper } from "~/components/BreadcrumbWrapper";
+import { BreadcrumbProvider } from "~/context/BreadcrumbContext";
 
 import { inter, playfair } from "~/lib/fonts";
 import { description, name } from "~/lib/data";
@@ -45,18 +46,20 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
           />
         )}
 
-        <Navigation />
-        <div className="flex flex-1 pt-24 flex-col lg:flex-row">
-          <Sidebar />
-          <div className="flex-1 min-w-0 lg:pl-96">
-            <div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:pl-0 lg:pr-8">
-              <main className="pb-8 pt-4">
-                <BreadcrumbWrapper />
-                {children}
-              </main>
+        <BreadcrumbProvider>
+          <Navigation />
+          <div className="flex flex-1 pt-24 flex-col lg:flex-row">
+            <Sidebar />
+            <div className="flex-1 min-w-0 lg:pl-96">
+              <div className="mx-auto max-w-screen-xl px-6 sm:px-8 lg:pl-0 lg:pr-8">
+                <main className="pb-8 pt-4">
+                  <BreadcrumbWrapper />
+                  {children}
+                </main>
+              </div>
             </div>
           </div>
-        </div>
+        </BreadcrumbProvider>
         <Footer />
       </body>
     </html>

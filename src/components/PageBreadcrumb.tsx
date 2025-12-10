@@ -22,6 +22,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
+import { useBreadcrumb } from "~/context/BreadcrumbContext";
 
 interface BreadcrumbItem {
   href: string;
@@ -32,6 +33,7 @@ interface BreadcrumbItem {
 
 export function PageBreadcrumb() {
   const pathname = usePathname();
+  const { customTitle } = useBreadcrumb();
 
   // Generate breadcrumb items based on current path
   const breadcrumbItems: BreadcrumbItem[] = [
@@ -94,6 +96,15 @@ export function PageBreadcrumb() {
           break;
         default:
           icon = <File className="mr-1 h-3.5 w-3.5" />;
+      }
+
+      // Override label for the last segment if customTitle is available and it's a blog post
+      if (isLastSegment && customTitle && pathname.startsWith("/blog/")) {
+        label = customTitle;
+        // Truncate if too long (e.g., > 30 chars)
+        if (label.length > 30) {
+          label = label.substring(0, 30) + "...";
+        }
       }
 
       breadcrumbItems.push({

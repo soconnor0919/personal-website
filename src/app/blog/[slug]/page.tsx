@@ -5,6 +5,7 @@ import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import fs from "fs";
 import path from "path";
+import { BreadcrumbUpdater } from "~/components/BreadcrumbUpdater";
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -48,6 +49,7 @@ export default async function BlogPost({ params }: PageProps) {
 
     return (
         <article className="animate-fade-in-up space-y-8">
+            <BreadcrumbUpdater title={metadata.title} />
             <div className="mb-8">
                 {/* <Button variant="ghost" asChild className="-ml-4 text-muted-foreground mb-4">
                     <Link href="/blog">
