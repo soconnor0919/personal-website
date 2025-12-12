@@ -26,7 +26,7 @@ export default function TripsPage() {
 
   return (
     <div className="space-y-6">
-      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+      <section className="animate-fade-in-up prose prose-zinc max-w-none dark:prose-invert">
         <div className="flex items-start gap-3">
           <Plane className="h-8 w-8 text-primary" />
           <div>
@@ -63,9 +63,7 @@ export default function TripsPage() {
                           <ImageWithSkeleton
                             src={image}
                             alt={
-                              trip.alts && trip.alts[imgIndex]
-                                ? trip.alts[imgIndex]
-                                : `${trip.title} - image ${imgIndex + 1}`
+                              trip.alts?.[imgIndex] ?? `${trip.title} - image ${imgIndex + 1}`
                             }
                             width={250}
                             height={200}

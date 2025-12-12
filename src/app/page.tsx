@@ -1,19 +1,20 @@
 import {
   ArrowUpRight,
-  Code,
-  FlaskConical,
-  Users,
-  GraduationCap,
-  Building,
-  MapPin,
-  Mail,
-  ExternalLink,
-  BookOpen,
-  School,
   Award,
-  Calendar,
+  BookOpen,
+  Building,
+  Code,
+  ExternalLink,
+  FlaskConical,
+  GraduationCap,
+  Mail,
+  MapPin,
+  School,
+  Users
 } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "~/components/ui/badge";
+import { Button } from "~/components/ui/button";
 import {
   Card,
   CardContent,
@@ -21,9 +22,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
-import { Badge } from "~/components/ui/badge";
-import { researchInterests, education, experiences, awards } from "~/lib/data";
+import { awards, education, experiences, researchInterests } from "~/lib/data";
 
 export default function HomePage() {
   const researchExperience = experiences.filter(

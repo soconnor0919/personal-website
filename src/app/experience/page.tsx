@@ -55,7 +55,7 @@ export default function ExperiencePage() {
   const renderExperienceSection = (
     title: string,
     experiences: typeof researchExperience,
-    delay: number = 1,
+    delay = 1,
   ) => (
     <section className="animate-fade-in-up space-y-6">
       <h2 className="text-2xl font-bold">{title}</h2>
@@ -118,7 +118,7 @@ export default function ExperiencePage() {
   return (
     <div className="space-y-12">
       {/* Header */}
-      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+      <section className="animate-fade-in-up prose prose-zinc max-w-none dark:prose-invert">
         <div className="flex items-start gap-3">
           <Building className="h-8 w-8 text-primary" />
           <div>

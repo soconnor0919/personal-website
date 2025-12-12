@@ -37,7 +37,7 @@ function parseAuthors(authorString: string): string[] {
 
 function parseBibTeXEntry(entry: string): BibTeXEntry | null {
   // Match the entry type and content
-  const typeMatch = entry.match(/^(\w+)\s*{\s*([\w\d-_]+)\s*,/);
+  const typeMatch = /^(\w+)\s*{\s*([\w\d-_]+)\s*,/.exec(entry);
   if (!typeMatch) return null;
 
   const type = typeMatch[1]!.toLowerCase();
@@ -55,7 +55,7 @@ function parseBibTeXEntry(entry: string): BibTeXEntry | null {
     if (!trimmedLine || trimmedLine === "}") continue;
 
     // Try to match a new field
-    const fieldMatch = trimmedLine.match(/(\w+)\s*=\s*{(.+?)},?$/);
+    const fieldMatch = /(\w+)\s*=\s*{(.+?)},?$/.exec(trimmedLine);
     if (fieldMatch?.[1] && fieldMatch?.[2]) {
       // Save previous field if exists
       if (currentField) {
@@ -103,15 +103,15 @@ export function parseBibtex(bibtex: string): Publication[] {
     })();
 
     return {
-      title: entry.fields.title?.replace(/[{}]/g, "") || "",
-      authors: parseAuthors(entry.fields.author || ""),
+      title: entry.fields.title?.replace(/[{}]/g, "") ?? "",
+      authors: parseAuthors(entry.fields.author ?? ""),
       venue:
-        entry.fields.booktitle ||
-        entry.fields.journal ||
-        entry.fields.organization ||
-        entry.fields.school ||
+        entry.fields.booktitle ??
+        entry.fields.journal ??
+        entry.fields.organization ??
+        entry.fields.school ??
         "",
-      year: parseInt(entry.fields.year || "0", 10),
+      year: parseInt(entry.fields.year ?? "0", 10),
       doi: entry.fields.doi,
       url: entry.fields.url,
       paperUrl: entry.fields.paperurl,
@@ -120,7 +120,7 @@ export function parseBibtex(bibtex: string): Publication[] {
       abstract: entry.fields.abstract,
       citationType: entry.type,
       citationKey: entry.citationKey,
-      notes: entry.fields.note || entry.fields.notes,
+      notes: entry.fields.note ?? entry.fields.notes,
       address: entry.fields.address,
       type: publicationType,
     };

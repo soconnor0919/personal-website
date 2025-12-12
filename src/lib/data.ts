@@ -414,14 +414,7 @@ export const projects: Project[] = [
       "A complete implementation of a general-purpose computer system, from NAND gates to a high-level object-oriented compiler.",
     longDescription:
       "Built a complete computer system from the ground up as part of the Nand2Tetris course (ECEG 431). Starting with a single NAND gate, I designed and simulated all hardware components including logic gates, ALU, RAM, and the CPU. On the software side, I developed an assembler, a virtual machine translator, and a compiler for a high-level object-oriented language, culminating in a fully functional Operating System. This project provided a deep, demystified understanding of how computers actually work under the hood.",
-    tags: [
-      "Simulation",
-      "Compilers",
-      "Python",
-      "Assembly",
-      "VM",
-      "OS",
-    ],
+    tags: ["Simulation", "Compilers", "Python", "Assembly", "VM", "OS"],
     link: "/blog/eceg431",
     gitLink: "https://github.com/soconnor0919/eceg431",
     image: "/images/nand2tetris.png",
@@ -443,8 +436,7 @@ export const projects: Project[] = [
   },
   {
     title: "PDF2MD",
-    description:
-      "A web application that converts PDFs to Markdown files.",
+    description: "A web application that converts PDFs to Markdown files.",
     longDescription:
       "Uses OCR and PDF parsing to extract text and convert it to Markdown, for easy editing and formatting.",
     tags: ["PDF", "Markdown", "OCR"],

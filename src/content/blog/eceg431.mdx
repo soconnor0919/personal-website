@@ -1,9 +1,10 @@
 export const metadata = {
   title: "ECEG 431 E-Portfolio",
   publishedAt: "2025-12-01",
-  summary: "E-Portfolio and reflection for the Nand2Tetris course, covering the journey from NAND gates to a high-level compiler.",
+  summary:
+    "E-Portfolio and reflection for the Nand2Tetris course, covering the journey from NAND gates to a high-level compiler.",
   tags: ["Simulation", "Compilers", "Python", "Assembly", "VM", "OS"],
-  image: "/images/nand2tetris.png"
+  image: "/images/nand2tetris.png",
 };
 
 ## Assignment Prompt
@@ -71,7 +72,7 @@ The "oh crap" moment. A dark figure from the past comes to haunt you; a love is 
 
 For the course, this could be lots of things. Work piling up? Concepts getting hard? Confusion setting in? Difficulty asking for help? Reliance on LLMs piling on? Not coming to class? Or maybe something entirely external to the course. What was it for you? There seems to be a common theme that happens to all of us in this course---we set out strong, start doing well with big dreams, but we typically all go through something and our original plans for the course start to crumble. What were those moments for you?
 
-**[Project 5: The CPU](https://github.com/soconnor0919/eceg431/blob/main/05/CPU.hdl)**. This is where the "just wrapping logic gates" theory fell apart. It wasn't just logic anymore; it was *timing*. It was *control*. Decoding instructions was fine, but managing the control flow was a nightmare.
+**[Project 5: The CPU](https://github.com/soconnor0919/eceg431/blob/main/05/CPU.hdl)**. This is where the "just wrapping logic gates" theory fell apart. It wasn't just logic anymore; it was _timing_. It was _control_. Decoding instructions was fine, but managing the control flow was a nightmare.
 
 ```hdl
 // projects/05/CPU.hdl
@@ -83,7 +84,7 @@ Not(in=aInstr, out=cInstr); // cInstr = 1 when instruction[15] = 1
 Mux16(a=instruction, b=aluOut, sel=cInstr, out=aRegIn);
 ```
 
-As I wrote in my reflection: *"The problem was taking the instruction and turning it into something the ALU could handle... I just repeatedly hit my head against a wall."* (Project 5 Reflection). The fix wasn't more code. I had to stop coding and start drawing. I couldn't "hack" my way through a hardware definition. I had to understand the signals.
+As I wrote in my reflection: _"The problem was taking the instruction and turning it into something the ALU could handle... I just repeatedly hit my head against a wall."_ (Project 5 Reflection). The fix wasn't more code. I had to stop coding and start drawing. I couldn't "hack" my way through a hardware definition. I had to understand the signals.
 
 > There are three steps to solving a problem. Write down what you know, Think really hard, Write down the answer. You're at step 2.
 

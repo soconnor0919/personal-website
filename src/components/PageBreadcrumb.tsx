@@ -4,7 +4,6 @@ import * as React from "react";
 import { usePathname } from "next/navigation";
 import {
   Home,
-  ChevronRight,
   FolderGit2,
   BookOpenText,
   Newspaper,

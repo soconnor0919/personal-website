@@ -80,7 +80,7 @@ export function AccessibleVideo({
               controls
               src={src}
               aria-label={title}
-              title={posterAlt || title}
+              title={posterAlt ?? title}
             >
               {captionSrc && (
                 <track
@@ -148,7 +148,7 @@ export function AccessibleVideo({
             View Full Transcript
           </summary>
           <div className="mt-2 rounded-md bg-muted p-4">
-            <div className="prose prose-sm dark:prose-invert max-w-none">
+            <div className="prose prose-sm max-w-none dark:prose-invert">
               <div dangerouslySetInnerHTML={{ __html: transcript }} />
             </div>
           </div>

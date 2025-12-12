@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "~/components/ui/tabs";
 import {
   Card,
@@ -22,8 +22,6 @@ import {
   ChevronRight,
   AlertCircle,
   Loader2,
-  Maximize2,
-  Minimize2,
   Eye,
 } from "lucide-react";
 import Link from "next/link";
@@ -116,7 +114,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
       }
     };
 
-    loadPDF();
+    void loadPDF();
   }, [url, isClient]);
 
   useEffect(() => {
@@ -177,7 +175,7 @@ function PDFViewer({ url, title, type }: PDFViewerProps) {
       }
     };
 
-    renderPage();
+    void renderPage();
   }, [pdfDoc, pageNum, scale, rotation]);
 
   const nextPage = () => {
@@ -481,7 +479,7 @@ export default function CVPage() {
 
   return (
     <div className="space-y-6">
-      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+      <section className="animate-fade-in-up prose prose-zinc max-w-none dark:prose-invert">
         <div className="flex items-start gap-3">
           <FileText className="h-8 w-8 text-primary" />
           <div>
@@ -520,8 +518,6 @@ export default function CVPage() {
           </TabsContent>
         </Tabs>
       </div>
-
-
     </div>
   );
 }

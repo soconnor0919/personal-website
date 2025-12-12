@@ -70,7 +70,7 @@ export function Sidebar() {
       )}
 
       {/* Desktop layout - clean and elegant sidebar */}
-      <div className="hidden fixed top-24 left-4 bottom-4 w-80 rounded-3xl border border-border/60 bg-background/80 backdrop-blur-xl lg:block overflow-hidden">
+      <div className="fixed bottom-4 left-4 top-24 hidden w-80 overflow-hidden rounded-3xl border border-border/60 bg-background/80 backdrop-blur-xl lg:block">
         <div className="flex h-full flex-col">
           {/* Profile Section */}
           <div className="flex-shrink-0 border-b border-border/50 px-8 py-8">

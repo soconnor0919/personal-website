@@ -1,9 +1,10 @@
 export const metadata = {
   title: "Designing My System: Soft, Translucent, and Alive",
   publishedAt: "2025-12-10",
-  summary: "A deep dive into the design philosophy behind my personal website's new theme, moving from rigid boxes to organic, living layers.",
+  summary:
+    "A deep dive into the design philosophy behind my personal website's new theme, moving from rigid boxes to organic, living layers.",
   tags: ["Design", "UI/UX", "TailwindCSS", "Frontend"],
-  image: "/images/design-system.png"
+  image: "/images/design-system.png",
 };
 
 ## The Philosophy: Soft, Translucent, and Alive
@@ -22,9 +23,9 @@ The heartbeat of this theme is the background. Instead of a flat color or a stat
 
 ```tsx
 // src/app/layout.tsx
-<div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none flex items-center justify-center">
+<div className="pointer-events-none fixed inset-0 -z-10 flex items-center justify-center overflow-hidden">
   <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px)...] bg-[size:24px_24px]"></div>
-  <div className="w-[800px] h-[800px] bg-neutral-400/40 dark:bg-neutral-500/30 rounded-full blur-3xl animate-blob"></div>
+  <div className="animate-blob h-[800px] w-[800px] rounded-full bg-neutral-400/40 blur-3xl dark:bg-neutral-500/30"></div>
 </div>
 ```
 
@@ -36,10 +37,10 @@ One of the biggest structural changes was detaching the navigation and sidebar f
 
 In a traditional layout, the sidebar is stuck to the left, and the navbar is stuck to the top. In this system, they are **floating cards**.
 
--   **Navbar**: Fixed `top-4`, `left-4`, `right-4`.
--   **Sidebar**: Fixed `top-24`, `left-4`, `bottom-4`.
+- **Navbar**: Fixed `top-4`, `left-4`, `right-4`.
+- **Sidebar**: Fixed `top-24`, `left-4`, `bottom-4`.
 
-This creates a sense of layering. The UI elements aren't *part* of the window; they are tools floating *above* the content.
+This creates a sense of layering. The UI elements aren't _part_ of the window; they are tools floating _above_ the content.
 
 ## Design Tokens
 
@@ -47,9 +48,9 @@ This creates a sense of layering. The UI elements aren't *part* of the window; t
 
 I chose a base radius of `1rem` (16px) because it strikes the perfect balance between friendly and professional.
 
--   **Cards**: `rounded-3xl` (24px). Large containers need softer corners to feel less imposing.
--   **Buttons**: `rounded-xl` (12px). Tactile and clickable.
--   **Icons**: `rounded-full`.
+- **Cards**: `rounded-3xl` (24px). Large containers need softer corners to feel less imposing.
+- **Buttons**: `rounded-xl` (12px). Tactile and clickable.
+- **Icons**: `rounded-full`.
 
 This softness extends to interaction states. When you hover over a card, the `overflow-hidden` property ensures that any inner content (like images or background fills) respects these curves perfectly.
 
@@ -57,9 +58,9 @@ This softness extends to interaction states. When you hover over a card, the `ov
 
 Instead of heavy drop shadows to show depth, I rely on **Glassmorphism**.
 
--   **Surface**: `bg-background/80` with `backdrop-blur-md`. This allows the "Living Blob" to bleed through, tinting the UI with the background color.
--   **Border**: `border-border/60`. A subtle, semi-transparent border defines the edges.
--   **Shadow**: `shadow-sm`. A very light lift, just enough to separate the layer.
+- **Surface**: `bg-background/80` with `backdrop-blur-md`. This allows the "Living Blob" to bleed through, tinting the UI with the background color.
+- **Border**: `border-border/60`. A subtle, semi-transparent border defines the edges.
+- **Shadow**: `shadow-sm`. A very light lift, just enough to separate the layer.
 
 ### 3. Color Palette
 
@@ -75,21 +76,21 @@ For typography, I wanted to blend the readability of a digital product with the 
 
 ### The Serif: Playfair Display
 
-<p className="text-4xl font-heading mb-6">Playfair Display</p>
+<p className="mb-6 font-heading text-4xl">Playfair Display</p>
 
 I chose **Playfair Display** for all headings (`h1`–`h6`). It's a transitional serif typeface with high contrast strokes and delicate hairlines.
 
-*   **Why Serif?** Serifs feel "human", "established", and "emotional". They break the sterile "tech" vibe common in developer portfolios.
-*   **Why Playfair?** Its high contrast makes it perfect for large display sizes. It commands attention and adds a layer of sophistication that a sans-serif simply cannot achieve.
+- **Why Serif?** Serifs feel "human", "established", and "emotional". They break the sterile "tech" vibe common in developer portfolios.
+- **Why Playfair?** Its high contrast makes it perfect for large display sizes. It commands attention and adds a layer of sophistication that a sans-serif simply cannot achieve.
 
 ### The Sans: Inter
 
-<p className="text-4xl font-sans mb-6">Inter</p>
+<p className="mb-6 font-sans text-4xl">Inter</p>
 
 I chose **Inter** for the body text. It is the gold standard for screen readability.
 
-*   **Why Sans?** Sans-serif fonts are "rational", "clean", and "invisible". They reduce cognitive load, making long-form reading (like this blog post) effortless.
-*   **Why Inter?** It was designed specifically for computer screens, with a tall x-height that remains legible even at small sizes.
+- **Why Sans?** Sans-serif fonts are "rational", "clean", and "invisible". They reduce cognitive load, making long-form reading (like this blog post) effortless.
+- **Why Inter?** It was designed specifically for computer screens, with a tall x-height that remains legible even at small sizes.
 
 ### Implementation
 
@@ -109,7 +110,12 @@ theme: {
 
 ```css
 /* src/styles/globals.css */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-heading; /* Playfair Display */
 }
 

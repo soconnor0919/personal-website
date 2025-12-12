@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Newspaper } from "lucide-react";
-import { Button } from "~/components/ui/button";
+
 import Link from "next/link";
 import {
   Card,
@@ -22,12 +22,12 @@ export default function ArticlesPage() {
       await new Promise((resolve) => setTimeout(resolve, 0));
       setLoading(false);
     };
-    fetchArticles();
+    void fetchArticles();
   }, []);
 
   return (
     <div className="space-y-6">
-      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+      <section className="animate-fade-in-up prose prose-zinc max-w-none dark:prose-invert">
         <div className="flex items-start gap-3">
           <Newspaper className="h-8 w-8 text-primary" />
           <div>

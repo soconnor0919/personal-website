@@ -5,7 +5,6 @@ import {
   BookOpenText,
   FileText,
   Presentation,
-  BookOpen,
   Monitor,
 } from "lucide-react";
 import Link from "next/link";
@@ -18,7 +17,6 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import { Skeleton } from "~/components/ui/skeleton";
 import { CardSkeleton } from "~/components/ui/skeletons";
 import type { Publication } from "~/lib/bibtex";
 import { parseBibtex } from "~/lib/bibtex";
@@ -27,10 +25,10 @@ import { parseBibtex } from "~/lib/bibtex";
 export default function PublicationsPage() {
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
-  const tagsToStrip = ["paperUrl", "posterUrl"];
+
 
   useEffect(() => {
-    fetch("/publications.bib")
+    void fetch("/publications.bib")
       .then((res) => res.text())
       .then((text) => {
         const pubs = parseBibtex(text);
@@ -85,7 +83,7 @@ export default function PublicationsPage() {
 
   return (
     <div className="space-y-6">
-      <section className="animate-fade-in-up prose prose-zinc dark:prose-invert max-w-none">
+      <section className="animate-fade-in-up prose prose-zinc max-w-none dark:prose-invert">
         <div className="flex items-start gap-3">
           <BookOpenText className="h-8 w-8 text-primary" />
           <div>
