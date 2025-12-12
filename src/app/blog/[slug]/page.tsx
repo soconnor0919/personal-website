@@ -63,7 +63,7 @@ export default async function BlogPost({ params }: PageProps) {
                 <div className="flex flex-wrap gap-4 items-center text-muted-foreground mb-6">
                     <time dateTime={metadata.publishedAt}>{metadata.publishedAt}</time>
                     {metadata.tags && (
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
                             {metadata.tags.map((tag: string) => (
                                 <Badge key={tag} variant="secondary">
                                     {tag}
